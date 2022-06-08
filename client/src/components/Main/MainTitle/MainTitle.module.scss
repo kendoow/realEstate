@@ -1,0 +1,53 @@
+@import '../../../scss/variables.scss';
+
+.Container {
+    padding: 30px calc(50% - 650px);
+
+    background: url('../../../assets/Main/bg-title.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: grid;
+    .Title {
+        max-width: 44%;
+
+        text-transform: uppercase;
+        font-size: 47px;
+        font-weight: 600;
+        line-height: 56px;
+        color: $color-white;
+    }
+
+    .Desrc {
+        max-width: 30%;
+
+        color: $color-white;
+        font-size: 24px;
+        line-height: 32px;
+
+        margin-bottom: 100px;
+    }
+
+    .Btn {
+        max-width: 250px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        color: $color-white;
+        font-size: 18px;
+        line-height: 22px;
+
+        padding: 12px 40px;
+
+        border: 1px solid $color-coffee;
+        border-radius: 2px;
+        background-color: $color-coffee;
+
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: $color-coffee;
+            background-color: $color-white;
+            border-radius: 8px;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.Container {
+    display: grid;
+    grid-template-areas: 'header'
+                         'body'
+                         'footer';
+    
+    .Body {
+        grid-area: body;
+    }
+}

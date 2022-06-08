@@ -1,0 +1,68 @@
+@import '../../scss/variables.scss';
+
+.Container {
+    grid-area: header;
+
+    padding: 0 calc(50% - 650px);
+
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    align-content: center;
+
+    height: 70px;
+
+    background-color: #686868;
+
+    font-family: 'Lato';
+
+    .BlockLink {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        align-content: center;
+
+        font-size: 16px;
+        line-height: 19px;
+        color: $color-white;
+    }
+
+    .BlockBtn {
+        justify-self: flex-end;
+        font-weight: 700;
+
+        display: grid;
+        grid-auto-flow: column;
+        gap: 10px;
+
+        .Login, .Registration {
+            font-size: 15px;
+            line-height: 18px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .Login {
+            color: $color-white;
+            padding: 4px 10px;
+            border: 1px solid transparent;
+
+            &:hover {
+                border-radius: 10px;
+                color: $color-coffee;
+                border: 1px solid $color-coffee;
+            }
+        }
+
+        .Registration {
+            padding: 8px 20px;
+            border-radius: 10px;
+
+            color: $color-coffee;
+            border: 1px solid $color-coffee;
+
+            &:hover {
+                border: 1px solid $color-white;
+                color: $color-white;
+            }
+        }
+    }
+}
