@@ -1,0 +1,67 @@
+@import "../../scss/variables.scss";
+
+.Container {
+  grid-area: footer;
+
+  padding: 0 calc(50% - 650px);
+
+  display: grid;
+  grid-template-columns: 0.78fr 0.7fr 1.25fr;
+
+  padding-top: 20px;
+  padding-bottom: 60px;
+
+  background-color: $bg-white;
+
+  .Block {
+    display: grid;
+    align-content: flex-start;
+    gap: 7px;
+    .Title {
+      margin-bottom: 5px;
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 600;
+      color: $color-coffee;
+    }
+    a {
+      color: $color-gray-transparent;
+      transition: $transition;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+    .Contacts {
+      display: flex;
+      align-items: center;
+      p {
+        padding-left: 10px;
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+
+    .Btn {
+      text-align: start;
+      transition: $transition;
+      color: $color-gray-transparent;
+      font-size: 18px;
+      line-height: 22px;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .BlockLogo {
+    justify-self: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    gap: 20px;
+
+    .Gpc {
+      padding-top: 15px;
+    }
+  }
+}

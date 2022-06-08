@@ -1,0 +1,23 @@
+@import "../../../scss/variables.scss";
+
+.container {
+  .navItem {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: $color-gray;
+    background-color: #fff;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    width: 260px;
+    margin-right: 20px;
+    p {
+      padding-left: 16px;
+    }
+    &:hover {
+      transition: $transition;
+      background: #ececec;
+      border-radius: 5px;
+    }
+  }
+}

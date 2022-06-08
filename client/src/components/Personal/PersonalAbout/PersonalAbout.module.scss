@@ -1,0 +1,44 @@
+@import "../../../scss/mixins.scss";
+@import "../../../scss//variables.scss";
+.container {
+  box-shadow: 0px 6px 10px rgba(82, 82, 82, 0.1);
+  border-radius: 10px;
+  width: 500px;
+  padding-left: 30px;
+  .logo {
+    padding-bottom: 21px;
+    display: flex;
+    font-weight: 400;
+    font-size: 24px;
+    color: $color-gray;
+  }
+  .info {
+    p {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 19px;
+      color: $color-gray-transparent;
+      margin-bottom: 15px;
+    }
+    input[type="text"],
+    input[type="date"] {
+      font-size: 20px;
+      line-height: 17px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 5px;
+      opacity: 0.8;
+      width: 230px;
+
+      border: 1px solid $color-gray-transparent;
+      border-radius: 5px;
+    }
+   
+  }
+  .btn {
+    @include buttonPrimary;
+    margin-bottom: 30px;
+  }
+}
