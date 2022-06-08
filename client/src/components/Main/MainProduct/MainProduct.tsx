@@ -5,11 +5,12 @@ import { MainProductProps } from "./MatinProduct.types";
 
 import styles from './MainProduct.module.scss';
 
-import imgProduct from '../../../assets/Main/img-product.png';
-import metro from '../../../assets/Main/metro.svg';
+import imgMetro from '../../../assets/Main/metro.svg';
 import gpcProduct from '../../../assets/Main/gpc-product.svg';
+import { API_URL } from "../../../http/http";
 
-const MainProduct: FC<MainProductProps> = ({price, 
+const MainProduct: FC<MainProductProps> = ({image,
+                                            price, 
                                             priceDay, 
                                             rooms, 
                                             metro, 
@@ -22,7 +23,7 @@ const MainProduct: FC<MainProductProps> = ({price,
          className={cn(styles.Container, className)} 
          {...props}>
             <button className={styles.Btn}>
-                <img src={imgProduct} alt="" />
+                <img src={`${API_URL}${image}`} alt="" />
             </button>
             <div className={styles.BlockContent}>
                 <div className={styles.Price}>
@@ -30,7 +31,7 @@ const MainProduct: FC<MainProductProps> = ({price,
                 </div>
                 <div className={styles.Rooms}>{rooms}</div>
                 <div className={styles.BlockText}>
-                    <img src={metro} alt="" />
+                    <img src={imgMetro} alt="" />
                     <div>{metro}</div>
                 </div>
                 <div className={styles.BlockText}>

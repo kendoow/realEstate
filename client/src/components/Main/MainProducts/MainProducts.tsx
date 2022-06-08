@@ -24,6 +24,7 @@ const MainProducts: FC = () => {
                     products.map(i => (
                         <MainProduct 
                          key={i._id}
+                         image={i.image}
                          price={i.price}
                          priceDay={i.priceDay}
                          rooms={i.rooms}

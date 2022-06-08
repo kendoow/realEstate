@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface MainProductProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+    image: string,
     price: string,
     priceDay: string,
     address: string,
