@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
+import Header from '../components/Header/Header'
 
-const Main = () => {
+const Main: FC = (): JSX.Element => {
   return (
-    <div>
-        1
-    </div>
+    <>
+      <Header />
+    </>
   )
 }
 
