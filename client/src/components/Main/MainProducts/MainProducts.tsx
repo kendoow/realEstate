@@ -8,8 +8,8 @@ import MainProduct from "../MainProduct/MainProduct";
 
 import styles from './MainProducts.module.scss';
 
-const MainProducts: FC = () => {
-    const {products} = useTypedSelector(state => state.productsReducer)
+const MainProducts: FC = (): JSX.Element => {
+    const { products } = useTypedSelector(state => state.productsReducer)
     const dispatch = useTypedDispatch()
 
     useEffect(() => {
@@ -18,19 +18,19 @@ const MainProducts: FC = () => {
 
     return (
         <div className={styles.Container}>
-            <h2 className={styles.Title}>Популярные апартаменты</h2>
+            <h2 className={styles.Title}>Популярные <br/> апартаменты</h2>
             <div className={styles.BlockGrid}>
                 {
                     products.map(i => (
-                        <MainProduct 
-                         key={i._id}
-                         image={i.image}
-                         price={i.price}
-                         priceDay={i.priceDay}
-                         rooms={i.rooms}
-                         metro={i.metro}
-                         description={i.description} 
-                         address={i.address}/>
+                        <MainProduct
+                            key={i._id}
+                            image={i.image}
+                            price={i.price}
+                            priceDay={i.priceDay}
+                            rooms={i.rooms}
+                            metro={i.metro}
+                            description={i.description}
+                            address={i.address} />
                     ))
                 }
             </div>

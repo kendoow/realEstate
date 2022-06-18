@@ -13,7 +13,7 @@ class ProductsService {
         }
         const product = await ProductsModel.findById(id)
         return product
-    }
+    }   
 
     async create(image, product) {
         const imageName = FilesService.uploadFile(image)

@@ -17,13 +17,13 @@ const MainProduct: FC<MainProductProps> = ({ image,
     address,
     description,
     className,
-    ...props }) => {
+    ...props }):JSX.Element => {
     return (
         <div
             className={cn(styles.Container, className)}
             {...props}>
             <button className={styles.Btn}>
-                <img src={`${API_URL}${image}`} alt="" />
+                <img src={`${API_URL}${image}`} alt="btn" />
             </button>
             <div className={styles.BlockContent}>
                 <div className={styles.Price}>
@@ -31,11 +31,11 @@ const MainProduct: FC<MainProductProps> = ({ image,
                 </div>
                 <div className={styles.Rooms}>{rooms}</div>
                 <div className={styles.BlockText}>
-                    <img src={imgMetro} alt="" />
+                    <img src={imgMetro} alt="metroIcon" />
                     <div>{metro}</div>
                 </div>
                 <div className={styles.BlockText}>
-                    <img src={gpcProduct} alt="" />
+                    <img src={gpcProduct} alt="icon" />
                     <div>{address}</div>
                 </div>
             </div>

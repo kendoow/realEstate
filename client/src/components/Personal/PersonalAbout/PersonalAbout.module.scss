@@ -9,13 +9,14 @@
     padding-bottom: 21px;
     display: flex;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     color: $color-gray;
   }
   .info {
+   
     p {
       font-weight: 400;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 19px;
       color: $color-gray-transparent;
       margin-bottom: 15px;
@@ -38,6 +39,7 @@
    
   }
   .btn {
+    margin-top: 18px;
     @include buttonPrimary;
     margin-bottom: 30px;
   }
