@@ -1,5 +1,5 @@
 @import "../../../scss/variables.scss";
-
+@import "../../../scss/mixins.scss";
 .Container {
   padding: 0 calc(50% - 650px);
   margin-top: 80px;
@@ -23,8 +23,16 @@
     justify-content: space-between;
     gap: 30px 20px;
     margin-bottom: 30px;
+    
   }
-
+  .Center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Error{
+    @include error
+  }
   .Btn {
     justify-self: center;
 

@@ -1,0 +1,9 @@
+@import '../../../scss/mixins.scss';
+.Center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Error{
+    @include error
+}

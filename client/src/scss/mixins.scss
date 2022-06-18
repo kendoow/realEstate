@@ -22,3 +22,8 @@
     background-color: $color-white;
   }
 }
+@mixin error {
+  font-size: 40px;
+  color: red;
+  text-align: center;
+}

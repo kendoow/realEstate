@@ -8,6 +8,6 @@ export interface MainProductProps extends DetailedHTMLProps<HTMLAttributes<HTMLD
     metro: string,
     description: string,
     rooms: string,
-
-    className?: string,
+    id:string,
+    className?: string
 }
