@@ -12,10 +12,10 @@ import CommentItem from '../СommentItem/СommentItem';
 
 import styles from './СommentItems.module.scss';
 
-const СommentItems: FC = () => {
-    const {loading, error, comments} = useTypedSelector(state => state.commentsReducer)
+const СommentItems: FC = (): JSX.Element => {
+    const { loading, error, comments } = useTypedSelector(state => state.commentsReducer)
     const { id } = useParams()
-    const [pagination, setPagination] = useState<PaginationTypes>({page: 2, limit: 2})
+    const [pagination, setPagination] = useState<PaginationTypes>({ page: 2, limit: 2 })
 
     const dispatch = useTypedDispatch()
 
@@ -29,8 +29,8 @@ const СommentItems: FC = () => {
     // }, [id, pagination.page, pagination.limit])
 
     const handlerPagination = () => {
-        setPagination({...pagination, page: pagination.page + 1})
-        dispatch(fetchComments({id, ...pagination})) // не нужно если пофикстить useEffect
+        setPagination({ ...pagination, page: pagination.page + 1 })
+        dispatch(fetchComments({ id, ...pagination })) // не нужно если пофикстить useEffect
     }
 
     return (
@@ -38,22 +38,22 @@ const СommentItems: FC = () => {
             <h2 className={styles.Title}>Отзывы</h2>
             {
                 comments.map(i => (
-                    <CommentItem 
-                     key={i._id}
-                     name={i.name}
-                     date={i.date}
-                     text={i.text}
-                     image={i.image}/>
+                    <CommentItem
+                        key={i._id}
+                        name={i.name}
+                        date={i.date}
+                        text={i.text}
+                        image={i.image} />
                 ))
             }
             <div className={styles.Center}>
-                {loading && <Spiner/>}
-                {error && !loading && <div className={styles.Error}>{error}</div> }
+                {loading && <Spiner />}
+                {error && !loading && <div className={styles.Error}>{error}</div>}
             </div>
 
-            <button 
-             className={styles.BtnMore}
-             onClick={() => handlerPagination()}>
+            <button
+                className={styles.BtnMore}
+                onClick={() => handlerPagination()}>
                 Больше отзывов
             </button>
         </div>

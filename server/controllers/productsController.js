@@ -3,11 +3,14 @@ import ProductsService from "../services/productsService.js";
 class ProductsController {
   async getAll(req, res) {
     try {
-      let products
+      let products;
       if (req.query.page && req.query.limit) {
-          products = await ProductsService.getPagination(req.query.page, req.query.limit)
+        products = await ProductsService.getPagination(
+          req.query.page,
+          req.query.limit
+        );
       } else {
-          products = await ProductsService.getAll();
+        products = await ProductsService.getAll();
       }
       res.json(products);
     } catch (e) {

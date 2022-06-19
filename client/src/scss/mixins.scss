@@ -1,6 +1,10 @@
 @import "./variables.scss";
 
 @mixin buttonPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   justify-self: center;
 
   font-family: "Lato", sans-serif;
@@ -10,10 +14,10 @@
   padding: 10px 48px;
   border-radius: 2px;
   border: 1px solid $color-coffee;
-
+  
   color: $color-white;
   background-color: $color-coffee;
-
+  width: fit-content;
   transition: $transition;
 
   &:hover {
@@ -26,6 +30,10 @@
 @mixin buttonWhite {
   justify-self: center;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-family: "Lato", sans-serif;
   font-weight: 700;
   font-size: 18px;
@@ -36,7 +44,7 @@
 
   color: $color-coffee;
   background-color: $color-white;
-
+width: fit-content;
   transition: $transition;
 
   &:hover {

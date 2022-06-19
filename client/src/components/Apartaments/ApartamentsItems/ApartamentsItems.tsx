@@ -35,7 +35,7 @@ const ApartamentsItems: FC = (): JSX.Element => {
                         rating={selectedProduct.rating}
                         metro={selectedProduct.metro}
                         address={selectedProduct.address}
-                        apartamentsName={selectedProduct.address}
+                        apartamentsName={selectedProduct.apartamentsName}
                         description={selectedProduct.description}
                         key={selectedProduct._id}
                     />

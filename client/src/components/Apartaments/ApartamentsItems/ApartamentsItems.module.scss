@@ -1,7 +1,10 @@
 @import '../../../scss/mixins.scss';
+.Container{
+    grid-area: body;
+}
 .Center{
     grid-area: body;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
