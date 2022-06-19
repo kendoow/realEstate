@@ -1,9 +1,11 @@
 import { FC, useState } from "react";
+import { Link } from "react-router-dom";
+
+import Modal from "../../helpers/Modal/Modal";
 
 import styles from './Header.module.scss';
 
 import logo from '../../assets/Main/logo.svg';
-import Modal from "../../helpers/Modal/Modal";
 
 const Header: FC = () => {
     const [activeLogin, setActiveLogin] = useState(false)
@@ -11,7 +13,9 @@ const Header: FC = () => {
     
     return (
         <div className={styles.Container}>
-            <img className={styles.Logo} src={logo} />
+            <Link to='/'>
+                <img className={styles.Logo} src={logo} />
+            </Link>
             <div className={styles.BlockLink}>
                 <a href='tel:+79999998877'>+7 999 999 88 77</a>
                 <a href="mailto:Mail@gmail.com">Mail@gmail.com</a>

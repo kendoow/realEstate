@@ -1,25 +1,29 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import Spiner from "../../../helpers/Spiner/Spiner";
 
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
-import { fetchProduct, fetchProducts, } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
-// import { productsApartmentSet } from "../../../redux/Slices/ProductsSlice/ProductsSlice";
-import { IProduct } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
+import { fetchProductsPagination, } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
+
+import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
 
 import MainProduct from "../MainProduct/MainProduct";
 
 import styles from './MainProducts.module.scss';
 
 const MainProducts: FC = (): JSX.Element => {
-    const { error, loading, products, selectedApartament } = useTypedSelector(state => state.productsReducer)
+    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 12})
+    const { error, loading, products } = useTypedSelector(state => state.productsReducer)
     const dispatch = useTypedDispatch()
 
+    // потом понял что немного кривая можно подгружать не все 12 и тд, а как делал с комментами
     useEffect(() => {
-        dispatch(fetchProducts())
-    }, [])
+        dispatch(fetchProductsPagination(pagination))
+    }, [pagination.page, pagination.limit])
 
-
+    const handlePagination = () => {
+        setPagination({...pagination, page: pagination.page + 1})
+    }
 
     return (
         <div className={styles.Container}>
@@ -30,10 +34,7 @@ const MainProducts: FC = (): JSX.Element => {
             </div>
 
             <div className={styles.BlockGrid}>
-
-
                 {
-
                     products.map(i => (
                         <MainProduct
                             id={i._id}
@@ -50,7 +51,11 @@ const MainProducts: FC = (): JSX.Element => {
                     ))
                 }
             </div>
-            <button className={styles.Btn}>Показать еще</button>
+            <button 
+             className={styles.Btn}
+             onClick={() => handlePagination()}>
+                Показать еще
+            </button>
         </div>
     )
 }

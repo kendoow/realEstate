@@ -1,0 +1,23 @@
+@import '../../../scss/mixins.scss';
+
+.Container {
+    grid-area: recommended;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+    align-content: flex-start;
+
+    .Title {
+        grid-column: 1 / 3;
+        color: $color-coffee;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .BtnMore {
+        grid-column: 1 / 3;
+        justify-self: center;
+        @include buttonWhite;
+    }
+}

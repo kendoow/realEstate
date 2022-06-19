@@ -15,4 +15,4 @@ const ProductsModel = new mongoose.Schema({
   rating: { type: String, required: true },
 });
 
-export default mongoose.model("products", ProductsModel);
+export default mongoose.model('Products', ProductsModel);

@@ -7,6 +7,11 @@ class ProductsService {
         return products
     }
 
+    async getPagination(page, limit) {
+        const products = await ProductsModel.find().limit(page * limit)
+        return products
+    }
+
     async getOne(id) {
         if (!id) {
             throw new Error('Products Service Get One - нет id')

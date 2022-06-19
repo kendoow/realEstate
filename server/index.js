@@ -7,6 +7,7 @@ import {config} from 'dotenv';
 import mongoose from 'mongoose';
 
 import productRouter from './routes/productsRouter.js';
+import commentsRouter from './routes/commentsRouter.js';
 
 config()
 const PORT = process.env.PORT || 5000;
@@ -22,7 +23,8 @@ app.use(fileUpload())
 app.use(express.static('static'))
 
 
-app.use('', productRouter)
+app.use('/product', productRouter)
+app.use('/comment', commentsRouter)
 
 const start = async () => {
     await mongoose.connect(process.env.URL_DB)

@@ -1,5 +1,6 @@
 @import '../../../scss/mixins.scss';
 .Center{
+    grid-area: body;
     display: flex;
     align-items: center;
     justify-content: center;

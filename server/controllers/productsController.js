@@ -3,7 +3,12 @@ import ProductsService from "../services/productsService.js";
 class ProductsController {
   async getAll(req, res) {
     try {
-      const products = await ProductsService.getAll();
+      let products
+      if (req.query.page && req.query.limit) {
+          products = await ProductsService.getPagination(req.query.page, req.query.limit)
+      } else {
+          products = await ProductsService.getAll();
+      }
       res.json(products);
     } catch (e) {
       res.status(400).json({ message: "Error - Products Controller getAll" });

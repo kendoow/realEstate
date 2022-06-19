@@ -9,43 +9,41 @@ import styles from './ApartamentsItems.module.scss'
 
 
 const ApartamentsItems: FC = (): JSX.Element => {
-    const dispatch = useTypedDispatch()
+    const { loading, error, selectedProduct } = useTypedSelector(state => state.productsReducer)
     const { id } = useParams()
+    const dispatch = useTypedDispatch()
+    
     useEffect(() => {
         id && dispatch(fetchProduct(id))
     }, [])
-    const { loading, error, selectedApartament } = useTypedSelector(state => state.productsReducer)
-    console.log(selectedApartament)
    
-
-   
-
-
     return (
         <>
-            <div>
+            <div className={styles.Container}>
                 <div className={styles.Center}>
                     {loading && <Spiner />}
                     {error && <h1 className={styles.Error}> {error}</h1>}
                 </div>
-                {Object.keys(selectedApartament).length !== 0 &&
-                <ApartamentsItem
-                    image={selectedApartament.image}
-                    price={selectedApartament.price}
-                    priceDay={selectedApartament.priceDay}
-                    priceMonth={selectedApartament.priceMonth} // поменять
-                    rewiewsCount={selectedApartament.rewiewsCount}// поменять
-                    rating={selectedApartament.rating}// поменять
-                    metro={selectedApartament.metro}
-                    address={selectedApartament.address}
-                    apartamentsName={selectedApartament.address}
-                    description={selectedApartament.description}
-                    key={selectedApartament._id}
-                />
-}
+                {
+                    Object.keys(selectedProduct).length !== 0 &&
+                    <ApartamentsItem
+                        image={selectedProduct.image}
+                        price={selectedProduct.price}
+                        priceDay={selectedProduct.priceDay}
+                        priceMonth={selectedProduct.priceMonth} 
+                        rewiewsCount={selectedProduct.rewiewsCount}
+                        rating={selectedProduct.rating}
+                        metro={selectedProduct.metro}
+                        address={selectedProduct.address}
+                        apartamentsName={selectedProduct.address}
+                        description={selectedProduct.description}
+                        key={selectedProduct._id}
+                    />
+                }
+                
             </div>
         </>
     )
 }
 
-export default ApartamentsItems
+export default ApartamentsItems;

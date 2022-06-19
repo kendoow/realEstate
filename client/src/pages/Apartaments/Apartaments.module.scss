@@ -1,3 +1,11 @@
-.container{
+.Container {
     padding: 0 calc(50% - 650px);
+
+    display: grid;
+    grid-template-areas: 'body body'
+                         'recommended comments';
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 30px;
+    
+    padding-bottom: 50px;
 }

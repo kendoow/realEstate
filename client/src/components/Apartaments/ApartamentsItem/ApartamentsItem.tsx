@@ -12,8 +12,7 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
     metro,
     address,
     apartamentsName,
-    description,
-    ...props }): JSX.Element => {
+    description}): JSX.Element => {
 
     return (
         <>
@@ -48,4 +47,4 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
     )
 }
 
-export default ApartamentsItem
+export default ApartamentsItem;

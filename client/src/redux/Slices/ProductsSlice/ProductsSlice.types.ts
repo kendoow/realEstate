@@ -2,7 +2,8 @@ export interface ProductStateTypes {
   loading: boolean;
   error: null | string;
   products: IProduct[];
-  selectedApartament: IProduct;
+  recommendedProducts: IProduct[];
+  selectedProduct: IProduct;
 }
 
 export interface IProduct {
@@ -18,4 +19,15 @@ export interface IProduct {
   description: string;
   rooms: string;
   _id: string;
+}
+
+export interface PaginationTypes {
+  page: number,
+  limit: number,
+}
+
+export interface RecommenededTypes {
+    page: number,
+    limit: number,
+    id: string | undefined,
 }
