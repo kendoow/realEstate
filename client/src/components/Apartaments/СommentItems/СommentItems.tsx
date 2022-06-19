@@ -21,7 +21,7 @@ const СommentItems: FC = () => {
 
     useEffect(() => {
         id && dispatch(fetchCommentsFirst(id))
-    }, [])
+    }, [id])
 
     // в моменте работает за двоих (2 раза блять)
     // useEffect(() => { 
