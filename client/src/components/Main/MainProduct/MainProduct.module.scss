@@ -1,43 +1,62 @@
-@import '../../../scss/variables.scss';
+@import "../../../scss/variables.scss";
 
 .Container {
-    display: grid;
-    gap: 6px;
-    padding-bottom: 20px;
-    background-color: $bg-white;
-    border-radius: 10px;
- 
-    .BlockContent {
-        padding-left: 12px;
+  display: grid;
+  gap: 6px;
+  padding-bottom: 20px;
+  background-color: $bg-white;
+  border-radius: 10px;
+  .BlockContent {
+    padding-left: 12px;
 
-        .Price {
-            color: $color-black;
-            font-size: 20px;
-            line-height: 28px;
-            font-weight: 600;
-            .USD {
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 18px;
-                color: $color-gray;
-            }
-        }
-        .Rooms {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 18px;
-            color: $color-gray;
-        }
-        .BlockText {
-            display: grid;
-            grid-auto-flow: column;
-            gap: 6px;
-            align-content: center;
-            justify-content: flex-start;
-    
-            font-size: 14px;
-            line-height: 18px;
-            color: $color-gray-transparent;
-        }
+    .Price {
+      color: $color-black;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 600;
+      .USD {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: $color-gray;
+      }
     }
+    .Rooms {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      color: $color-gray;
+    }
+    .BlockText {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 6px;
+      align-content: center;
+      justify-content: flex-start;
+
+      font-size: 14px;
+      line-height: 18px;
+      color: $color-gray-transparent;
+    }
+  }
+  .Btn {
+    max-width: 300px;
+    margin-bottom: 20px;
+    position: relative;
+    .Slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .ImgHeart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1;
+      
+    }
+  }
 }

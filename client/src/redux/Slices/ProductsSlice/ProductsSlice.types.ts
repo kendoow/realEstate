@@ -7,7 +7,7 @@ export interface ProductStateTypes {
 }
 
 export interface IProduct {
-  image: string;
+  image: string [];
   price: string;
   priceDay: string;
   priceMonth: string;

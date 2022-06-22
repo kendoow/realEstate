@@ -11,7 +11,9 @@
     grid-template-rows: repeat(2, auto);
     align-content: flex-start;
     gap: 15px 10px;
-
+    .Img{
+        border-radius: 100%;
+    }
     .Block {
         align-self: center;
         .Name {

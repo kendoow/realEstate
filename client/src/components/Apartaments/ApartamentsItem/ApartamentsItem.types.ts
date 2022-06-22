@@ -1,7 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface ApartamentsItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
-    image: string,
+    image: string [],
     price: string,
     priceDay: string,
     priceMonth: string,

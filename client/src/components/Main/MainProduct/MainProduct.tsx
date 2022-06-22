@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState, MouseEvent } from "react";
 import cn from 'classnames';
 
 import { MainProductProps } from "./MainProduct.types";
@@ -9,9 +9,9 @@ import imgMetro from '../../../assets/Main/metro.svg';
 import gpcProduct from '../../../assets/Main/gpc-product.svg';
 import { API_URL } from "../../../http/http";
 import { Link } from "react-router-dom";
-import { IProduct } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
-import { fetchProduct } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
-import useTypedDispatch from "../../../hooks/useTypedDispatch";
+import heartEmpty from '../../../assets/Main/heart.svg';
+import heartFilled from '../../../assets/Main/heart-filled.svg';
+import SimpleSlider from "../../../helpers/Slider/Slider";
 
 const MainProduct: FC<MainProductProps> = ({ image,
     price,
@@ -23,15 +23,30 @@ const MainProduct: FC<MainProductProps> = ({ image,
     className,
     id,
     ...props }): JSX.Element => {
-   
 
+    const [filled, isFilled] = useState<boolean>(false)
+
+    const fillHandler = (e: MouseEvent<HTMLImageElement>) => {
+        isFilled(!filled)
+        e.preventDefault()
+    }
 
     return (
         <div
             className={cn(styles.Container, className)}
             {...props}>
             <Link to={`/apartments/${id}`} className={styles.Btn}>
-                <img src={`${API_URL}${image}`} alt="btn" />
+                <img onClick={(e) => fillHandler(e)} className={styles.ImgHeart} src={filled ? heartFilled : heartEmpty} alt='heart' />
+                <SimpleSlider>
+                    {
+                        image.map((img) => (
+                            <div key={img} className={styles.Slider}>
+
+                                <img src={`${API_URL}${img}`} alt="btn" />
+                            </div>
+                        ))
+                    }
+                </SimpleSlider>
             </Link>
             <div className={styles.BlockContent}>
                 <div className={styles.Price}>

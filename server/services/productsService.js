@@ -21,8 +21,8 @@ class ProductsService {
     }   
 
     async create(image, product) {
-        const imageName = FilesService.uploadFile(image)
-        const createdProduct = await ProductsModel.create({...product, image: imageName})
+        const imageNameArray = image.map(img => FilesService.uploadFile(img)) 
+        const createdProduct = await ProductsModel.create({...product, image: imageNameArray})
         return createdProduct
     }
 
