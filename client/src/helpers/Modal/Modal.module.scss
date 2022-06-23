@@ -13,6 +13,7 @@
     align-items: center;
     transform: translateY(-100%);
     transition: all 0.3s;
+   
     &Content {
       display: flex;
       justify-content: center;
@@ -21,7 +22,9 @@
       padding: 20px;
       border-radius: 12px;
       background-color: $bg-white;
-      width: 50vw;
+      width: 473px;
+      height: 660px;
+      
     }
   }
   .active {

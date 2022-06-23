@@ -14,7 +14,13 @@
   background-color: #686868;
 
   font-family: "Lato";
-
+  .Logo {
+    transition: $transition;
+    &:hover {
+      transition: $transition;
+      transform: scale(1.05);
+    }
+  }
   .BlockLink {
     display: grid;
     grid-auto-flow: column;

@@ -1,13 +1,30 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { SliderProps } from "./Slider.types";
 
 
-
-type SliderProps = {
-    children: React.ReactNode
-}
-
+function SampleNextArrow(props:any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, position:"absolute", marginRight:"30px",width:"20px",zIndex:"20"}}
+        onClick={onClick}
+      />
+    );
+  }
+  
+  function SamplePrevArrow(props:any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style,  position:"absolute", marginLeft:"30px",width:"20px",zIndex:"20"}}
+        onClick={onClick}
+      />
+    );
+  }
 const SimpleSlider = ({ children }: SliderProps): JSX.Element => {
 
     const settings = {
@@ -16,7 +33,9 @@ const SimpleSlider = ({ children }: SliderProps): JSX.Element => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false
+        arrows: true,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
     };
 
     return (
