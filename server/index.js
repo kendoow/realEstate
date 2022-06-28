@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
-
+import cookieParser from 'cookie-parser'
 import {config} from 'dotenv';
 
 import mongoose from 'mongoose';
 
 import productRouter from './routes/productsRouter.js';
 import commentsRouter from './routes/commentsRouter.js';
+import jwtRouter from './routes/jwtRouter.js'
 
 config()
 const PORT = process.env.PORT || 5000;
@@ -21,10 +22,11 @@ app.use(cors({
 }))
 app.use(fileUpload())
 app.use(express.static('static'))
-
+app.use(cookieParser())
 
 app.use('/product', productRouter)
 app.use('/comment', commentsRouter)
+app.use('/jwt', jwtRouter)
 
 const start = async () => {
     await mongoose.connect(process.env.URL_DB)

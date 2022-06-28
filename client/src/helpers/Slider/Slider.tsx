@@ -9,7 +9,7 @@ function SampleNextArrow(props:any) {
     return (
       <div
         className={className}
-        style={{ ...style, position:"absolute", marginRight:"30px",width:"20px",zIndex:"20"}}
+        style={{ ...style, position:"absolute", marginRight:"30px",width:"20px",zIndex:"1"}}
         onClick={onClick}
       />
     );
@@ -20,7 +20,7 @@ function SampleNextArrow(props:any) {
     return (
       <div
         className={className}
-        style={{ ...style,  position:"absolute", marginLeft:"30px",width:"20px",zIndex:"20"}}
+        style={{ ...style,  position:"absolute", marginLeft:"30px",width:"20px",zIndex:"1"}}
         onClick={onClick}
       />
     );
