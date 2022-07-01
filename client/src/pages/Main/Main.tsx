@@ -8,8 +8,9 @@ const Main: FC = () => {
   return (
     <div className={styles.Container}>
         <Header />
+         
         <div className={styles.Body}>
-          <MainTitle />
+          <MainTitle /> 
           <MainProducts />
         </div>
         <Footer />

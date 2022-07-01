@@ -21,7 +21,7 @@ const Header: FC = () => {
             <div className={styles.BlockLink}>
                 <a href='tel:+79999998877'>+7 999 999 88 77</a>
                 <a href="mailto:Mail@gmail.com">Mail@gmail.com</a>
-                <Link to ='catalog'>Каталог</Link>
+                <Link to ='/catalog'>Каталог</Link>
                 <div>На карте</div>
                 <div>FAQ</div>
             </div>

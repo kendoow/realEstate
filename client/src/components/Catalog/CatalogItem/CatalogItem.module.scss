@@ -1,0 +1,78 @@
+@import "../../../scss/variables.scss";
+
+.Container {
+  display: flex;
+  gap: 6px;
+  padding-bottom: 20px;
+
+  border-radius: 10px;
+  .BlockContent {
+    padding-left: 12px;
+    h3 {
+      color: $color-coffee;
+      font-size: 28px;
+      line-height: 26px;
+      margin-bottom: 15px;
+    }
+    .Price {
+      color: $color-black;
+      font-size: 30px;
+      line-height: 28px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      .USD {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 18px;
+        color: $color-gray;
+      }
+    }
+    .Rooms {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 18px;
+      color: $color-gray;
+      margin-bottom: 20px;
+    }
+    .BlockText {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 6px;
+      align-content: center;
+      justify-content: flex-start;
+
+      font-size: 18px;
+      line-height: 18px;
+      color: $color-gray-transparent;
+      margin-bottom: 20px;
+    }
+    .Description{
+        max-width: 600px;
+        font-size: 18px;
+        line-height: 20px;
+        color: $color-gray-transparent;
+    }
+  }
+  .Btn {
+    max-width: 350px;
+    margin-bottom: 20px;
+    position: relative;
+    .Slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      cursor: pointer;
+      img{
+        border-radius: 10px;
+      }
+    }
+    .ImgHeart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1;
+    }
+    
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+.Container {
+  padding: 0 calc(50% - 650px);
+  margin-top: 80px;
+  margin-bottom: 65px;
+
+  display: grid;
+  gap: 30px;
+
+  
+
+
+  .Center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Error{
+    @include error
+  }
+  .Btn {
+    justify-self: center;
+
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 48px;
+    border-radius: 2px;
+    border: 1px solid $color-coffee;
+
+    color: $color-white;
+    background-color: $color-coffee;
+
+    transition: $transition;
+
+    &:hover {
+      border-radius: 8px;
+      color: $color-coffee;
+      background-color: $color-white;
+    }
+  }
+}
