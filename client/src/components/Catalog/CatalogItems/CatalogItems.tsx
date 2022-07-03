@@ -10,7 +10,7 @@ import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSli
 import { fetchProductsPagination } from '../../../redux/Slices/ProductsSlice/ProductsActionCreator'
 
 const CatalogItems: FC = (): JSX.Element => {
-    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 12})
+    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
     const { error, loading, products } = useTypedSelector(state => state.productsReducer)
     const dispatch = useTypedDispatch()
 
