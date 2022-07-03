@@ -1,12 +1,12 @@
 import { MouseEventHandler } from "react";
 
-export type SliderProps = {
+export interface SliderProps {
     children: React.ReactNode
 }
 
-export type ArrowProps = {
-    className?:string;
-    style?:React.HTMLAttributes<HTMLDivElement>;
+export interface ArrowProps {
+    className?: string;
+    style?: React.HTMLAttributes<HTMLDivElement>;
     onClick?: MouseEventHandler<HTMLDivElement>;
 }
 

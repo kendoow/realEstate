@@ -1,3 +1,3 @@
-export type InputProps = {
-    text:string;
+export interface InputProps {
+    text: string;
 }
