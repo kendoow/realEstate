@@ -11,10 +11,6 @@ import mongoose from 'mongoose';
 import productRouter from './routes/productsRouter.js';
 import commentsRouter from './routes/commentsRouter.js';
 import jwtRouter from './routes/jwtRouter.js'
-<<<<<<< HEAD
-=======
->>>>>>> a4893d178ee7077e277b2f4f6e24a743ebe5e673
-
 config()
 const PORT = process.env.PORT || 5000;
 
