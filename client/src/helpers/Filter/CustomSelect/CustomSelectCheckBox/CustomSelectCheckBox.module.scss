@@ -1,0 +1,62 @@
+@import '../../../../scss/variables.scss';
+
+.Container {
+    position: relative;
+    display: grid;
+    gap: 10px 0;
+
+    .BtnTitle {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 10px;
+        font-size: 16px;
+
+        background: rgba(217, 217, 217, 0.1);
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+
+        transition: border-radius 0.3s ease-in-out, 
+                    border 0.3s ease-in-out;
+
+        &:focus {
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .BlockBtn {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 130%;
+        
+        display: none;
+        gap: 5px 0;
+
+        padding: 15px;
+        background: #F9F9F9;
+        border-radius: 5px;
+
+        .Btn {
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: flex-start;
+            gap: 0 15px;
+
+            input {
+                width: 15px;
+            }
+            .BtnItem {
+                color: #686868;
+                font-size: 16px;
+            }
+        }
+    }
+
+    .Active {
+        display: grid;
+    }
+}

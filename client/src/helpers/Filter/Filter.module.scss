@@ -10,7 +10,7 @@
     .Block {
         display: grid;
         grid-template-rows: 24px auto;
-        gap: 8px 30px;
+        gap: 12px 30px;
 
         .Text {
             img {
@@ -18,7 +18,7 @@
             }
 
             color: $color-black;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 20px;
             line-height: 18px;
         }

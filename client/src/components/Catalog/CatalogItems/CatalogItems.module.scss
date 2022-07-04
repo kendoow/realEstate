@@ -2,14 +2,10 @@
 @import "../../../scss/mixins.scss";
 .Container {
   padding: 0 calc(50% - 650px);
-  margin-top: 80px;
   margin-bottom: 65px;
 
   display: grid;
   gap: 30px;
-
-  
-
 
   .Center{
     display:flex;

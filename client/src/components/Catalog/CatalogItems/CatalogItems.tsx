@@ -2,12 +2,16 @@ import { FC, useEffect, useState } from 'react'
 
 
 import useTypedSelector from '../../../hooks/useTypedSelector'
+import useTypedDispatch from '../../../hooks/useTypedDispatch'
+
 import CatalogItem from '../CatalogItem/CatalogItem'
 import Spiner from '../../../helpers/Spiner/Spiner'
-import styles from './CatalogItems.module.scss'
-import useTypedDispatch from '../../../hooks/useTypedDispatch'
+import Filter from '../../../helpers/Filter/Filter'
+
 import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 import { fetchProductsPagination } from '../../../redux/Slices/ProductsSlice/ProductsActionCreator'
+
+import styles from './CatalogItems.module.scss'
 
 const CatalogItems: FC = (): JSX.Element => {
     const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
@@ -24,6 +28,8 @@ const CatalogItems: FC = (): JSX.Element => {
 
     return (
         <>
+         <Filter />
+
          <div className={styles.Container}>
          <div className={styles.Center}>
                 {loading && <Spiner />}

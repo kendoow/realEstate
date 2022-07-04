@@ -1,0 +1,30 @@
+@import '../../../scss/variables.scss';
+
+.Container {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+    gap: 0 10px;
+
+    .Btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        line-height: 18px;
+
+        background: rgba(217, 217, 217, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 130px;
+
+        transition: border 0.3s ease-in-out,
+                    color 0.3s ease-in-out;
+
+        &:hover {
+            border: 1px solid $color-coffee;
+        }
+    }
+
+    .Active {
+        border: 1px solid $color-coffee;
+        color: $color-coffee;
+    }
+}

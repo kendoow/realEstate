@@ -1,24 +1,31 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cn from 'classnames';
+
+import ModalFilter from "./ModalFilter/ModalFilter";
+import CustomSelect from "./CustomSelect/CustomSelect";
+import CustomSelectInput from "./CustomSelect/CustomSelectInput/CustomSelectInput";
 
 import styles from './Filter.module.scss';
 
 import gps from '../../assets/Helpers/gps.svg';
+import arrow from '../../assets/Helpers/select-arrow.svg';
 
 const Filter: FC = () => {
+    const [filterModal, setFilterModal] = useState<boolean>(false)
+
+    const modalHandler = () => {
+        setFilterModal(!filterModal)
+    }
+
     return (
         <div className={styles.Container}>
             <div className={styles.Block}>
                 <div className={styles.Text}>
                     Кол-во комнат
                 </div>    
-                <select className={styles.Select}>
-                    {Array(5).fill(0).map((v, i) => v = i + 1).map((v, i) => 
-                        <option key={i}>
-                            {v}
-                        </option>
-                    )}
-                </select>
+                <CustomSelect
+                 arrow={arrow} 
+                 values={Array(5).fill(0).map((v, i) => v = i + 1)}/>
             </div>
             
             <div className={styles.Block}>
@@ -40,14 +47,17 @@ const Filter: FC = () => {
                 <div className={styles.Text}>
                     Цена за сутки
                 </div>    
-                <select className={styles.Select}>
-
-                </select>
+                <CustomSelectInput arrow={arrow}/>
             </div>
             <div className={styles.Block}>
-                <button className={styles.BtnWhite}>Ещё</button>    
+                <button 
+                 className={styles.BtnWhite}
+                 onClick={modalHandler}>Ещё</button>    
                 <button className={styles.BtnCoffee}>Показать</button>    
             </div>
+            <ModalFilter 
+             active={filterModal}
+             setActive={setFilterModal}/>
         </div>
     )
 }

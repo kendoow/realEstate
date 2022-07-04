@@ -1,0 +1,136 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.Container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.300);
+    visibility: hidden;
+    cursor: pointer;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    .Content {
+        cursor: auto;
+        width: 473px;
+        padding: 30px 50px;
+        border-radius: 15px;
+        background-color: #fff;
+
+        .Title {
+            color: #686868;
+            font-weight: 600;
+            font-size: 27px;
+            line-height: 33px;
+            margin-bottom: 34px;
+        }
+
+        .BlockInput {
+            display: grid;
+            gap: 25px 0;
+            padding-bottom: 63px;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+            .BlockText {
+                display: grid;
+                gap: 15px 0;
+                .Text {
+                    color: $color-coffee;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 19px;
+                }
+                
+                .Select {
+                    max-width: 100px;
+                }
+                .SelectCheckBox {
+                    max-width: 250px;
+                }
+                select {
+                    max-width: 250px;
+                    padding: 10px;
+                    border: 2px solid rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    background: rgba(217, 217, 217, 0.1);
+
+                    transition: border-radius 0.3 ease-in-out,
+                                border 0.3 ease-in-out;
+
+                    font-size: 18px;
+                    line-height: 18px;
+                    
+                    -webkit-appearance: none;
+                    background-image: url('../../../assets/Helpers/select-arrow.svg');
+                    background-repeat: no-repeat;
+                    background-position: 95%;
+                    option {
+                        font-size: 18px;
+                        line-height: 18px;    
+                    }
+                    &:focus {
+                        border-radius: 15px;
+                        border: 2px solid rgba(0, 0, 0, 0.3);
+                    }
+                }
+            }
+        }
+
+        .BlockBtn {
+            margin-top: 30px;
+
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: space-between;
+
+            .BtnExit {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              
+                justify-self: center;
+              
+                font-family: "Lato", sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 18px;
+                padding: 10px 30px;
+                border-radius: 15px;
+                color: #ED5353;
+
+                border: 2px solid #ED5353;
+                transition: border-radius 0.3s ease-in-out,
+                            color 0.3s ease-in-out,
+                            background-color 0.3s ease-in-out;
+
+                &:hover {
+                    border-radius: 8px;
+                    color: #fff;
+                    background-color: #ED5353;
+                }
+            }
+            .BtnShow {
+                @include buttonPrimary;
+                transition: border-radius 0.3s ease-in-out,
+                color 0.3s ease-in-out,
+                background-color 0.3s ease-in-out;
+
+                padding: 10px 30px;
+                font-size: 16px;
+                line-height: 18px;
+                border-radius: 15px;
+            }
+        }
+    }
+}
+
+.Active {
+    visibility: visible;
+}
