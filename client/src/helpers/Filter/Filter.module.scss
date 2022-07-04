@@ -1,0 +1,78 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.Container {
+    display: grid;
+    grid-template-columns: repeat(4, auto) 1fr;
+    gap: 0 30px;
+    padding: 25px calc(50% - 650px);
+
+    .Block {
+        display: grid;
+        grid-template-rows: 24px auto;
+        gap: 8px 30px;
+
+        .Text {
+            img {
+                margin-right: 5px;
+            }
+
+            color: $color-black;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 18px;
+        }
+        .Select, .Input {
+            padding: 10px;
+            background: rgba(217, 217, 217, 0.1);
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+
+            transition: $transition;
+        }
+        .Input {
+            min-width: 300px;
+            font-size: 18px;
+            line-height: 18px;
+            &::placeholder {
+                color: #D9D9D9;
+            }
+            &:focus {
+                border-radius: 10px;
+                border: 2px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+        .Select {
+            font-size: 18px;
+            line-height: 18px;
+            -webkit-appearance: none;
+            background-image: url('../../assets/Helpers/select-arrow.svg');
+            background-repeat: no-repeat;
+            background-position: 90%;
+            option {
+                font-size: 18px;
+                line-height: 18px;    
+            }
+            &:focus {
+                border-radius: 10px;
+                border: 2px solid rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .Coffee {
+            color: $color-coffee;
+        }
+        .BtnCoffee {
+            @include buttonPrimary;
+        }
+        .BtnWhite {
+            @include buttonWhite;
+        }
+        .BtnCoffee, .BtnWhite {
+            grid-row: 2 / 3;
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    }
+
+}

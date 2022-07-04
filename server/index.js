@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import productRouter from './routes/productsRouter.js';
 import commentsRouter from './routes/commentsRouter.js';
 import jwtRouter from './routes/jwtRouter.js'
+import filtersRouter from './routes/filtersRouter.js';
 
 config()
 const PORT = process.env.PORT || 5000;
@@ -27,6 +28,7 @@ app.use(cookieParser())
 app.use('/product', productRouter)
 app.use('/comment', commentsRouter)
 app.use('/jwt', jwtRouter)
+app.use('/filter', filtersRouter)
 
 const start = async () => {
     await mongoose.connect(process.env.URL_DB)

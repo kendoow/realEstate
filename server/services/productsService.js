@@ -1,5 +1,6 @@
 import ProductsModel from "../models/productsModel.js";
 import FilesService from "./filesService.js";
+import FiltersService from "./filtersService.js";
 
 class ProductsService {
     async getAll() {
@@ -23,6 +24,7 @@ class ProductsService {
     async create(image, product) {
         const imageNameArray = image.map(img => FilesService.uploadFile(img)) 
         const createdProduct = await ProductsModel.create({...product, image: imageNameArray})
+        await FiltersService.create(createdProduct._id)
         return createdProduct
     }
 

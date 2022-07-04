@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { Footer, Header, MainProducts, MainTitle } from '../../components'; 
+import Filter from '../../helpers/Filter/Filter';
 
 import styles from './Main.module.scss';
 
@@ -10,6 +11,7 @@ const Main: FC = () => {
         <Header />
          
         <div className={styles.Body}>
+          <Filter />
           <MainTitle /> 
           <MainProducts />
         </div>
