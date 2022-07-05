@@ -19,6 +19,15 @@
     line-height: 22px;
     color: $color-gray;
   }
+  .Redirect{
+    color: $color-coffee;
+    border-bottom: 1px solid $color-coffee;
+    transition: $transition;
+    &:hover{
+      transition: $transition;
+      opacity: 0.8;
+    }
+  }
   .btn {
     @include buttonPrimary;
     padding: 20px 40px;
@@ -26,6 +35,12 @@
     margin-top: 50px;
     width: 300px;
     font-weight: normal;
+  }
+  button:disabled{
+    &:hover{
+      background-color: rgb(119, 119, 119);
+      color: #000;
+    }
   }
   .Password{
     position: relative;
@@ -35,4 +50,16 @@
         right: 20px;
     }
   }
+  .Input{
+    @include input;
+  }
+}
+.None{
+  display: none;
+}
+
+.Error{
+  color: red;
+  text-align: center;
+  margin-top: 10px;
 }

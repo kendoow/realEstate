@@ -15,6 +15,7 @@ const CustomButtonBlock: FC<CustomButtonBlockProps> = ({className, values, ...pr
 
     return (
         <div 
+        
          className={cn(className, styles.Container)}
          {...props}>
             {values.map((v, i) => (

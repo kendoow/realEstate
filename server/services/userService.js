@@ -8,7 +8,7 @@ import { ApiError } from "../exceptions/apiError.js";
 class UserService{
     async registration(email,password){
         const candidate = await userModel.findOne({email})
-        if(!candidate){
+        if(candidate){
             throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует `)
         }
         

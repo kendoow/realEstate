@@ -1,4 +1,16 @@
-export const API_URL = 'http://localhost:8000/'
+import axios from "axios";
 
-// Тут будет логика с jwt токеном твоя
-// Да да не супер бесполезный файл с одной переменной
+export const API_URL = "http://localhost:8000/";
+
+const $api = axios.create({
+  withCredentials: true,
+  baseURL: API_URL
+});
+
+$api.interceptors.request.use((config) => {
+    config.headers!.Authorization = `Bearer ${localStorage.getItem('token')}`
+    return config;
+})
+
+
+export default $api;

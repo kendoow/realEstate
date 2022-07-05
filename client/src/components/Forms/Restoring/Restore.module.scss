@@ -1,0 +1,42 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
+.Container{
+    width: 400px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h2{
+        text-align: center;
+        font-size: 40px;
+        color: $color-gray;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    .Input{
+        @include input;
+    }
+    .Btn {
+        @include buttonPrimary;
+        padding: 20px 40px;
+        font-size: 24px;
+        margin-top: 50px;
+        width: 300px;
+        font-weight: normal;
+    }
+    .Redirect{
+        color: $color-coffee;
+        border-bottom: 1px solid $color-coffee;
+        transition: $transition;
+        font-size: 18px;
+        &:hover{
+          transition: $transition;
+          opacity: 0.8;
+        }
+    }
+}
+.None{
+    display: none;
+}

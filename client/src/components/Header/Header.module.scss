@@ -11,9 +11,8 @@
 
   height: 70px;
 
-  background-color: #686868;
-
   font-family: "Lato";
+
   .Logo {
     transition: $transition;
     &:hover {
@@ -32,6 +31,24 @@
     color: $color-white;
     a {
       color: $color-white;
+      transition: $transition;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .BlockLinkAuth {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-content: center;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: #686868;
+    a {
+      color: #686868;
       transition: $transition;
       &:hover {
         transform: scale(1.05);
@@ -77,6 +94,51 @@
         border: 1px solid $color-white;
         color: $color-white;
       }
+    }
+  }
+}
+
+.RightSideBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .BarLine {
+    position: relative;
+    top: 22px;
+    background-color: #686868;
+    width: 15px;
+    height: 1px;
+    margin-left: 20px;
+    margin-right: 15px;
+    &::before {
+
+      display: block;
+      position: absolute;
+      content: "";
+      top: -6px;
+      background-color: #686868;
+      width: 15px;
+      height: 1px;
+    }
+    &::after {
+
+      display: block;
+      position: absolute;
+      content: "";
+      top: 6px;
+      background-color: #686868;
+      width: 15px;
+      height: 1px;
+    }
+  }
+  .UserPanel {
+    display: flex;
+    border: 1px solid rgba(95, 95, 95, 0.4);
+    border-radius: 23px;
+    margin-left: 20px;
+    position: relative;
+    img {
+      padding: 5px;
     }
   }
 }

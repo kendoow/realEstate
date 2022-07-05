@@ -23,6 +23,7 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({className,
         return (
 
         <div 
+        
          className={cn(className, styles.Container)}
          {...props}>
             <button 

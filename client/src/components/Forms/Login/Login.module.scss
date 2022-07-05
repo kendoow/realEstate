@@ -27,6 +27,15 @@
     width: 200px;
     font-weight: normal;
   }
+  .Redirect{
+    color: $color-coffee;
+    border-bottom: 1px solid $color-coffee;
+    transition: $transition;
+    &:hover{
+      transition: $transition;
+      opacity: 0.8;
+    }
+  }
   .Password{
     position: relative;
     img{
@@ -35,4 +44,21 @@
         right: 20px;
     }
   }
+  button:disabled{
+    &:hover{
+      background-color: rgb(119, 119, 119);
+      color: #000;
+    }
+  }
+  .Input{
+    @include input;
+  }
+}
+.None{
+  display: none;
+}
+.Error{
+  color: red;
+  text-align: center;
+  margin-top: 10px;
 }

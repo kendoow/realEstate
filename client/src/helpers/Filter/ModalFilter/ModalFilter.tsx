@@ -21,7 +21,7 @@ const ModalFilter: FC<ModalFilterProps> = ({className, active, setActive, ...pro
     }
 
     useEffect(() => {
-        document.body.style.overflow = active ? 'hidden' : 'scroll'
+        document.body.style.overflow = active ? 'hidden' : 'auto'
     }, [active])
     
     return (

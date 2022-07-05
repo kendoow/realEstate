@@ -59,3 +59,13 @@ width: fit-content;
   color: red;
   text-align: center;
 }
+
+@mixin input {
+  font-size: 20px;
+  padding: 15px;
+  margin-top: 20px;
+  width: 300px;
+  background: rgba(217, 217, 217, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
