@@ -45,9 +45,9 @@ const Registration: FC = (): JSX.Element => {
                 <h2>Регистрация</h2>
                 <h4>Есть аккаунт?  <button className={styles.Redirect} onClick={RedirectHanlder}>Войти</button></h4>
 
-                {emailReg.isDirty && emailReg.isEmpty
+                {nameReg.isDirty && nameReg.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
-                {emailReg.isDirty && emailReg.minLengthError
+                {nameReg.isDirty && nameReg.minLengthError
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
                 <input value={nameReg.value}
                     onChange={nameReg.onChange}

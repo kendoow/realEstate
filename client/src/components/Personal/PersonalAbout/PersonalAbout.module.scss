@@ -8,9 +8,13 @@
   .logo {
     padding-bottom: 21px;
     display: flex;
+    align-items: center;
     font-weight: 400;
     font-size: 20px;
     color: $color-gray;
+    p{
+      margin-left: 15px;
+    }
   }
   .info {
    
@@ -20,6 +24,7 @@
       line-height: 19px;
       color: $color-gray-transparent;
       margin-bottom: 15px;
+      
     }
     input[type="text"],
     input[type="date"] {

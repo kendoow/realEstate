@@ -16,7 +16,7 @@ const Rating:FC<RatingProps> = ({filled}):JSX.Element => {
     return (
         <>
             {
-                ratingArray.map(value => <img src={value ? StarIconFilled :StarIconEmpty } alt ='star'/>)
+                ratingArray.map((value,i) => <img key={i} src={value ? StarIconFilled :StarIconEmpty } alt ='star'/>)
             }
         </>
 

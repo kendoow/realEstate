@@ -57,7 +57,7 @@ export const checkAuth = createAsyncThunk(
             localStorage.setItem('accessToken', response.data.accessToken)
             return response.data
         } catch (e) {
-            return rejectWithValue(`Ошибка!`)
+            return rejectWithValue(`Ошибка!`)           
         }
     }
 )

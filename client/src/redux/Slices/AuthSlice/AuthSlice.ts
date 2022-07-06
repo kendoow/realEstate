@@ -78,7 +78,6 @@ export const AuthSlice = createSlice({
         },
         [checkAuth.rejected.type]: (state, action) => {
             state.loading = false
-            state.isAuth = false
             state.error = action.payload
         },
     }

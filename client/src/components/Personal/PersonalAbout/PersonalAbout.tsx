@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import styles from './PersonalAbout.module.scss'
+import userIcon from '../../../assets/Main/userIcon.svg'
 const PersonalAbout:FC = () :JSX.Element => {
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <img width={50} height={50} src="" alt="logo" />
+                    <img width={50} height={50} src={userIcon} alt="logo" />
                     <p>Иван Иванов</p>
                 </div>
                 <div className={styles.info}>

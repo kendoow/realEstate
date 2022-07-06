@@ -20,16 +20,17 @@ const Header: FC = () => {
     const [activeLogin, setActiveLogin] = useState<boolean>(false)
     const [activeSiginIn, setActiveSiginIn] = useState<boolean>(false)
     const { isAuth } = useTypedSelector(state => state.authReducer)
+    const accessToken = localStorage.getItem('accessToken') 
     const dispatch = useTypedDispatch()
     const LogoutHandler = () => {
         dispatch(logout())
     }
     return (
-        <div style={isAuth ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }} className={styles.Container}>
+        <div style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }} className={styles.Container}>
             <Link to='/'>
                 <img className={styles.Logo} src={logo} />
             </Link>
-            <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
+            <div className={accessToken ? styles.BlockLinkAuth : styles.BlockLink}>
                 <a href='tel:+79999998877'>+7 999 999 88 77</a>
                 <a href="mailto:Mail@gmail.com">Mail@gmail.com</a>
                 <Link to='/catalog'>Каталог</Link>
@@ -37,7 +38,7 @@ const Header: FC = () => {
                 <div>FAQ</div>
             </div>
 
-            {isAuth ? <>
+            {accessToken ? <>
                 <div className={styles.RightSideBar}>
                     <img src={heart} alt="heart" />
                     <div className={styles.UserPanel}>
