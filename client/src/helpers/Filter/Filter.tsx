@@ -22,42 +22,49 @@ const Filter: FC = () => {
             <div className={styles.Block}>
                 <div className={styles.Text}>
                     Кол-во комнат
-                </div>    
+                </div>
                 <CustomSelect
-                 arrow={arrow} 
-                 values={Array(5).fill(0).map((v, i) => v = i + 1)}/>
-            </div>
-            
-            <div className={styles.Block}>
-                <div className={cn(styles.Text, styles.Coffee)}>
-                    <img 
-                     width={20}
-                     height={20}
-                     src={gps} 
-                     alt="Geo Icon" />
-                    Москва
-                </div>    
-                <input 
-                 type="text"
-                 placeholder="Район, улица"
-                 className={styles.Input} />
+                    arrow={arrow}
+                    values={Array(5).fill(0).map((v, i) => v = i + 1)} />
             </div>
 
             <div className={styles.Block}>
-                <div className={styles.Text}>
-                    Цена за сутки
-                </div>    
-                <CustomSelectInput arrow={arrow}/>
+                <div className={cn(styles.Text, styles.Coffee)}>
+                    <img
+                        width={20}
+                        height={20}
+                        src={gps}
+                        alt="Geo Icon" />
+                    Москва
+                </div>
+                <input
+                    type="text"
+                    placeholder="Район, улица"
+                    className={styles.Input} />
+            </div>
+
+            <div className={styles.Block}>
+
+                <div>
+
+                </div>
+                <button className={styles.Btn}>Показать на карте</button>
             </div>
             <div className={styles.Block}>
-                <button 
-                 className={styles.BtnWhite}
-                 onClick={modalHandler}>Ещё</button>    
-                <button className={styles.BtnCoffee}>Показать</button>    
+                <div className={styles.Text}>
+                    Цена за сутки
+                </div>
+                <CustomSelectInput arrow={arrow} />
             </div>
-            <ModalFilter 
-             active={filterModal}
-             setActive={setFilterModal}/>
+            <div className={styles.Block}>
+                <button
+                    className={styles.BtnWhite}
+                    onClick={modalHandler}>Ещё</button>
+                <button className={styles.BtnCoffee}>Показать</button>
+            </div>
+            <ModalFilter
+                active={filterModal}
+                setActive={setFilterModal} />
         </div>
     )
 }

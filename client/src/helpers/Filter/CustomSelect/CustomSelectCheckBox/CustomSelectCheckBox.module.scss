@@ -4,7 +4,7 @@
     position: relative;
     display: grid;
     gap: 10px 0;
-
+    
     .BtnTitle {
         display: grid;
         grid-auto-flow: column;
@@ -58,5 +58,6 @@
 
     .Active {
         display: grid;
+        z-index: 10;
     }
 }

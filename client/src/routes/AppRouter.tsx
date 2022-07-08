@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import useTypedDispatch from '../hooks/useTypedDispatch'
 import Apartaments from '../pages/Apartaments/Apartaments'
 import Catalog from '../pages/Catalog/Catalog'
+import FAQ from '../pages/FAQ/FAQ'
 
 import Main from '../pages/Main/Main'
 import Personal from '../pages/Personal/Personal'
@@ -28,6 +29,7 @@ const AppRouter = () => {
             <Route path='/personal' element = {<Personal/>}/>
             <Route path="/apartments/:id" element={<Apartaments/>} />
             <Route path = "/catalog" element = {<Catalog/>}/>
+            <Route path = "/FAQ" element = {<FAQ/>}/>
         </Routes>
     </>
   )

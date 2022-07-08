@@ -8,7 +8,7 @@
     z-index: 100;
     width: 100vw;
     height: 100vh;
-
+    overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.300);
     visibility: hidden;
     cursor: pointer;
@@ -17,8 +17,11 @@
     justify-content: center;
     align-content: center;
     .Content {
+        overflow: auto;
         cursor: auto;
-        width: 473px;
+        width: 600px;
+        
+        height: 800px;
         padding: 30px 50px;
         border-radius: 15px;
         background-color: #fff;
@@ -132,5 +135,7 @@
 }
 
 .Active {
+    overflow: auto;
     visibility: visible;
+    
 }

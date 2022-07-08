@@ -31,11 +31,11 @@ const Header: FC = () => {
                 <img className={styles.Logo} src={logo} />
             </Link>
             <div className={accessToken ? styles.BlockLinkAuth : styles.BlockLink}>
-                <a href='tel:+79999998877'>+7 999 999 88 77</a>
-                <a href="mailto:Mail@gmail.com">Mail@gmail.com</a>
+                <a href='tel:+79660406664'>+7-966-040-66-64</a>
+                <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
                 <Link to='/catalog'>Каталог</Link>
                 <div>На карте</div>
-                <div>FAQ</div>
+                <Link to ='/FAQ'>FAQ</Link>
             </div>
 
             {accessToken ? <>

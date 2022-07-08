@@ -13,70 +13,126 @@ import styles from './ModalFilter.module.scss';
 import arrow from '../../../assets/Helpers/select-arrow.svg'
 import CustomSelect from "../CustomSelect/CustomSelect";
 
-const ModalFilter: FC<ModalFilterProps> = ({className, active, setActive, ...props}) => {
+const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...props }) => {
     const activeHandler = (e: MouseEvent<HTMLDivElement> |
-                              MouseEvent<HTMLAnchorElement> |
-                              MouseEvent<HTMLButtonElement>) => {
+        MouseEvent<HTMLAnchorElement> |
+        MouseEvent<HTMLButtonElement>) => {
         if (e.currentTarget === e.target) setActive(!active)
     }
 
     useEffect(() => {
         document.body.style.overflow = active ? 'hidden' : 'auto'
     }, [active])
-    
+
     return (
-        <div 
-         className={cn(styles.Container, className, {
-            [styles.Active]: active
-         })}
-         onClick={activeHandler}
-         {...props}>
+        <div
+            className={cn(styles.Container, className, {
+                [styles.Active]: active
+            })}
+            onClick={activeHandler}
+            {...props}>
             <div className={styles.Content}>
                 <h2 className={styles.Title}>Фильтры</h2>
                 <div className={styles.BlockInput}>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Этаж</div>
                         <CustomSelect
-                         className={styles.Select}
-                         arrow={arrow} 
-                         values={Array(5).fill(0).map((v, i) => v = i + 1)}/>
+                            className={styles.Select}
+                            arrow={arrow}
+                            values={Array(5).fill(0).map((v, i) => v = i + 1)} />
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Обустройство дома</div>
                         <CustomSelectCheckBox
-                         className={styles.SelectCheckBox}
-                         arrow={arrow} 
-                         values={['Не важно', 
-                                  'Огороженная территория',
-                                  'Парковка крытая',
-                                  'Стояночное место',
-                                  'Виодеонаблюдение']}/>
+                            className={styles.SelectCheckBox}
+                            arrow={arrow}
+                            values={['Неважно',
+                                'Огороженная территория',
+                                'Парковка крытая',
+                                'Стояночное место',
+                                'Виодеонаблюдение']} />
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Балкон</div>
-                        <CustomButtonBlock values={['Есть', 'Нет', 'Лоджия']}/>
+                        <CustomButtonBlock values={['Есть', 'Нет', 'Лоджия']} />
                     </div>
+
+
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Домашние животные</div>
-                        <CustomButtonBlock values={['Есть', 'Нет']}/>
+                        <CustomButtonBlock values={['Есть', 'Нет']} />
                     </div>
+                    <div className={styles.BlockText}>
+                        <div className={styles.Text}>Спальни</div>
+                        <CustomButtonBlock values={['Неважно', '1', '2', '3', '4 +']} />
+                    </div>
+
+                    <div className={styles.BlockText}>
+                        <div className={styles.Text}>Язык хозяина</div>
+                        <CustomSelectCheckBox
+                            className={styles.SelectCheckBox}
+                            arrow={arrow}
+                            values={['Английский',
+                                'Немецкий',
+                                'Французский',
+                                'Японский',
+                                'Английский']} />
+                    </div>
+
+                    <div className={styles.BlockText}>
+                        <div className={styles.Text}>Характеристики</div>
+                        <CustomSelectCheckBox
+                            className={styles.SelectCheckBox}
+                            arrow={arrow}
+                            values={['Бассейн',
+                                'Бассейн',
+                                'Бесплатная парковка на территории',
+                                'Кроватка',
+                                'Зона барбекю',
+                                'Камин',
+                                'Джакузи',
+                                'Зарядка для электромобиля',
+                                'Спортзал',
+                                'Завтрак',
+                                'Можно курить']} />
+                    </div>
+
+                    <div className={styles.BlockText}>
+                        <div className={styles.Text}>Самое необходимое</div>
+                        <CustomSelectCheckBox
+                            className={styles.SelectCheckBox}
+                            arrow={arrow}
+                            values={['WI-FI',
+                                'WI-FI',
+                                'Стиральная Машина',
+                                'Кондиционер',
+                                'Отопление',
+                                'Телевизор',
+                                'Кухня',
+                                'Сущильная машина',
+                                'Рабочая зона',
+                                'Спортзал',
+                            ]} />
+                    </div>
+
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Количество Звезд</div>
                         <div>
-                            <Rating filled={4}/>
-                        </div>                        
+                            <Rating filled={4} />
+                        </div>
                     </div>
+
                 </div>
                 <div className={styles.BlockBtn}>
-                    <button 
-                     className={styles.BtnExit}
-                     onClick={activeHandler}>
+                    <button
+                        className={styles.BtnExit}
+                        onClick={activeHandler}>
                         Сбросить фильтры
                     </button>
                     <Link
-                     to='/catalog'
-                     className={styles.BtnShow}
-                     onClick={activeHandler}>
+                        to='/catalog'
+                        className={styles.BtnShow}
+                        onClick={activeHandler}>
                         Показать
                     </Link>
                 </div>
