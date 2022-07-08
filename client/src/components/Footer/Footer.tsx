@@ -19,13 +19,13 @@ const Footer: FC = () => {
             </div>
             <div className={styles.Block}>
                 <h2 className={styles.Title}>Контакты</h2>
-                <a href='tel:+79999998877' className={styles.Contacts}>
-                    <img src={phone} alt="" />
-                    <p>+7 999 999 88 77</p>
+                <a href='tel:+79660406664' className={styles.Contacts}>
+                    <img src={phone} alt="phone" />
+                    <p>+7-966-040-66-64</p>
                 </a>
-                <a href="mailto:Mail@gmail.com" className={styles.Contacts}>
-                    <img src={mail} alt="" />
-                    <p >Mail@gmail.com</p>
+                <a href="mailto:alterzidan@yandex.ru" className={styles.Contacts}>
+                    <img src={mail} alt="mail" />
+                    <p>alterzidan@yandex.ru</p>
                 </a >
 
             </div>
