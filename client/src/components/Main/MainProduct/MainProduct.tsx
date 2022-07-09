@@ -35,13 +35,18 @@ const MainProduct: FC<MainProductProps> = ({ image,
         <div
             className={cn(styles.Container, className)}
             {...props}>
-            <Link to={`/apartments/${id}`} className={styles.Btn}>
-                <img onClick={(e) => fillHandler(e)} className={styles.ImgHeart} src={filled ? heartFilled : heartEmpty} alt='heart' />
+            <Link 
+             to={`/apartments/${id}`} 
+             className={styles.Btn}>
+                <img 
+                 onClick={(e) => fillHandler(e)} 
+                 className={styles.ImgHeart} 
+                 src={filled ? heartFilled : heartEmpty} 
+                 alt='heart' />
                 <SimpleSlider>
                     {
                         image.map((img) => (
                             <div key={img} className={styles.Slider}>
-
                                 <img src={`${API_URL}${img}`} alt="btn" />
                             </div>
                         ))

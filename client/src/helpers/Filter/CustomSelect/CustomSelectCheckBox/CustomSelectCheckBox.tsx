@@ -1,5 +1,7 @@
-import { FC, Fragment, MouseEvent, useState } from "react";
+import { FC, Fragment, MouseEvent, useRef, useState } from "react";
 import cn from 'classnames';
+
+import useOnClickOutside from "../../../../hooks/useOnClickOutside";
 
 import { CustomSelectCheckBoxProps } from "./CustomSelectCheckBox.types";
 
@@ -9,12 +11,18 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({className,
                                               values,
                                               arrow,
                                               ...props}) => {
+        const ref = useRef(null)
         const [active, setActive] = useState<boolean>(false)
         const [selectedValue, setSelectedValue] = useState<typeof values[0]>(values[0])
 
         const activeHandler = () => {
             setActive(!active)
         }
+
+        const closeHandler = () => {
+            setActive(false)
+        }
+        useOnClickOutside(ref, () => closeHandler())
 
         const selectedValueHandler = (value: string | number) => {
             setSelectedValue(value)
@@ -23,7 +31,7 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({className,
         return (
 
         <div 
-        
+         ref={ref}
          className={cn(className, styles.Container)}
          {...props}>
             <button 

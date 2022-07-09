@@ -19,7 +19,8 @@
     line-height: 22px;
     color: $color-gray;
   }
-  .Redirect{
+  .Redirect {
+    margin-left: 4px;
     color: $color-coffee;
     border-bottom: 1px solid $color-coffee;
     transition: $transition;
@@ -32,7 +33,7 @@
     @include buttonPrimary;
     padding: 20px 40px;
     font-size: 24px;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 300px;
     font-weight: normal;
   }
@@ -61,5 +62,5 @@
 .Error{
   color: red;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }

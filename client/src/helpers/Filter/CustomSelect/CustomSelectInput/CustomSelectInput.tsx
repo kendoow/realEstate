@@ -1,5 +1,7 @@
-import { ChangeEvent, FC, MouseEvent, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import cn from 'classnames';
+
+import useOnClickOutside from "../../../../hooks/useOnClickOutside";
 
 import { CustomSelectInputProps } from "./CustomSelectInput.types";
 
@@ -10,6 +12,7 @@ const CustomSelectInput: FC<CustomSelectInputProps> = ({className,
                                                         ...props}) => {
     const [active, setActive] = useState<boolean>(false)
     const [selectedValue, setSelectedValue] = useState<boolean | string>(false)
+    const ref = useRef(null)
 
     const [priceFrom, setPriceFrom] = useState<number>()
     const [priceTo, setPriceTo] = useState<number>()
@@ -17,9 +20,15 @@ const CustomSelectInput: FC<CustomSelectInputProps> = ({className,
     useEffect(() => {
         priceFrom && priceTo && setSelectedValue(`${priceFrom} - ${priceTo}`)
     }, [priceFrom, priceTo])
+    
     const activeHandler = () => {
         setActive(!active)
     }
+    const closeHandler = () => {
+        setActive(false)
+    }
+    
+    useOnClickOutside(ref, () => closeHandler())
 
     const priceFromHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setPriceFrom(+e.target.value)
@@ -29,16 +38,17 @@ const CustomSelectInput: FC<CustomSelectInputProps> = ({className,
         setPriceTo(+e.target.value)
     }
     
+    
 
     return (
         <div 
-        
+         ref={ref}
          className={styles.Container}
          {...props}>
             <button 
              className={styles.BtnSelected}
              onClick={activeHandler}>
-                {selectedValue ? <>{selectedValue}</> : <>Любая</>}
+                {selectedValue ? <>{selectedValue}</> : <>Неважно</>}
                 <img src={arrow} alt="" />
             </button>
             <div className={cn(styles.BlockInput, {

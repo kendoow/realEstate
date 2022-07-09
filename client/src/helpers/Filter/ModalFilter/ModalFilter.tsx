@@ -39,7 +39,7 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                         <CustomSelect
                             className={styles.Select}
                             arrow={arrow}
-                            values={Array(5).fill(0).map((v, i) => v = i + 1)} />
+                            values={['Неважно', 1, 2, 3, 4, 5]} />
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Обустройство дома</div>
@@ -72,7 +72,9 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                         <CustomSelectCheckBox
                             className={styles.SelectCheckBox}
                             arrow={arrow}
-                            values={['Английский',
+                            values={[
+                                'Русский',
+                                'Английский',
                                 'Немецкий',
                                 'Французский',
                                 'Японский',
@@ -126,14 +128,15 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                 <div className={styles.BlockBtn}>
                     <button
                         className={styles.BtnExit}
-                        onClick={activeHandler}>
+                        // onClick={activeHandler}
+                        >
                         Сбросить фильтры
                     </button>
                     <Link
                         to='/catalog'
                         className={styles.BtnShow}
                         onClick={activeHandler}>
-                        Показать
+                        Найти
                     </Link>
                 </div>
             </div>

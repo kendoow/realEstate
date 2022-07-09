@@ -1,10 +1,14 @@
 import { FC } from "react";
 
+import {Link as ScrollLink} from 'react-scroll';
+import { Link } from "react-router-dom";
+
+
 import styles from './Footer.module.scss';
 
 import logo from '../../assets/Main/logo.svg';
 import gpc from '../../assets/Main/gpc.svg';
-import phone from '../../assets/Main/phone.svg'; 
+import phone from '../../assets/Main/phone.svg';
 import mail from '../../assets/Main/mail.svg';
 
 const Footer: FC = () => {
@@ -12,9 +16,18 @@ const Footer: FC = () => {
         <div className={styles.Container}>
             <div className={styles.Block}>
                 <h2 className={styles.Title}>Меню навигации</h2>
-                <button className={styles.Btn}>Главная</button>
+                <Link to ='/' className={styles.Btn}>Главная</Link>
                 <button className={styles.Btn}>Избранное</button>
-                <button className={styles.Btn}>Популярное</button>
+                
+                <ScrollLink
+                    activeClass="active"
+                    to="popular"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                 className={styles.Btn}>Популярное</ScrollLink>
+                 
                 <button className={styles.Btn}>Личный кабинет</button>
             </div>
             <div className={styles.Block}>

@@ -1,5 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import cn from 'classnames';
+
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 
 import { CustomSelectProps } from "./CustomSelect.types";
 
@@ -9,7 +11,8 @@ const CustomSelect: FC<CustomSelectProps> = ({ className,
     arrow,
     values,
     ...props }) => {
-
+    
+    const ref = useRef(null)
     const [active, setActive] = useState<boolean>(false)
     const [selectedValue, setSelectedValue] = useState<typeof values[0]>(values[0])
 
@@ -21,9 +24,14 @@ const CustomSelect: FC<CustomSelectProps> = ({ className,
         setSelectedValue(v)
     }
 
+    const closeHanlder = () => {
+        setActive(false)
+    }
+    useOnClickOutside(ref, () => closeHanlder())
+
     return (
         <div
-        
+            ref={ref}
             className={cn(className, styles.Container)}
             {...props}>
             <button

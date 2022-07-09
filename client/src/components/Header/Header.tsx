@@ -1,32 +1,48 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
+import useTypedSelector from "../../hooks/useTypedSelector";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+
 import Modal from "../../helpers/Modal/Modal";
-
-import styles from './Header.module.scss';
-
-
 import Login from "../Forms/Login/Login";
 import Registration from "../Forms/Registration/Registration";
-import useTypedSelector from "../../hooks/useTypedSelector";
+
+import styles from './Header.module.scss';
 
 import logo from '../../assets/Main/logo.svg';
 import heart from '../../assets/Main/heart-header.svg'
 import userIcon from '../../assets/Main/userIcon.svg'
-import useTypedDispatch from "../../hooks/useTypedDispatch";
-import { logout } from "../../redux/Slices/AuthSlice/AuthActionCreator";
+import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
 
 const Header: FC = () => {
+    const { isAuth } = useTypedSelector(state => state.authReducer)
+
+    let accessToken = localStorage.getItem('accessToken') 
+
     const [activeLogin, setActiveLogin] = useState<boolean>(false)
     const [activeSiginIn, setActiveSiginIn] = useState<boolean>(false)
-    const { isAuth } = useTypedSelector(state => state.authReducer)
-    const accessToken = localStorage.getItem('accessToken') 
-    const dispatch = useTypedDispatch()
-    const LogoutHandler = () => {
-        dispatch(logout())
+
+    useEffect(() => {
+        accessToken = localStorage.getItem('accessToken')
+    }, [isAuth])    
+
+    const [activeToggleList, setActiveToggleList] = useState(false)
+    
+    const activeToogleListHandler = (e: MouseEvent<HTMLDivElement>) => {
+        e.currentTarget === e.target && setActiveToggleList(!activeToggleList)
     }
+
+    const refToogleList = useRef(null)
+    const closeHandler = () => {
+        setActiveToggleList(false)
+    }
+    useOnClickOutside(refToogleList, () => closeHandler())
+
     return (
-        <div style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }} className={styles.Container}>
+        <div 
+        style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }} 
+        className={styles.Container}>
             <Link to='/'>
                 <img className={styles.Logo} src={logo} />
             </Link>
@@ -38,19 +54,30 @@ const Header: FC = () => {
                 <Link to ='/FAQ'>FAQ</Link>
             </div>
 
-            {accessToken ? <>
-                <div className={styles.RightSideBar}>
-                    <img src={heart} alt="heart" />
-                    <div className={styles.UserPanel}>
-                        {/* тут должен быть выпадающий список  */}
-                        <div onClick={LogoutHandler}  className={styles.BarLine} /> 
-                        <Link to='/personal' >
-                            <img src={userIcon} alt="icon" />
-                        </Link>
+            {accessToken ?
+                <>
+                    <div className={styles.RightSideBar}>
+                        <img src={heart} alt="heart" />
+                        <div className={styles.UserPanel}>
+                            <div 
+                             ref={refToogleList}
+                             onClick={e => activeToogleListHandler(e)}
+                             className={styles.BlockBarLine}>
+                                <button className={styles.BarLine} /> 
+                                <button className={styles.BarLine} /> 
+                                <button className={styles.BarLine} /> 
+                                <ToggleList 
+                                 active={activeToggleList}
+                                 setActive={setActiveToggleList}
+                                 values={['Профиль', 'Избранное', 'Выйти']}
+                                 valuesLink={['/personal', '/favorite', '/']}/>
+                            </div>
+                            <Link to='/personal' >
+                                <img src={userIcon} alt="icon" />
+                            </Link>
+                        </div>
                     </div>
-                </div>
-
-            </>
+                </>
                 :
                 <>
                     <div className={styles.BlockBtn}>

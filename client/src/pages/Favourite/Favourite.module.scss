@@ -1,0 +1,19 @@
+.Container {
+    display: grid;
+    grid-template-areas: 'header'
+                         'body';
+    grid-template-rows: 70px 1fr;
+
+    height: 100vh;
+
+    .Body {
+        grid-area: body;
+        padding: 0 calc(50% - 650px);
+
+        display: grid;
+        align-content: center;
+        justify-content: center;
+
+        font-size: 50px;
+    }
+}

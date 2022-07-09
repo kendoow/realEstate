@@ -13,7 +13,6 @@ export const registration = createAsyncThunk(
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/registration', user)
             localStorage.setItem('accessToken', response.data.accessToken)
-            console.log(response)
             return response.data
         } catch (e) {
             return rejectWithValue(`Не удалось зарегистрироваться`)
@@ -26,7 +25,6 @@ export const login = createAsyncThunk(
     async(user:UserLoginType, {rejectWithValue}) => {
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/login', user)
-            console.log(response)
             localStorage.setItem('accessToken', response.data.accessToken)
             return response.data
         } catch (e) {
@@ -53,7 +51,6 @@ export const checkAuth = createAsyncThunk(
     async(_,{rejectWithValue}) => {
         try {
             const response = await axios.get<AuthResponse>(`${API_URL}jwt/refresh`, {withCredentials: true})
-            console.log(response)
             localStorage.setItem('accessToken', response.data.accessToken)
             return response.data
         } catch (e) {

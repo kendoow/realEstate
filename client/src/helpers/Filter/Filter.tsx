@@ -42,14 +42,6 @@ const Filter: FC = () => {
                     placeholder="Район, улица"
                     className={styles.Input} />
             </div>
-
-            <div className={styles.Block}>
-
-                <div>
-
-                </div>
-                <button className={styles.Btn}>Показать на карте</button>
-            </div>
             <div className={styles.Block}>
                 <div className={styles.Text}>
                     Цена за сутки
@@ -60,7 +52,11 @@ const Filter: FC = () => {
                 <button
                     className={styles.BtnWhite}
                     onClick={modalHandler}>Ещё</button>
-                <button className={styles.BtnCoffee}>Показать</button>
+                <button className={styles.BtnCoffee}>Найти</button>
+            </div>
+            <div className={styles.Block}>
+                <div></div>
+                <button className={styles.Btn}>Показать на карте</button>
             </div>
             <ModalFilter
                 active={filterModal}

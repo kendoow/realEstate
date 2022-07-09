@@ -1,16 +1,18 @@
 import { FC, useState } from 'react'
 
 
-import hidden from '../../../assets/Personal/hidden.svg'
-import show from '../../../assets/Personal/show.svg'
-import styles from './Login.module.scss'
-
+import useInput from '../../../hooks/useInput'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
 
-import Restore from '../Restoring/Restore'
-import useInput from '../../../hooks/useInput'
 import { login } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
 import { UserLoginType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
+
+import Restore from '../Restoring/Restore'
+
+import styles from './Login.module.scss'
+
+import hidden from '../../../assets/Personal/hidden.svg'
+import show from '../../../assets/Personal/show.svg'
 
 const Login: FC = (): JSX.Element => {
 
@@ -24,23 +26,27 @@ const Login: FC = (): JSX.Element => {
     const emailLogin = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
     const passwordLogin = useInput('', { isEmpty: true, minLength: 3 })
 
-
-
     const handlerButtonLogin = () => {
         const userLogin: UserLoginType = {
             email: emailLogin.value,
             password: passwordLogin.value,
         }
-        dispatch(login(userLogin))
-        
-        
+        setPage('')
+        dispatch(login(userLogin))    
     }
+
     return (
         <>
             <div className={page === 'restore' ? styles.None : styles.Container}>
                 <div className={styles.TextBlock}>
                     <h2>Вход</h2>
-                    <h4>Забыли пароль? <button className={styles.Redirect} onClick={RedirectHanlder}> Восстановить</button></h4>
+                    <h4>Забыли пароль?
+                        <button 
+                         className={styles.Redirect} 
+                         onClick={RedirectHanlder}>
+                            Восстановить
+                        </button>
+                    </h4>
 
                 </div>
 
@@ -50,22 +56,37 @@ const Login: FC = (): JSX.Element => {
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
                 {emailLogin.isDirty && emailLogin.isEmail
                     && <div className={styles.Error}>Недопустимый email</div>}
-                <input value={emailLogin.value}
-                    onChange={emailLogin.onChange}
-                    onBlur={emailLogin.onBlur} className={styles.Input} placeholder='Почта' type='text' />
-
+                <input 
+                 value={emailLogin.value}
+                 onChange={emailLogin.onChange}
+                 onBlur={emailLogin.onBlur} 
+                 className={styles.Input} 
+                 placeholder='Почта' 
+                 type='text' />
 
                 {passwordLogin.isDirty && passwordLogin.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
                 {passwordLogin.isDirty && passwordLogin.minLengthError
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
                 <div className={styles.Password}>
-                    <input value={passwordLogin.value}
-                    onChange={passwordLogin.onChange}
-                    onBlur={passwordLogin.onBlur} className={styles.Input} placeholder='Пароль' type={hidePassword ? "password" : "text"} />
-                    <img onClick={() => setHidePassword(!hidePassword)} src={hidePassword ? hidden : show} alt="hiiden" />
+                    <input 
+                     value={passwordLogin.value}
+                     onChange={passwordLogin.onChange}
+                     onBlur={passwordLogin.onBlur} 
+                     className={styles.Input} 
+                     placeholder='Пароль' 
+                     type={hidePassword ? "password" : "text"} />
+                    <img 
+                     onClick={() => setHidePassword(!hidePassword)} 
+                     src={hidePassword ? hidden : show} 
+                     alt="hidden" />
                 </div>
-                <button onClick={handlerButtonLogin} disabled = {!passwordLogin.inputVaild || !emailLogin.inputVaild} className={styles.btn}>Войти</button>
+                <button 
+                 onClick={handlerButtonLogin} 
+                 disabled = {!passwordLogin.inputVaild || !emailLogin.inputVaild} 
+                 className={styles.btn}>
+                    Войти
+                </button>
             </div>
             {page === 'restore' && <Restore />}
         </>

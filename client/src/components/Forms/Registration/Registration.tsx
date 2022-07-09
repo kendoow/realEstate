@@ -1,25 +1,26 @@
 import { FC, useEffect, useState } from 'react'
 
-
-import styles from './Registration.module.scss'
-import hidden from '../../../assets/Personal/hidden.svg'
-import show from '../../../assets/Personal/show.svg'
-import Checkbox from '../../../helpers/Checkbox/Checkbox'
-import Login from '../Login/Login'
 import useInput from '../../../hooks/useInput'
-import { IUser } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
+import { IUser } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
 import { registration } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
 
+import Checkbox from '../../../helpers/Checkbox/Checkbox'
+import Login from '../Login/Login'
 
+import styles from './Registration.module.scss'
+
+import hidden from '../../../assets/Personal/hidden.svg'
+import show from '../../../assets/Personal/show.svg'
 
 const Registration: FC = (): JSX.Element => {
-
     const [hidePasswordFirts, setHidePasswordFirts] = useState<boolean>(true);
     const [hidePasswordSecond, setHidePasswordSecond] = useState<boolean>(true);
+    
     const emailReg = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
     const passwordReg = useInput('', { isEmpty: true, minLength: 3 })
     const passwordRepeatReg = useInput('', { isEmpty: true, minLength: 3 })
+    
     const nameReg = useInput('', { isEmpty: true, minLength: 1 })
     const dispatch = useTypedDispatch()
 
@@ -36,6 +37,7 @@ const Registration: FC = (): JSX.Element => {
             password: passwordReg.value,
             name: nameReg.value
         }
+        setPage('')
         dispatch(registration(userReg))
     }
 
@@ -43,7 +45,13 @@ const Registration: FC = (): JSX.Element => {
         <>
             <div className={page === 'login' ? styles.None : styles.Container}>
                 <h2>Регистрация</h2>
-                <h4>Есть аккаунт?  <button className={styles.Redirect} onClick={RedirectHanlder}>Войти</button></h4>
+                <h4>Есть аккаунт?  
+                    <button 
+                     className={styles.Redirect} 
+                     onClick={RedirectHanlder}>
+                        Войти
+                    </button>
+                </h4>
 
                 {nameReg.isDirty && nameReg.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
