@@ -10,6 +10,8 @@ import logo from '../../assets/Main/logo.svg';
 import gpc from '../../assets/Main/gpc.svg';
 import phone from '../../assets/Main/phone.svg';
 import mail from '../../assets/Main/mail.svg';
+import {Link as ScrollLink} from 'react-scroll';
+import { Link } from "react-router-dom";
 
 const Footer: FC = () => {
     return (

@@ -120,7 +120,7 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Количество Звезд</div>
                         <div>
-                            <Rating filled={4} />
+                            <Rating isEditable={true} initialRating={3} />
                         </div>
                     </div>
 

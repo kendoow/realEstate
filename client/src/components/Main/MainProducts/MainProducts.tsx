@@ -27,7 +27,7 @@ const MainProducts: FC = (): JSX.Element => {
 
     return (
         <div className={styles.Container}>
-            <h2 className={styles.Title}>Популярные <br /> апартаменты</h2>
+            <h2 id="popular" className={styles.Title}>Популярные <br /> апартаменты</h2>
             <div className={styles.Center}>
                 {loading && <Spiner />}
                 {error && <h1 className={styles.Error}> {error}</h1>}
