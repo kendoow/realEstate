@@ -49,7 +49,7 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
 
                     <h5 className={styles.Rating}>Рейтинг - {rating} <span>{rewiewsCount} отзыв</span></h5>
 
-                    <Rating filled={3} />
+                    <Rating isEditable={false} initialRating={3} />
 
 
                     <div className={styles.BtnBlock}>
