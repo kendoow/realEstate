@@ -57,7 +57,9 @@ const Header: FC = () => {
             {accessToken ?
                 <>
                     <div className={styles.RightSideBar}>
+                        <Link to = '/favorite'>
                         <img src={heart} alt="heart" />
+                        </Link>
                         <div className={styles.UserPanel}>
                             <div 
                              ref={refToogleList}

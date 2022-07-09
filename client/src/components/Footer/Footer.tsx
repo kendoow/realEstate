@@ -29,9 +29,9 @@ const Footer: FC = () => {
                :  setActiveLogin(true)
     }
 
-    // const popularHandler = () => {
-    //     navigate('/')
-    // }
+    const popularHandler = () => {
+        navigate('/')
+    }
     return (
         <div className={styles.Container}>
             <div className={styles.Block}>
@@ -43,13 +43,13 @@ const Footer: FC = () => {
                     Главная
                 </Link>
                 <button
-                 onClick={favoriteHandler} 
+                 onClick={() => favoriteHandler()} 
                  className={styles.Btn}>
                     Избранное
                 </button>
                 
                 <ScrollLink
-                //  onMouseDown={() => popularHandler()} // срабатывает после  
+                 onMouseDown={() => popularHandler()} // срабатывает после  
                  activeClass="active"
                  to="popular"
                  spy={true}
