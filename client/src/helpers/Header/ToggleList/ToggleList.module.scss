@@ -2,7 +2,7 @@
 
 .Container {
     position: absolute;
-    bottom: -200%;
+    bottom: -245%;
     left: 6.5%;
     padding: 15px;
 
@@ -15,13 +15,13 @@
     .Link {
         font-weight: 500;
         color: $color-black;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 18px;
+        line-height: 22px;
 
         transition: transform 0.3s ease-in-out;
 
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
     }
 }

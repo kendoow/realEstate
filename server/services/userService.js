@@ -1,9 +1,14 @@
 import * as bcrypt from 'bcrypt';
 
-import userModel from "../models/userModel.js";
 import tokenService from "./tokenService.js";
+import productUserService from './productUserService.js';
+
+import userModel from "../models/userModel.js";
+
 import UserDto from "../dtos/userDto.js";
+
 import { ApiError } from "../exceptions/apiError.js";
+
 
 class UserService{
     async registration(email,password){
@@ -20,6 +25,8 @@ class UserService{
 
         const tokens = tokenService.generateTokens({...userDto}) // 2 tokens(refresh and access)
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
+
+        await productUserService.create(userDto.id)
         return {
             ...tokens,
             user:userDto

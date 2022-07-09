@@ -11,6 +11,8 @@ import mongoose from 'mongoose';
 import productRouter from './routes/productsRouter.js';
 import commentsRouter from './routes/commentsRouter.js';
 import jwtRouter from './routes/jwtRouter.js'
+import productUserRouter from './routes/productUserRouter.js';
+
 config()
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +32,7 @@ app.use('/product', productRouter)
 app.use('/comment', commentsRouter)
 app.use('/jwt', jwtRouter)
 app.use('/filter', filtersRouter)
+app.use('/user/product', productUserRouter)
 
 app.use(errorMiddleware)
 
