@@ -20,7 +20,7 @@ const PersonalMenu: FC = (): JSX.Element => {
     return (
         <>
             <div className={styles.Container}>
-                <Link to='/' className={styles.NavItem}>
+                <Link to='/personal' className={styles.NavItem}>
                     <img src={profile} alt="" />
                     <button className={styles.Btn}>Профиль</button>
                 </Link>

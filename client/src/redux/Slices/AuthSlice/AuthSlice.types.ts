@@ -2,16 +2,19 @@ export interface UserLoginType {
   email: string,
   password: string,
 } 
-export interface IUser extends UserLoginType {
+export interface UserRegistrationType extends UserLoginType {
   name: string
 }
 
-
+export interface IUser {
+  email: string,
+  id: string,
+}
 
 export interface AuthResponse {
   accessToken: string;
   refreshToken: string;
-  user: IUser;
+  newUser: IUser;
 }
 
 

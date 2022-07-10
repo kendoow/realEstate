@@ -3,17 +3,17 @@ import  axios  from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
 import $api from '../../../http/http';
-import { AuthResponse, IUser, UserLoginType } from './AuthSlice.types';
+import { AuthResponse, UserLoginType, UserRegistrationType } from './AuthSlice.types';
 
 
 
 export const registration = createAsyncThunk(
     'auth/registration',
-    async(user:IUser, {rejectWithValue}) => {
+    async(user: UserRegistrationType, {rejectWithValue}) => {
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/registration', user)
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data
+            return response.data.newUser
         } catch (e) {
             return rejectWithValue(`Не удалось зарегистрироваться`)
         }
@@ -26,7 +26,7 @@ export const login = createAsyncThunk(
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/login', user)
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data
+            return response.data.newUser
         } catch (e) {
             return rejectWithValue(`Не удалось зарегистрироваться`)
         }
@@ -52,7 +52,7 @@ export const checkAuth = createAsyncThunk(
         try {
             const response = await axios.get<AuthResponse>(`${API_URL}jwt/refresh`, {withCredentials: true})
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data
+            return response.data.newUser
         } catch (e) {
             return rejectWithValue(`Ошибка!`)           
         }

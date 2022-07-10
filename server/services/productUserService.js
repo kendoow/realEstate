@@ -63,7 +63,6 @@ class ProductUserService {
                 throw new Error('Product User Service - getAll такой пользователь не зарегистрирован')
             }
 
-            console.log(products)
             const productUpdated = await ProductsUserModel.findOneAndUpdate({userId, ...products})
             return productUpdated
         } catch (e) {

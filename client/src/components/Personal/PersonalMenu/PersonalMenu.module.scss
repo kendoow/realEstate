@@ -1,6 +1,7 @@
 @import "../../../scss/variables.scss";
 
 .Container {
+  grid-area: sidebar;
   .NavItem {
     display: flex;
     align-items: center;

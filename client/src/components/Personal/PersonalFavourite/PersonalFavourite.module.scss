@@ -1,0 +1,25 @@
+.Container {
+    grid-area: body;
+    display: grid;
+    align-content: flex-start;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: flex-start;
+    gap: 30px 60px;
+
+    .Spiner {
+        grid-column: 1 / 4;
+        justify-self: center;
+    }
+    .Error {
+        grid-column: 1 / 4;
+        justify-self: center;
+        color: red;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .Title {
+        grid-column: 1 / 4;
+        font-size: 30px;
+        line-height: 32px;
+    }
+}

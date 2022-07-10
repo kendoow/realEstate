@@ -1,17 +1,23 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, useEffect } from "react";
 import cn from 'classnames';
+import { Link } from "react-router-dom";
 
+import useTypedDispatch from "../../../hooks/useTypedDispatch";
+import useTypedSelector from "../../../hooks/useTypedSelector";
+import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator";
+
+import SimpleSlider from "../../../helpers/Slider/Slider";
+
+import { FavouriteAddArguments, FavouriteDeleteArguments } from "../../../redux/Slices/FavouriteSlice/FavouriteSlice.types";
 import { MainProductProps } from "./MainProduct.types";
+import { API_URL } from "../../../http/http";
 
 import styles from './MainProduct.module.scss';
 
 import imgMetro from '../../../assets/Main/metro.svg';
 import gpcProduct from '../../../assets/Main/gpc-product.svg';
-import { API_URL } from "../../../http/http";
-import { Link } from "react-router-dom";
 import heartEmpty from '../../../assets/Main/heart.svg';
 import heartFilled from '../../../assets/Main/heart-filled.svg';
-import SimpleSlider from "../../../helpers/Slider/Slider";
 
 const MainProduct: FC<MainProductProps> = ({ image,
     price,
@@ -25,10 +31,39 @@ const MainProduct: FC<MainProductProps> = ({ image,
     ...props }): JSX.Element => {
 
     const [filled, isFilled] = useState<boolean>(false)
+    
+    const dispatch = useTypedDispatch()
+    const { products } = useTypedSelector(state => state.productsReducer)
+    const { favourite } = useTypedSelector(state => state.favouriteReducer)
+    const { user } = useTypedSelector(state => state.authReducer)
+    
+    useEffect(() => {
+        user.id && dispatch(fetchFavourite(user.id))
+    }, [user.id])
 
-    const fillHandler = (e: MouseEvent<HTMLImageElement>) => {
-        isFilled(!filled)
+    useEffect(() => {
+        if (favourite.find(v => v._id === id)) isFilled(true)
+    }, [favourite])
+
+    const favoutiteHandler = (e: MouseEvent<HTMLImageElement>) => {
         e.preventDefault()
+        if (filled) {
+            const favouriteDeleteArguments: FavouriteDeleteArguments = {
+                userId: user.id,
+                productId: id,
+                favourite,
+            }
+            dispatch(deleteFavourite(favouriteDeleteArguments))
+        } else {
+            const favouriteAddArguments: FavouriteAddArguments = {
+                userId: user.id,
+                productId: id,
+                favourite,
+                products,
+            }
+            dispatch(addFavourite(favouriteAddArguments))
+        }
+        isFilled(!filled)
     }
 
     return (
@@ -39,7 +74,7 @@ const MainProduct: FC<MainProductProps> = ({ image,
              to={`/apartments/${id}`} 
              className={styles.Btn}>
                 <img 
-                 onClick={(e) => fillHandler(e)} 
+                 onClick={e => favoutiteHandler(e)} 
                  className={styles.ImgHeart} 
                  src={filled ? heartFilled : heartEmpty} 
                  alt='heart' />

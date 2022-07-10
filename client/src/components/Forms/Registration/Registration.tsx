@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import useInput from '../../../hooks/useInput'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
-import { IUser } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
+import { IUser, UserRegistrationType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
 import { registration } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
 
 import Checkbox from '../../../helpers/Checkbox/Checkbox'
@@ -32,7 +32,7 @@ const Registration: FC = (): JSX.Element => {
     
 
     const handlerButtonReg = () => {
-        const userReg: IUser = {
+        const userReg: UserRegistrationType = {
             email: emailReg.value,
             password: passwordReg.value,
             name: nameReg.value
