@@ -13,8 +13,9 @@ import styles from './Login.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
+import { LoginProps } from './Login.types'
 
-const Login: FC = (): JSX.Element => {
+const Login: FC<LoginProps> = ({setActive}): JSX.Element => {
 
     const [page, setPage] = useState<string>('') // отрисовка по состоянию
     const RedirectHanlder = () => {
@@ -32,6 +33,7 @@ const Login: FC = (): JSX.Element => {
             password: passwordLogin.value,
         }
         setPage('')
+        setActive(false)
         dispatch(login(userLogin))    
     }
 
@@ -88,7 +90,7 @@ const Login: FC = (): JSX.Element => {
                     Войти
                 </button>
             </div>
-            {page === 'restore' && <Restore />}
+            {page === 'restore' && <Restore setActive={setActive} />}
         </>
     )
 }

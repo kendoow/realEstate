@@ -12,8 +12,9 @@ import styles from './Registration.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
+import { RegistrationProps } from './Registration.types'
 
-const Registration: FC = (): JSX.Element => {
+const Registration: FC<RegistrationProps> = ({setActive}): JSX.Element => {
     const [hidePasswordFirts, setHidePasswordFirts] = useState<boolean>(true);
     const [hidePasswordSecond, setHidePasswordSecond] = useState<boolean>(true);
     
@@ -28,6 +29,7 @@ const Registration: FC = (): JSX.Element => {
     const RedirectHanlder = () => {
         setPage('login')
     }
+    
     const isValid = !emailReg.inputVaild || !passwordReg.inputVaild || !nameReg.inputVaild || !passwordRepeatReg.inputVaild || passwordReg.value !== passwordRepeatReg.value
     
 
@@ -38,6 +40,7 @@ const Registration: FC = (): JSX.Element => {
             name: nameReg.value
         }
         setPage('')
+        setActive(false)
         dispatch(registration(userReg))
     }
 
@@ -99,7 +102,7 @@ const Registration: FC = (): JSX.Element => {
                 <Checkbox text='чекбокса пока что нет' />
                 <button onClick={handlerButtonReg} disabled={isValid} className={styles.btn}>Создать аккаунт</button>
             </div>
-            {page === 'login' && <Login />}
+            {page === 'login' && <Login setActive={setActive} />}
         </>
     )
 }

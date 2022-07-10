@@ -83,7 +83,7 @@ const Footer: FC = () => {
                 <img src={gpc} className={styles.Gpc} />
             </div>
             <Modal active={activeLogin} setActive={setActiveLogin}>
-                <Login />
+                <Login setActive={setActiveLogin} />
             </Modal>
         </div>
     )

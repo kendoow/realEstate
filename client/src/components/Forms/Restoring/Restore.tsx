@@ -2,9 +2,10 @@ import { FC, useState } from 'react'
 import Login from '../Login/Login'
 
 import styles from './Restore.module.scss'
+import { RestoreProps } from './Restore.types'
 
 
-const Restore: FC = (): JSX.Element => {
+const Restore: FC<RestoreProps> = ({setActive}): JSX.Element => {
     const [page, setPage] = useState<string>('') // отрисовка по состоянию
     const RedirectHanlder = () => {
         setPage('login')
@@ -18,7 +19,7 @@ const Restore: FC = (): JSX.Element => {
                 <input className={styles.Input} type="text" placeholder='Ваша почта или телефон'/>
                 <button className={styles.Btn}>Восстановить</button>
             </div>
-            {page === 'login' && <Login/>}  
+            {page === 'login' && <Login setActive={setActive} />}  
         </>
     )
 }

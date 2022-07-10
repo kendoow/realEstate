@@ -87,10 +87,10 @@ const Header: FC = () => {
                         <button onClick={() => setActiveSiginIn(true)} className={styles.Registration}>Зарегистрироваться</button>
                     </div>
                     <Modal active={activeLogin} setActive={setActiveLogin}>
-                        <Login />
+                        <Login setActive={setActiveLogin} />
                     </Modal>
                     <Modal active={activeSiginIn} setActive={setActiveSiginIn}>
-                        <Registration />
+                        <Registration setActive={setActiveSiginIn} />
                     </Modal>
                 </>
 
