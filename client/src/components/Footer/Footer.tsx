@@ -26,7 +26,7 @@ const Footer: FC = () => {
 
     const favoriteHandler = () => {
         if(isAuth){
-            navigate('/favourites')
+            navigate('/favorite')
         } else {
             setActiveModal(true)
             setPage('login')
