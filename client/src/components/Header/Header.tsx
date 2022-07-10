@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 
-import Modal from "../../helpers/Modal/Modal";
-import Login from "../Forms/Login/Login";
-import Registration from "../Forms/Registration/Registration";
+import Modal from "../Forms/Modal/Modal";
+
 
 import styles from './Header.module.scss';
 
@@ -18,17 +17,29 @@ import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
 const Header: FC = () => {
     const { isAuth } = useTypedSelector(state => state.authReducer)
 
-    let accessToken = localStorage.getItem('accessToken') 
+    let accessToken = localStorage.getItem('accessToken')
 
-    const [activeLogin, setActiveLogin] = useState<boolean>(false)
-    const [activeSiginIn, setActiveSiginIn] = useState<boolean>(false)
+    const [activeModal, setActiveModal] = useState<boolean>(false)
+   
+    const [page, setPage] = useState<string>('')
+
+
+    const loginHandler = () => {
+        setPage('login')
+        setActiveModal(true)
+    }
+
+    const registrationHandler = () => {
+        setPage('registration')
+        setActiveModal(true)
+    }
 
     useEffect(() => {
         accessToken = localStorage.getItem('accessToken')
-    }, [isAuth])    
+    }, [isAuth])
 
     const [activeToggleList, setActiveToggleList] = useState(false)
-    
+
     const activeToogleListHandler = (e: MouseEvent<HTMLDivElement>) => {
         e.currentTarget === e.target && setActiveToggleList(!activeToggleList)
     }
@@ -40,9 +51,9 @@ const Header: FC = () => {
     useOnClickOutside(refToogleList, () => closeHandler())
 
     return (
-        <div 
-        style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }} 
-        className={styles.Container}>
+        <div
+            style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }}
+            className={styles.Container}>
             <Link to='/'>
                 <img className={styles.Logo} src={logo} />
             </Link>
@@ -51,28 +62,28 @@ const Header: FC = () => {
                 <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
                 <Link to='/catalog'>Каталог</Link>
                 <div>На карте</div>
-                <Link to ='/FAQ'>FAQ</Link>
+                <Link to='/FAQ'>FAQ</Link>
             </div>
 
             {accessToken ?
                 <>
                     <div className={styles.RightSideBar}>
-                        <Link to = '/favorite'>
-                        <img src={heart} alt="heart" />
+                        <Link to='/favorite'>
+                            <img src={heart} alt="heart" />
                         </Link>
                         <div className={styles.UserPanel}>
-                            <div 
-                             ref={refToogleList}
-                             onClick={e => activeToogleListHandler(e)}
-                             className={styles.BlockBarLine}>
-                                <button className={styles.BarLine} /> 
-                                <button className={styles.BarLine} /> 
-                                <button className={styles.BarLine} /> 
-                                <ToggleList 
-                                 active={activeToggleList}
-                                 setActive={setActiveToggleList}
-                                 values={['Профиль', 'Избранное', 'Выйти']}
-                                 valuesLink={['/personal', '/favorite', '/']}/>
+                            <div
+                                ref={refToogleList}
+                                onClick={e => activeToogleListHandler(e)}
+                                className={styles.BlockBarLine}>
+                                <button className={styles.BarLine} />
+                                <button className={styles.BarLine} />
+                                <button className={styles.BarLine} />
+                                <ToggleList
+                                    active={activeToggleList}
+                                    setActive={setActiveToggleList}
+                                    values={['Профиль', 'Избранное', 'Выйти']}
+                                    valuesLink={['/personal', '/favorite', '/']} />
                             </div>
                             <Link to='/personal' >
                                 <img src={userIcon} alt="icon" />
@@ -83,15 +94,12 @@ const Header: FC = () => {
                 :
                 <>
                     <div className={styles.BlockBtn}>
-                        <button onClick={() => setActiveLogin(true)} className={styles.Login}>Войти</button>
-                        <button onClick={() => setActiveSiginIn(true)} className={styles.Registration}>Зарегистрироваться</button>
+                        <button onClick={() => loginHandler()} className={styles.Login}>Войти</button>
+                        <button onClick={() => registrationHandler()} className={styles.Registration}>Зарегистрироваться</button>
                     </div>
-                    <Modal active={activeLogin} setActive={setActiveLogin}>
-                        <Login setActive={setActiveLogin} />
-                    </Modal>
-                    <Modal active={activeSiginIn} setActive={setActiveSiginIn}>
-                        <Registration setActive={setActiveSiginIn} />
-                    </Modal>
+
+                    <Modal page={page} setPage={setPage} active={activeModal} setActive={setActiveModal}/>
+                    
                 </>
 
             }

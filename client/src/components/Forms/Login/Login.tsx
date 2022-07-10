@@ -15,12 +15,14 @@ import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
 import { LoginProps } from './Login.types'
 
-const Login: FC<LoginProps> = ({setActive}): JSX.Element => {
+const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
 
-    const [page, setPage] = useState<string>('') // отрисовка по состоянию
+    
+
     const RedirectHanlder = () => {
         setPage('restore')
     }
+    
     const [hidePassword, setHidePassword] = useState<boolean>(true); // скрыть показать пароль
     const dispatch = useTypedDispatch()
 
@@ -39,7 +41,7 @@ const Login: FC<LoginProps> = ({setActive}): JSX.Element => {
 
     return (
         <>
-            <div className={page === 'restore' ? styles.None : styles.Container}>
+            <div className={ styles.Container}>
                 <div className={styles.TextBlock}>
                     <h2>Вход</h2>
                     <h4>Забыли пароль?
@@ -90,7 +92,7 @@ const Login: FC<LoginProps> = ({setActive}): JSX.Element => {
                     Войти
                 </button>
             </div>
-            {page === 'restore' && <Restore setActive={setActive} />}
+            
         </>
     )
 }

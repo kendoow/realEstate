@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
 
-import Modal from "../../helpers/Modal/Modal";
-import Login from "../Forms/Login/Login";
+import Modal from "../Forms/Modal/Modal";
+
 
 import styles from './Footer.module.scss';
 
@@ -20,13 +20,25 @@ const Footer: FC = () => {
 
     const [activeLogin, setActiveLogin] = useState<boolean>(false)
 
+    const [activeModal, setActiveModal] = useState<boolean>(false)
+
+    const [page, setPage] = useState<string>('')
+
     const favoriteHandler = () => {
-        isAuth ?  navigate('/favorite')
-               :  setActiveLogin(true)
+        if(isAuth){
+            navigate('/favourites')
+        } else {
+            setActiveModal(true)
+            setPage('login')
+        }
     }
     const profileHandler = () => {
-        isAuth ?  navigate('/personal')
-               :  setActiveLogin(true)
+        if(isAuth){
+            navigate('/personal')
+        } else {
+            setActiveModal(true)
+            setPage('login')
+        }
     }
 
     const popularHandler = () => {
@@ -82,9 +94,9 @@ const Footer: FC = () => {
                 <img src={logo} />
                 <img src={gpc} className={styles.Gpc} />
             </div>
-            <Modal active={activeLogin} setActive={setActiveLogin}>
-                <Login setActive={setActiveLogin} />
-            </Modal>
+
+            <Modal page={page} setPage={setPage} active={activeModal} setActive={setActiveModal}/>
+                
         </div>
     )
 }

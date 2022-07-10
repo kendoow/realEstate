@@ -35,11 +35,13 @@ const MainProduct: FC<MainProductProps> = ({ image,
     const dispatch = useTypedDispatch()
     const { products } = useTypedSelector(state => state.productsReducer)
     const { favourite } = useTypedSelector(state => state.favouriteReducer)
-    const { user } = useTypedSelector(state => state.authReducer)
+    const { user, isAuth } = useTypedSelector(state => state.authReducer)
+    
     
     useEffect(() => {
-        user.id && dispatch(fetchFavourite(user.id))
-    }, [user.id])
+        console.log(isAuth)
+        isAuth  && dispatch(fetchFavourite(user.id))
+    }, [isAuth])
 
     useEffect(() => {
         if (favourite.find(v => v._id === id)) isFilled(true)

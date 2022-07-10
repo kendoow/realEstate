@@ -10,12 +10,13 @@ import styles from './PersonalFavourite.module.scss';
 
 const PersonalFavourite = () => {
     const dispatch = useTypedDispatch()
-    const { favourite, loading, error } = useTypedSelector(state => state.favouriteReducer)
-    const { user } = useTypedSelector(state => state.authReducer)
+    const { favourite,  error } = useTypedSelector(state => state.favouriteReducer)
+    const {isAuth, user } = useTypedSelector(state => state.authReducer)
 
     useEffect(() => {
-        user.id && dispatch(fetchFavourite(user.id))
-    }, [user.id])
+        
+        isAuth &&  dispatch(fetchFavourite(user.id))
+    }, [isAuth ])
 
     return (
         <div className={styles.Container}>

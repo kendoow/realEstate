@@ -44,7 +44,7 @@ const Filter: FC = () => {
             </div>
             <div className={styles.Block}>
                 <div className={styles.Text}>
-                    Цена за сутки
+                    Стоимость
                 </div>
                 <CustomSelectInput arrow={arrow} />
             </div>

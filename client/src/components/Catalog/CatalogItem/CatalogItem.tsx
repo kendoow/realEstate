@@ -39,11 +39,11 @@ const CatalogItem: FC<CatalogItemProps> = ({ image,
     const dispatch = useTypedDispatch()
     const { products } = useTypedSelector(state => state.productsReducer)
     const { favourite } = useTypedSelector(state => state.favouriteReducer)
-    const { user } = useTypedSelector(state => state.authReducer)
+    const { isAuth, user } = useTypedSelector(state => state.authReducer)
     
     useEffect(() => {
-        user.id && dispatch(fetchFavourite(user.id))
-    }, [user.id])
+        isAuth && dispatch(fetchFavourite(user.id))
+    }, [isAuth])
 
     useEffect(() => {
         if (favourite.find(v => v._id === id)) isFilled(true)

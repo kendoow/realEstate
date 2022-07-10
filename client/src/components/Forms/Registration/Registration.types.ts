@@ -2,5 +2,6 @@ import { DetailedHTMLProps, HTMLAttributes, Dispatch, SetStateAction } from 'rea
 
 
 export interface RegistrationProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
-    setActive: Dispatch<SetStateAction<boolean>>
+    setActive: Dispatch<SetStateAction<boolean>>,
+    setPage: Dispatch<SetStateAction<string>>
 }

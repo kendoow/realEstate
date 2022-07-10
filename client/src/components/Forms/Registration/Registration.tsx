@@ -14,7 +14,7 @@ import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
 import { RegistrationProps } from './Registration.types'
 
-const Registration: FC<RegistrationProps> = ({setActive}): JSX.Element => {
+const Registration: FC<RegistrationProps> = ({setActive, setPage}): JSX.Element => {
     const [hidePasswordFirts, setHidePasswordFirts] = useState<boolean>(true);
     const [hidePasswordSecond, setHidePasswordSecond] = useState<boolean>(true);
     
@@ -25,11 +25,11 @@ const Registration: FC<RegistrationProps> = ({setActive}): JSX.Element => {
     const nameReg = useInput('', { isEmpty: true, minLength: 1 })
     const dispatch = useTypedDispatch()
 
-    const [page, setPage] = useState<string>('') // отрисовка по состоянию
+    
     const RedirectHanlder = () => {
         setPage('login')
     }
-    
+
     const isValid = !emailReg.inputVaild || !passwordReg.inputVaild || !nameReg.inputVaild || !passwordRepeatReg.inputVaild || passwordReg.value !== passwordRepeatReg.value
     
 
@@ -46,7 +46,7 @@ const Registration: FC<RegistrationProps> = ({setActive}): JSX.Element => {
 
     return (
         <>
-            <div className={page === 'login' ? styles.None : styles.Container}>
+            <div className={styles.Container}>
                 <h2>Регистрация</h2>
                 <h4>Есть аккаунт?  
                     <button 
@@ -102,7 +102,7 @@ const Registration: FC<RegistrationProps> = ({setActive}): JSX.Element => {
                 <Checkbox text='чекбокса пока что нет' />
                 <button onClick={handlerButtonReg} disabled={isValid} className={styles.btn}>Создать аккаунт</button>
             </div>
-            {page === 'login' && <Login setActive={setActive} />}
+            
         </>
     )
 }
