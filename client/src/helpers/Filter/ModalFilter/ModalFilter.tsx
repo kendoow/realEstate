@@ -74,7 +74,6 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                             arrow={arrow}
                             values={[
                                 'Русский',
-                                'Английский',
                                 'Немецкий',
                                 'Французский',
                                 'Японский',

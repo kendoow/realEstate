@@ -20,7 +20,6 @@ const PersonalFavourite = () => {
     return (
         <div className={styles.Container}>
             <h2 className={styles.Title}>Ваше избранное</h2>
-            {loading && <div className={styles.Spiner}> <Spiner /></div>}
             {error && <h2 className={styles.Error}>{error}</h2> }
             {
                 favourite && favourite.map(v => <MainProduct 
@@ -34,6 +33,7 @@ const PersonalFavourite = () => {
                                                  description={v.description}
                                                  address={v.address} />)
             }
+            {/* {loading && <div className={styles.Spiner}> <Spiner /></div>} */}
         </div>
   )
 }
