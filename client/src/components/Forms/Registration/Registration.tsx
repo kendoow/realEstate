@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
 
 import useInput from '../../../hooks/useInput'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
@@ -14,24 +14,26 @@ import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
 import { RegistrationProps } from './Registration.types'
 
-const Registration: FC<RegistrationProps> = ({setActive, setPage}): JSX.Element => {
+const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Element => {
     const [hidePasswordFirts, setHidePasswordFirts] = useState<boolean>(true);
     const [hidePasswordSecond, setHidePasswordSecond] = useState<boolean>(true);
-    
+
     const emailReg = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
     const passwordReg = useInput('', { isEmpty: true, minLength: 3 })
     const passwordRepeatReg = useInput('', { isEmpty: true, minLength: 3 })
-    
+    const [checked, setChecked] = useState<boolean>(true); // проверка чекбокса
     const nameReg = useInput('', { isEmpty: true, minLength: 1 })
     const dispatch = useTypedDispatch()
 
-    
+
     const RedirectHanlder = () => {
         setPage('login')
     }
+    const changeCheckbox = () => {
+        setChecked(!checked);
+    }
+    const isValid = !emailReg.inputVaild || !passwordReg.inputVaild || !nameReg.inputVaild || !passwordRepeatReg.inputVaild || passwordReg.value !== passwordRepeatReg.value || checked;
 
-    const isValid = !emailReg.inputVaild || !passwordReg.inputVaild || !nameReg.inputVaild || !passwordRepeatReg.inputVaild || passwordReg.value !== passwordRepeatReg.value
-    
 
     const handlerButtonReg = () => {
         const userReg: UserRegistrationType = {
@@ -44,14 +46,15 @@ const Registration: FC<RegistrationProps> = ({setActive, setPage}): JSX.Element 
         dispatch(registration(userReg))
     }
 
+
     return (
         <>
             <div className={styles.Container}>
                 <h2>Регистрация</h2>
-                <h4>Есть аккаунт?  
-                    <button 
-                     className={styles.Redirect} 
-                     onClick={RedirectHanlder}>
+                <h4>Есть аккаунт?
+                    <button
+                        className={styles.Redirect}
+                        onClick={RedirectHanlder}>
                         Войти
                     </button>
                 </h4>
@@ -99,10 +102,14 @@ const Registration: FC<RegistrationProps> = ({setActive, setPage}): JSX.Element 
                     <img onClick={() => setHidePasswordSecond(!hidePasswordSecond)} src={hidePasswordSecond ? hidden : show} alt="hiiden" />
 
                 </div>
-                <Checkbox text='чекбокса пока что нет' />
+                <div className={styles.Checkbox}>
+                    <input onChange={changeCheckbox} type="checkbox" />
+                    Я принимаю условия пользовательского соглашения
+                </div>
+
                 <button onClick={handlerButtonReg} disabled={isValid} className={styles.btn}>Создать аккаунт</button>
             </div>
-            
+
         </>
     )
 }

@@ -45,18 +45,14 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
                         <p>{metro}</p>
                     </div>
 
-
-
                     <h5 className={styles.Rating}>Рейтинг - {rating} <span>{rewiewsCount} отзыв</span></h5>
 
-                    <Rating isEditable={false} initialRating={3} />
-
+                    <Rating isEditable={false} initialRating={4} />
 
                     <div className={styles.BtnBlock}>
-                        <a href='tel:+79999998877' className={styles.BtnDark}>Позвонить</a>
-                        <a href="mailto:Mail@gmail.com" className={styles.BtnLight} > Написать</a>
+                        <a href='tel:+79660406664' className={styles.BtnDark}>Позвонить</a>
+                        <a href="mailto:alterzidan@yandex.ru" className={styles.BtnLight} > Написать</a>
                     </div>
-
 
                     <h5 className={styles.Decription}>{description}</h5>
                     <div className={styles.BtnBlock}>

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
 import Restore from "../Restoring/Restore";
@@ -7,7 +7,9 @@ import { ModalProps } from "./Modal.types";
 
 const Modal: FC<ModalProps> = ({ active, setActive, setPage, page}):JSX.Element => {
 
- 
+  useEffect(() => { 
+    document.body.style.overflow = active ? 'hidden' : 'auto'
+}, [active])
 
   return (
     <div

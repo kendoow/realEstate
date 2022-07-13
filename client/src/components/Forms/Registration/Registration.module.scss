@@ -24,7 +24,7 @@
     color: $color-coffee;
     border-bottom: 1px solid $color-coffee;
     transition: $transition;
-    &:hover{
+    &:hover {
       transition: $transition;
       opacity: 0.8;
     }
@@ -37,29 +37,43 @@
     width: 300px;
     font-weight: normal;
   }
-  button:disabled{
-    &:hover{
+  button:disabled {
+    &:hover {
       background-color: rgb(119, 119, 119);
       color: #000;
+      cursor: auto;
     }
   }
-  .Password{
+  .Password {
     position: relative;
-    img{
-        position: absolute;
-        top: 42px;
-        right: 20px;
+    img {
+      position: absolute;
+      top: 42px;
+      right: 20px;
     }
   }
-  .Input{
+  .Checkbox {
+    margin-top: 20px;
+    display: flex;
+    max-width: 400px;
+    font-size: 15px;
+    opacity: 0.7;
+    align-items: center;
+  }
+  input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    margin-right:10px;
+  }
+  .Input {
     @include input;
   }
 }
-.None{
+.None {
   display: none;
 }
 
-.Error{
+.Error {
   color: red;
   text-align: center;
   margin-top: 5px;
