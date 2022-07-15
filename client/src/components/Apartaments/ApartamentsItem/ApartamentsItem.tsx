@@ -9,6 +9,8 @@ import { ApartamentsItemProps } from './ApartamentsItem.types'
 
 import imgMetro from '../../../assets/Main/metro.svg';
 import imgAdress from '../../../assets/Main/gpc-product.svg';
+import SimpleSlider from '../../../helpers/Slider/Slider';
+import ApartsSlider from '../../../helpers/Slider/ApartamentsSlider';
 
 
 const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
@@ -26,7 +28,18 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
         <>
             <div className={styles.Container} >
                 <div className={styles.SliderBlock}>
-                    <img className={styles.MainImage} src={`${API_URL}${image[0]}`} alt='HotelIcon' />
+                    <div className={styles.SliderContainer}>
+                        <ApartsSlider>
+                            {
+                                image.map((img) => (
+                                    <div key={img} className={styles.Slider}>
+
+                                        <img height={450} width={650} src={`${API_URL}${img}`} alt="btn" />
+                                    </div>
+                                ))
+                            }
+                        </ApartsSlider>
+                    </div>
                 </div>
                 <div className={styles.Text}>
                     <h3 className={styles.Title}>{apartamentsName}</h3>

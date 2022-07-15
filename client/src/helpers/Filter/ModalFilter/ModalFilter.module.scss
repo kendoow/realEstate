@@ -12,7 +12,7 @@
     background-color: rgba(0, 0, 0, 0.300);
     visibility: hidden;
     cursor: pointer;
-
+    backdrop-filter: blur(15px);
     display: grid;
     justify-content: center;
     align-content: center;

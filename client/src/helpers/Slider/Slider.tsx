@@ -2,6 +2,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { SliderProps, ArrowProps } from "./Slider.types";
+import { API_URL } from "../../http/http";
 
 
 function SampleNextArrow({className, style, onClick}:ArrowProps) {
@@ -34,13 +35,14 @@ const SimpleSlider = ({ children }: SliderProps): JSX.Element => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
+        dotsClass: "slick-dots slick-thumb",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
 
     return (
         <Slider {...settings}>
-
+          
             {children}
 
         </Slider>
