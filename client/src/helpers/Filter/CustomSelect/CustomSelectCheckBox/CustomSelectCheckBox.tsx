@@ -13,19 +13,22 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({className,
                                               ...props}) => {
         const ref = useRef(null)
         const [active, setActive] = useState<boolean>(false)
-        const [selectedValue, setSelectedValue] = useState<typeof values[0]>(values[0])
+        const [selectedValues, setSelectedValues] = useState<typeof values[0][]>([])                                                
 
         const activeHandler = () => {
             setActive(!active)
         }
-
         const closeHandler = () => {
             setActive(false)
         }
         useOnClickOutside(ref, () => closeHandler())
 
         const selectedValueHandler = (value: string | number) => {
-            setSelectedValue(value)
+            if (selectedValues.find(v => v === value)) {
+                setSelectedValues(selectedValues.filter(v => v !== value))
+            } else {
+                setSelectedValues([...selectedValues, value])
+            }
         }
 
         return (
@@ -37,22 +40,35 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({className,
             <button 
              className={styles.BtnTitle}
              onClick={activeHandler}>
-                {selectedValue}
+                {
+                    selectedValues.length ? <>
+                                                Выбран{selectedValues.length !== 1 && <>о</>} {selectedValues.length}
+                                                &nbsp;фильтр{selectedValues.length < 5 
+                                                        ? selectedValues.length === 1 
+                                                        ? null 
+                                                        : <>а</> 
+                                                        : <>ов</>}
+                                            </>
+                                          : <>Неважно</>
+                }
                 <img src={arrow} alt="Select Icon" />
             </button>
             <div className={cn(styles.BlockBtn, {
                 [styles.Active]: active
             })}>
-                {values.slice(1).map((v, i) => (
+                {values.map((v, i) => (
                     <div
                      className={styles.Btn} 
                      key={i}>
-                        <input type='checkbox'/>
+                        <input 
+                            type='checkbox'
+                            checked={!!selectedValues.find(value => value === v)}
+                            onChange={() => selectedValueHandler(v)}
+                        />
                         <button 
-                         className={cn(styles.BtnItem, {
-                            [styles.Active]: selectedValue === v,
-                         })}
-                         onClick={() => selectedValueHandler(v)}>
+                            className={styles.BtnItem}
+                            onClick={() => selectedValueHandler(v)}
+                        >
                             {v}
                         </button>
                     </div>

@@ -2,9 +2,9 @@ import FiltersService from "../services/filtersService.js"
 
 
 class FiltersContoller {
-    async get(req, res) {
+    async getAll(req, res) {
         try {
-            const filters = await FiltersService.get(req.params.id)
+            const filters = await FiltersService.getAll(req.query)
             res.json(filters)
         } catch (e) {
             res.status(400).json(`Filters Error - get ${e}`)
@@ -13,7 +13,7 @@ class FiltersContoller {
 
     async create(req, res) {
         try {
-            const filtersCreated = await FiltersService.create(req.params.id)
+            const filtersCreated = await FiltersService.create(req.params.id, req.body)
             res.json(filtersCreated)
         } catch (e) {
             res.status(400).json(`Filters Error - create ${e}`)

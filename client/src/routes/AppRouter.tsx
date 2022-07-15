@@ -11,6 +11,7 @@ import FAQ from '../pages/FAQ/FAQ'
 import Main from '../pages/Main/Main'
 import Personal from '../pages/Personal/Personal'
 import Favourite from '../pages/Favourite/Favourite'
+import { fetchFilterProducts } from '../redux/Slices/FilterSlice/FilterActionCreator'
 
 const AppRouter = () => {
     const { isAuth } = useTypedSelector(state => state.authReducer)
@@ -20,7 +21,8 @@ const AppRouter = () => {
     useEffect(() => {
       if (accessToken) {
         dispatch(checkAuth())
-    }         
+        dispatch(fetchFilterProducts())
+      }         
     }, [])
 
     return (

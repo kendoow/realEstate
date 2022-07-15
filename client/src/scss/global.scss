@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 
 code {
   font-family: 'Lato', sans-serif;
@@ -40,6 +42,17 @@ code {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+
+    &::-webkit-scrollbar { 
+      width: 4px;
+      border-radius: 10px;
+      background-color: #FFFFFF;
+    }
+  
+    &::-webkit-scrollbar-thumb { 
+      border-radius: 10px;
+      background-color: $color-gray;
+    }  
   }
   
   input, button, textarea {

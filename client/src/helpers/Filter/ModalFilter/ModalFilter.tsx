@@ -46,8 +46,7 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                         <CustomSelectCheckBox
                             className={styles.SelectCheckBox}
                             arrow={arrow}
-                            values={['Неважно',
-                                'Огороженная территория',
+                            values={['Огороженная территория',
                                 'Парковка крытая',
                                 'Стояночное место',
                                 'Виодеонаблюдение']} />
@@ -86,7 +85,6 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={['Бассейн',
-                                'Бассейн',
                                 'Бесплатная парковка на территории',
                                 'Кроватка',
                                 'Зона барбекю',
@@ -104,7 +102,6 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={['WI-FI',
-                                'WI-FI',
                                 'Стиральная Машина',
                                 'Кондиционер',
                                 'Отопление',
@@ -112,7 +109,6 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                                 'Кухня',
                                 'Сущильная машина',
                                 'Рабочая зона',
-                                'Спортзал',
                             ]} />
                     </div>
 

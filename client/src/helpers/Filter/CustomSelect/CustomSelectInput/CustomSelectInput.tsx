@@ -48,7 +48,7 @@ const CustomSelectInput: FC<CustomSelectInputProps> = ({className,
             <button 
              className={styles.BtnSelected}
              onClick={activeHandler}>
-                {selectedValue ? <>{selectedValue}</> : <>Неважно</>}
+                {selectedValue ? <>{selectedValue}</> : <>Неважно &nbsp;</>}
                 <img src={arrow} alt="" />
             </button>
             <div className={cn(styles.BlockInput, {

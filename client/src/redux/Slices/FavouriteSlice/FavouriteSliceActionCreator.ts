@@ -39,7 +39,7 @@ export const deleteFavourite = createAsyncThunk(
         try {
             const { userId, productId, favourite } = favouriteDeleteArguments
             const updatedFavourite = favourite.filter(v => v._id !== productId)
-            const response = await axios.put<FavouriteFecth>(`${API_URL}user/product/${userId}`,
+            await axios.put<FavouriteFecth>(`${API_URL}user/product/${userId}`,
                                                             {favourites:  updatedFavourite})
             return updatedFavourite
         } catch (e) {
