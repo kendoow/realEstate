@@ -6,14 +6,30 @@
   grid-template-columns: 1fr 1fr;
   grid-area: body;
   gap: 40px;
+  .Slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    img {
+      border-radius: 10px;
+    }
+  }
+  .SliderContainer {
+    max-width: 650px;
+
+    margin: auto;
+    margin-bottom: 50px;
+  }
   .SliderBlock {
     .MainImage {
       width: 660px;
-      height: 440px;
+      height: 450px;
       border-radius: 20px;
     }
   }
-
   .Text {
     .Title {
       font-size: 26px;
@@ -89,7 +105,7 @@
       &:hover {
         svg {
           transition: $transition;
-          fill:#fff;
+          fill: #fff;
         }
       }
     }

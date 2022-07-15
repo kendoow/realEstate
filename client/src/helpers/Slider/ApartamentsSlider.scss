@@ -1,0 +1,15 @@
+.SliderItem {
+ border-radius: 10px;
+ cursor: pointer;
+}
+.SliderSelected li.slick-active{
+  transition: all .2s;
+ transform: scale(1.05);
+ }
+
+.SliderSelected {
+  transition: all .2s;
+  display: flex !important;
+  margin-top: 20px;
+  justify-content: space-between;
+}
