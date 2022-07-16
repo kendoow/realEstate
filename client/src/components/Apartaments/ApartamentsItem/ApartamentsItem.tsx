@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, MouseEvent, useEffect, useState } from 'react'
 import { API_URL } from '../../../http/http'
 
 import Rating from '../../../helpers/Rating/Rating';
@@ -11,7 +11,12 @@ import imgMetro from '../../../assets/Main/metro.svg';
 import imgAdress from '../../../assets/Main/gpc-product.svg';
 import SimpleSlider from '../../../helpers/Slider/Slider';
 import ApartsSlider from '../../../helpers/Slider/ApartamentsSlider';
-
+import useTypedDispatch from '../../../hooks/useTypedDispatch';
+import useTypedSelector from '../../../hooks/useTypedSelector';
+import { addFavourite, deleteFavourite, fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
+import { FavouriteAddArguments, FavouriteDeleteArguments } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice.types';
+import heartEmpty from '../../../assets/Main/heart.svg';
+import heartFilled from '../../../assets/Main/heart-filled.svg';
 
 const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
     price,
@@ -22,13 +27,57 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
     metro,
     address,
     apartamentsName,
-    description }): JSX.Element => {
+    description, id, ...props }): JSX.Element => {
+
+    const [filled, isFilled] = useState<boolean>(false)
+
+    const dispatch = useTypedDispatch()
+    const { products } = useTypedSelector(state => state.productsReducer)
+    const { favourite } = useTypedSelector(state => state.favouriteReducer)
+    const { isAuth, user } = useTypedSelector(state => state.authReducer)
+
+    useEffect(() => {
+        isAuth && dispatch(fetchFavourite(user.id))
+    }, [isAuth])
+
+    useEffect(() => {
+        if (favourite.find(v => v._id === id)) { isFilled(true) }
+        
+    }, [favourite])
+
+    const favoutiteHandler = (e: MouseEvent<HTMLImageElement>) => {
+        e.preventDefault()
+        if (filled) {
+            const favouriteDeleteArguments: FavouriteDeleteArguments = {
+                userId: user.id,
+                productId: id,
+                favourite,
+            }
+            dispatch(deleteFavourite(favouriteDeleteArguments))
+        } else {
+            const favouriteAddArguments: FavouriteAddArguments = {
+                userId: user.id,
+                productId: id,
+                favourite,
+                products,
+            }
+            dispatch(addFavourite(favouriteAddArguments))
+        }
+        isFilled(!filled)
+    }
 
     return (
         <>
             <div className={styles.Container} >
                 <div className={styles.SliderBlock}>
                     <div className={styles.SliderContainer}>
+                        <img
+                            width={30}
+                            height={30}
+                            onClick={(e) => favoutiteHandler(e)}
+                            className={styles.ImgHeart}
+                            src={filled ? heartFilled : heartEmpty}
+                            alt='heart' />
                         <ApartsSlider>
                             {
                                 image.map((img) => (

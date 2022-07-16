@@ -5,6 +5,7 @@
   border-radius: 10px;
   width: 500px;
   padding-left: 30px;
+
   .logo {
     padding-bottom: 21px;
     display: flex;
@@ -47,5 +48,59 @@
     margin-top: 18px;
     @include buttonPrimary;
     margin-bottom: 30px;
+  }
+}
+@media (max-width:1030px) {
+  .container {
+    margin: 0 auto;
+    width: 300px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 40px;
+    
+    .info {
+     
+      input[type="text"],
+      input[type="date"] {
+        
+        width: 250px;
+       
+      }
+    
+    }
+    .btn {
+    
+      margin-top: 18px;
+      @include buttonPrimary;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+@media (max-width:660px) {
+  .container {
+   margin-left: 3%;
+    padding-bottom: 20px;
+    width: 100%;
+    margin: 0 auto;
+    .info {
+     
+      input[type="text"],
+      input[type="date"] {
+        
+        width: 250px;
+       
+      }
+    
+    }
+    .btn {
+     
+      margin-top: 18px;
+      
+      @include buttonPrimary;
+      margin-bottom: 0px;
+    }
   }
 }

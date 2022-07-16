@@ -18,8 +18,10 @@ const PersonalFavourite = () => {
     }, [isAuth])
 
     return (
+        <>
+        
         <div className={styles.Container}>
-            <h2 className={styles.Title}>Ваше избранное</h2>
+        {/* <h2 className={styles.Title}>Ваше избранное</h2> */}
             {error && <h2 className={styles.Error}>{error}</h2> }
             {
                 favourite && favourite.map(v => <MainProduct 
@@ -34,7 +36,9 @@ const PersonalFavourite = () => {
                                                  address={v.address} />)
             }
             {/* {loading && <div className={styles.Spiner}> <Spiner /></div>} */}
+
         </div>
+        </>
   )
 }
 

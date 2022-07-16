@@ -27,6 +27,7 @@ const ApartamentsItems: FC = (): JSX.Element => {
                 {
                     Object.keys(selectedProduct).length !== 0 &&
                     <ApartamentsItem
+                    id ={selectedProduct._id}
                         image={selectedProduct.image}
                         price={selectedProduct.price}
                         priceDay={selectedProduct.priceDay}

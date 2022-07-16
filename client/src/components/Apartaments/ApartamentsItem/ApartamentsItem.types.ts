@@ -11,5 +11,5 @@ export interface ApartamentsItemProps extends DetailedHTMLProps<HTMLAttributes<H
     address: string,
     apartamentsName:string,
     description: string,
-    
+    id:string;
 }

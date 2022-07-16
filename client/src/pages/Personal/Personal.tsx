@@ -8,7 +8,7 @@ const Personal: FC = (): JSX.Element => {
     return (
         <>
             <Header />
-            <div className={styles.container}>
+            <div className={styles.Container}>
                 <PersonalMenu />
                 <PersonalAbout />
                 <PersonalData/>

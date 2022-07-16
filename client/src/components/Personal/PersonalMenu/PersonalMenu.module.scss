@@ -1,7 +1,8 @@
 @import "../../../scss/variables.scss";
 
 .Container {
-  grid-area: sidebar;
+
+  margin-left: 2%;
   .NavItem {
     display: flex;
     align-items: center;
@@ -20,5 +21,20 @@
       background: #ececec;
       border-radius: 5px;
     }
+  }
+}
+@media (max-width: 1300px) {
+  .Container {
+   
+    .NavItem {
+      width: 150px;
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .Container {
+   display: none;
   }
 }
