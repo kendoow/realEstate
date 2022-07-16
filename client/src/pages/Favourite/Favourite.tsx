@@ -8,7 +8,7 @@ const Favourite: FC = () => {
     return (
         <div className={styles.Container}>
             <Header />
-
+           
             <div className={styles.Body}>
                 <PersonalMenu />
                 <PersonalFavourite /> 
