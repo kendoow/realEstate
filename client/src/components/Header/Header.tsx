@@ -6,7 +6,7 @@ import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { authSelector } from "../../redux/Slices/AuthSlice/AuthSelector";
 
 import Modal from "../Forms/Modal/Modal";
-import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
+import ToggleList from "../../UI/Header/ToggleList/ToggleList";
 
 import styles from './Header.module.scss';
 
@@ -77,7 +77,8 @@ const Header: FC = () => {
                                     active={activeToggleList}
                                     setActive={setActiveToggleList}
                                     values={['Профиль', 'Избранное', 'Выйти']}
-                                    valuesLink={['/personal', '/favorite', '/']} />
+                                    valuesLink={['/personal', '/favorite', '/']} 
+                                />
                             </div>
                             <Link to='/personal' >
                                 <img src={userIcon} alt="icon" />

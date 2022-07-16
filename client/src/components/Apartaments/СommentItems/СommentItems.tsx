@@ -8,8 +8,8 @@ import { commentSelector } from "../../../redux/Slices/CommentsSlice/CommentSele
 
 import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
 
-import Spiner from "../../../helpers/Spiner/Spiner";
 import CommentItem from '../СommentItem/СommentItem';
+import Spiner from "../../../UI/Spiner/Spiner";
 
 import styles from './СommentItems.module.scss';
 

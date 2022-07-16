@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import Spiner from "../../../helpers/Spiner/Spiner";
 
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
@@ -9,6 +8,7 @@ import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSele
 import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
 
 import MainProduct from "../MainProduct/MainProduct";
+import Spiner from "../../../UI/Spiner/Spiner";
 
 import styles from './MainProducts.module.scss';
 

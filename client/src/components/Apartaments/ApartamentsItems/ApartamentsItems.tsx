@@ -6,8 +6,8 @@ import useTypedSelector from '../../../hooks/useTypedSelector'
 import { productSelector } from '../../../redux/Slices/ProductsSlice/ProductSelector'
 import { fetchProduct } from '../../../redux/Slices/ProductsSlice/ProductsActionCreator'
 
-import Spiner from '../../../helpers/Spiner/Spiner'
 import ApartamentsItem from '../ApartamentsItem/ApartamentsItem'
+import Spiner from '../../../UI/Spiner/Spiner'
 
 import styles from './ApartamentsItems.module.scss'
 

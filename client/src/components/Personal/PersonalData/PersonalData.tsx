@@ -1,8 +1,11 @@
 
 import { FC, useState } from 'react'
+
 import styles from './PersonalData.module.scss'
+
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
+
 const PersonalData: FC = (): JSX.Element => {
 
   const [hidePasswordFirst, setHidePasswordFirst] = useState(true); // скрыть показать пароль

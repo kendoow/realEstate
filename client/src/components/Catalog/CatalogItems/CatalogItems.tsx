@@ -4,27 +4,25 @@ import { FC, useEffect, useState } from 'react'
 import useTypedSelector from '../../../hooks/useTypedSelector'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
 import { filterSelector } from '../../../redux/Slices/FilterSlice/FilterSelector'
+import { fetchFilterProducts } from '../../../redux/Slices/FilterSlice/FilterActionCreator'
 
 import CatalogItem from '../CatalogItem/CatalogItem'
-import Spiner from '../../../helpers/Spiner/Spiner'
-import Filter from '../../../helpers/Filter/Filter'
+import Spiner from '../../../UI/Spiner/Spiner'
+import Filter from '../../../UI/Filter/Filter'
 
 // import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 
 import styles from './CatalogItems.module.scss'
-import { fetchFilterProducts } from '../../../redux/Slices/FilterSlice/FilterActionCreator'
 
 const CatalogItems: FC = (): JSX.Element => {
     // const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
     const { loading, error, selectedFilters, filterProducts } = useTypedSelector(filterSelector)
     const dispatch = useTypedDispatch()
 
-    console.log(filterProducts)
     useEffect(() => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
 
-    // console.log(filterProduct)
     // useEffect(() => {
     //     dispatch()
     // }, [])

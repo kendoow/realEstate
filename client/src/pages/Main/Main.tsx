@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Footer, Header, MainProducts, MainTitle } from '../../components'; 
-import Filter from '../../helpers/Filter/Filter';
+import Filter from '../../UI/Filter/Filter';
 
 import styles from './Main.module.scss';
 

@@ -13,7 +13,7 @@ import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
 import { CatalogItemProps } from './CatalogItem.types'
 import { API_URL } from "../../../http/http";
 
-import SimpleSlider from '../../../helpers/Slider/Slider'
+import SimpleSlider from "../../../UI/Slider/Slider";
 
 import styles from './CatalogItem.module.scss'
 
@@ -21,8 +21,6 @@ import heartEmpty from '../../../assets/Main/heart.svg';
 import heartFilled from '../../../assets/Main/heart-filled.svg';
 import imgMetro from '../../../assets/Main/metro.svg';
 import gpcProduct from '../../../assets/Main/gpc-product.svg';
-
-
 
 
 const CatalogItem: FC<CatalogItemProps> = ({ image,

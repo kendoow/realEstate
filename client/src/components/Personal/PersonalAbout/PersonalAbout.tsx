@@ -1,6 +1,10 @@
 import { FC } from 'react'
+
 import styles from './PersonalAbout.module.scss'
+
 import userIcon from '../../../assets/Main/userIcon.svg'
+
+
 const PersonalAbout:FC = () :JSX.Element => {
     return (
         <>

@@ -17,7 +17,7 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         addSelectedFilters: (state, action: PayloadAction<IFilter>) => {
-            state.selectedFilters = {...state.selectedFilters, ...action.payload}
+            state.selectedFilters = action.payload
         }
     },
     extraReducers: {

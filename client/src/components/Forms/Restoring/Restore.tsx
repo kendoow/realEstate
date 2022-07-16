@@ -1,5 +1,4 @@
-import { FC, useState } from 'react'
-import Login from '../Login/Login'
+import { FC } from 'react'
 
 import styles from './Restore.module.scss'
 import { RestoreProps } from './Restore.types'

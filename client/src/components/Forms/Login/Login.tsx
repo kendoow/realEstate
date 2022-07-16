@@ -3,17 +3,16 @@ import { FC, useState } from 'react'
 
 import useInput from '../../../hooks/useInput'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
-
 import { login } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
-import { UserLoginType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
 
-import Restore from '../Restoring/Restore'
+import { UserLoginType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
+import { LoginProps } from './Login.types'
+
 
 import styles from './Login.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
-import { LoginProps } from './Login.types'
 
 const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
 

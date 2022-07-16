@@ -44,7 +44,7 @@ const Filter: FC = () => {
     const [bedrooms, setBedrooms] = useState<string | boolean>(false)
 
     const searchHandler = () => {
-        dispatch(addSelectedFilters({
+        const filterCommon = {
             rooms,
             floor,
             rating,
@@ -52,12 +52,19 @@ const Filter: FC = () => {
             balcony: typeof balcony === 'string' ? balcony : undefined,
             animals: animals == 'Eсть' ? true : undefined,
             bedrooms: typeof bedrooms === 'string' ? bedrooms : undefined,
+        }
+        const filterSpecifications = translateSpecificationsFilters(specifications)
+        const filterNecessary = translateNecessaryFilters(necessary)
+        const filterLanguage = translateLanguageFilters(language)
+        const filterHome = translateHomeFilters(home)
+        dispatch(addSelectedFilters({
+            ...filterCommon,
+            ...filterSpecifications,
+            ...filterNecessary,
+            ...filterLanguage,
+            ...filterHome,
         }))
-        dispatch(addSelectedFilters(translateSpecificationsFilters(specifications)))
-        dispatch(addSelectedFilters(translateNecessaryFilters(necessary)))
-        dispatch(addSelectedFilters(translateLanguageFilters(language)))
-        dispatch(addSelectedFilters(translateHomeFilters(home)))
-        
+
         setFilterModal(false)
         resetHandler()
         new Promise(resolve => resolve(navigate('/catalog')))

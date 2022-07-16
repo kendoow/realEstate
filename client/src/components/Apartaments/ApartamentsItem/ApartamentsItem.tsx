@@ -1,7 +1,13 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 import { API_URL } from '../../../http/http'
 
-import Rating from '../../../helpers/Rating/Rating';
+import useTypedDispatch from '../../../hooks/useTypedDispatch';
+import useTypedSelector from '../../../hooks/useTypedSelector';
+import { addFavourite, deleteFavourite, fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
+import { FavouriteAddArguments, FavouriteDeleteArguments } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice.types';
+
+import ApartsSlider from '../../../UI/Slider/ApartamentsSlider';
+import Rating from '../../../UI/Rating/Rating';
 
 import styles from './ApartamentsItem.module.scss'
 
@@ -9,12 +15,6 @@ import { ApartamentsItemProps } from './ApartamentsItem.types'
 
 import imgMetro from '../../../assets/Main/metro.svg';
 import imgAdress from '../../../assets/Main/gpc-product.svg';
-import SimpleSlider from '../../../helpers/Slider/Slider';
-import ApartsSlider from '../../../helpers/Slider/ApartamentsSlider';
-import useTypedDispatch from '../../../hooks/useTypedDispatch';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import { addFavourite, deleteFavourite, fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
-import { FavouriteAddArguments, FavouriteDeleteArguments } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice.types';
 import heartEmpty from '../../../assets/Main/heart.svg';
 import heartFilled from '../../../assets/Main/heart-filled.svg';
 

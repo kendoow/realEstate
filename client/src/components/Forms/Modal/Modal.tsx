@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
 import Restore from "../Restoring/Restore";
