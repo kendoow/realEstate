@@ -4,6 +4,7 @@ import Spiner from "../../../helpers/Spiner/Spiner";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import { fetchProductsPagination, } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
 
 import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
 
@@ -13,7 +14,7 @@ import styles from './MainProducts.module.scss';
 
 const MainProducts: FC = (): JSX.Element => {
     const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 12})
-    const { error, loading, products } = useTypedSelector(state => state.productsReducer)
+    const { error, loading, products } = useTypedSelector(productSelector)
     const dispatch = useTypedDispatch()
 
     // потом понял что немного кривая можно подгружать не все 12 и тд, а как делал с комментами

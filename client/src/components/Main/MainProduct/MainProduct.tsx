@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
+import { favouriteSelector } from "../../../redux/Slices/FavouriteSlice/FavouriteSelector";
+import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
 
 import SimpleSlider from "../../../helpers/Slider/Slider";
 
@@ -33,9 +36,9 @@ const MainProduct: FC<MainProductProps> = ({ image,
     const [filled, isFilled] = useState<boolean>(false)
     
     const dispatch = useTypedDispatch()
-    const { products } = useTypedSelector(state => state.productsReducer)
-    const { favourite } = useTypedSelector(state => state.favouriteReducer)
-    const { user, isAuth, loading } = useTypedSelector(state => state.authReducer)
+    const { products } = useTypedSelector(productSelector)
+    const { favourite } = useTypedSelector(favouriteSelector)
+    const { user, isAuth, loading } = useTypedSelector(authSelector)
     
     useEffect(() => {
         !loading && isAuth && user.id && dispatch(fetchFavourite(user.id))

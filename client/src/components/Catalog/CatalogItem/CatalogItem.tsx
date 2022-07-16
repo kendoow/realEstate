@@ -6,6 +6,9 @@ import useTypedSelector from "../../../hooks/useTypedSelector";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import { FavouriteAddArguments, FavouriteDeleteArguments } from "../../../redux/Slices/FavouriteSlice/FavouriteSlice.types";
 import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
+import { favouriteSelector } from "../../../redux/Slices/FavouriteSlice/FavouriteSelector";
+import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
 
 import { CatalogItemProps } from './CatalogItem.types'
 import { API_URL } from "../../../http/http";
@@ -37,13 +40,13 @@ const CatalogItem: FC<CatalogItemProps> = ({ image,
     const [filled, isFilled] = useState<boolean>(false)
 
     const dispatch = useTypedDispatch()
-    const { products } = useTypedSelector(state => state.productsReducer)
-    const { favourite } = useTypedSelector(state => state.favouriteReducer)
-    const { isAuth, user } = useTypedSelector(state => state.authReducer)
+    const { products } = useTypedSelector(productSelector)
+    const { favourite } = useTypedSelector(favouriteSelector)
+    const { isAuth, user, loading } = useTypedSelector(authSelector)
     
     useEffect(() => {
-        isAuth && dispatch(fetchFavourite(user.id))
-    }, [isAuth])
+        !loading && isAuth && user.id && dispatch(fetchFavourite(user.id))
+    }, [isAuth, user])
 
     useEffect(() => {
         if (favourite.find(v => v._id === id)) isFilled(true)

@@ -24,14 +24,13 @@ const filterSlice = createSlice({
         [fetchFilterProducts.pending.type]: (state) => {
             state.loading = true
             state.error = null
-            // state.selectedFilters = {} 
         },
-        [fetchFilterProducts.pending.type]: (state, action: PayloadAction<IProduct[]>) => {
+        [fetchFilterProducts.fulfilled.type]: (state, action: PayloadAction<IProduct[]>) => {
             state.loading = false
             state.error = null
             state.filterProducts = action.payload
         },
-        [fetchFilterProducts.pending.type]: (state, action: PayloadAction<string>) => {
+        [fetchFilterProducts.rejected.type]: (state, action: PayloadAction<string>) => {
             state.loading = false
             state.error = action.payload
         },

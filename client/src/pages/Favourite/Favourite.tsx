@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-import { Header } from "../../components";
-import PersonalFavourite from "../../components/Personal/PersonalFavourite/PersonalFavourite";
-import PersonalMenu from "../../components/Personal/PersonalMenu/PersonalMenu";
+import { Header, PersonalFavourite, PersonalMenu } from "../../components";
 
 import styles from './Favourite.module.scss';
 

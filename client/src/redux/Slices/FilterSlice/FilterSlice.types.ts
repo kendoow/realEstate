@@ -14,6 +14,7 @@ export interface IFilter {
     floor?: string,
     rating?: string,
     bedrooms?: string,
+    balcony?: string,
 
     // region?: number,
 
@@ -22,7 +23,6 @@ export interface IFilter {
     parkingSpace?: boolean,
     video?: boolean,
 
-    // balcony?: boolean,
     // loggia?: boolean,
 
     animals?: boolean,

@@ -1,35 +1,55 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { SliderProps, ArrowProps } from "./Slider.types";
+
 import { API_URL } from "../../http/http";
 import useTypedSelector from "../../hooks/useTypedSelector";
+import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
+
+import Slider from "react-slick";
+
+import { SliderProps, ArrowProps } from "./Slider.types";
+
 import './ApartamentsSlider.scss'
 
 
 function SampleNextArrow({ className, style, onClick }: ArrowProps) {
-
     return (
         <div
             className={className}
-            style={{ ...style, marginTop:"-80px", position: "absolute", marginRight: "40px", width: "22px", zIndex: "1", transform: 'scale(2)' }}
+            style={{
+                ...style,
+                marginTop: "-80px",
+                position: "absolute",
+                marginRight: "40px",
+                width: "22px",
+                zIndex: "1",
+                transform: 'scale(2)'
+            }}
             onClick={onClick}
         />
     );
 }
 
 function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
-
     return (
         <div
             className={className}
-            style={{ ...style, marginTop:"-80px", position: "absolute", marginLeft: "40px", width: "22px", zIndex: "1", transform: 'scale(2)' }}
+            style={{
+                ...style,
+                marginTop: "-80px",
+                position: "absolute",
+                marginLeft: "40px",
+                width: "22px",
+                zIndex: "1",
+                transform: 'scale(2)'
+            }}
             onClick={onClick}
         />
     );
 }
+
 const ApartsSlider = ({ children }: SliderProps): JSX.Element => {
-    const { selectedProduct } = useTypedSelector(state => state.productsReducer)
+    const { selectedProduct } = useTypedSelector(productSelector)
     const settings = {
         customPaging: function (i: number) {
             return (

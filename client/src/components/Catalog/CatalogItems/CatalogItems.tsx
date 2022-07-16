@@ -3,28 +3,39 @@ import { FC, useEffect, useState } from 'react'
 
 import useTypedSelector from '../../../hooks/useTypedSelector'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
+import { filterSelector } from '../../../redux/Slices/FilterSlice/FilterSelector'
 
 import CatalogItem from '../CatalogItem/CatalogItem'
 import Spiner from '../../../helpers/Spiner/Spiner'
 import Filter from '../../../helpers/Filter/Filter'
 
-import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
-import { fetchProductsPagination } from '../../../redux/Slices/ProductsSlice/ProductsActionCreator'
+// import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 
 import styles from './CatalogItems.module.scss'
+import { fetchFilterProducts } from '../../../redux/Slices/FilterSlice/FilterActionCreator'
 
 const CatalogItems: FC = (): JSX.Element => {
-    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
-    const { error, loading, products } = useTypedSelector(state => state.productsReducer)
+    // const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
+    const { loading, error, selectedFilters, filterProducts } = useTypedSelector(filterSelector)
     const dispatch = useTypedDispatch()
 
+    console.log(filterProducts)
     useEffect(() => {
-        dispatch(fetchProductsPagination(pagination))
-    }, [pagination.page, pagination.limit])
+        dispatch(fetchFilterProducts(selectedFilters))
+    }, [selectedFilters])
 
-    const handlePagination = () => {
-        setPagination({...pagination, page: pagination.page + 1})
-    }
+    // console.log(filterProduct)
+    // useEffect(() => {
+    //     dispatch()
+    // }, [])
+
+    // useEffect(() => {
+    //     dispatch(fetchProductsPagination(pagination))
+    // }, [pagination.page, pagination.limit])
+
+    // const handlePagination = () => {
+    //     setPagination({...pagination, page: pagination.page + 1})
+    // }
 
     return (
         <>
@@ -38,9 +49,9 @@ const CatalogItems: FC = (): JSX.Element => {
             <div className={styles.BlockGrid}>
            
                 {
-                    products.map(i => (
+                    filterProducts.map(i => (
                         <CatalogItem
-                        title={i.apartamentsName}
+                            title={i.apartamentsName}
                             id={i._id}
                             key={i._id}
                             image={i.image}
@@ -56,8 +67,9 @@ const CatalogItems: FC = (): JSX.Element => {
                 }
             </div>
             <button 
-             className={styles.Btn}
-             onClick={() => handlePagination()}>
+                className={styles.Btn}
+                // onClick={() => handlePagination()}
+            >
                 Показать еще
             </button>
             </div>

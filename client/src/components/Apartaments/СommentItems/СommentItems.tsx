@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import { fetchComments, fetchCommentsFirst } from "../../../redux/Slices/CommentsSlice/CommentsActionCreator";
+import { commentSelector } from "../../../redux/Slices/CommentsSlice/CommentSelector";
 
 import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
 
@@ -13,7 +14,7 @@ import CommentItem from '../СommentItem/СommentItem';
 import styles from './СommentItems.module.scss';
 
 const СommentItems: FC = (): JSX.Element => {
-    const { loading, error, comments } = useTypedSelector(state => state.commentsReducer)
+    const { loading, error, comments } = useTypedSelector(commentSelector)
     const { id } = useParams()
     const [pagination, setPagination] = useState<PaginationTypes>({ page: 2, limit: 2 })
 

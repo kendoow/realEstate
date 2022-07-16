@@ -1,9 +1,20 @@
 import { FC, useState } from "react";
 import cn from 'classnames';
+import { useNavigate } from "react-router-dom";
+
+import useTypedDispatch from "../../hooks/useTypedDispatch";
+import { addSelectedFilters } from "../../redux/Slices/FilterSlice/FilterSlice";
+
+import {
+    translateHomeFilters,
+    translateLanguageFilters,
+    translateNecessaryFilters,
+    translateSpecificationsFilters
+} from "../../utils/translateFilters";
 
 import ModalFilter from "./ModalFilter/ModalFilter";
-import CustomSelect from "./CustomSelect/CustomSelect";
-import CustomSelectInput from "./CustomSelect/CustomSelectInput/CustomSelectInput";
+import Select from "./Select/Select";
+import CustomSelectInput from "./Select/CustomSelectInput/CustomSelectInput";
 
 import styles from './Filter.module.scss';
 
@@ -11,10 +22,58 @@ import gps from '../../assets/Helpers/gps.svg';
 import arrow from '../../assets/Helpers/select-arrow.svg';
 
 const Filter: FC = () => {
+    const navigate = useNavigate()
+    const dispatch = useTypedDispatch()
     const [filterModal, setFilterModal] = useState<boolean>(false)
 
     const modalHandler = () => {
         setFilterModal(!filterModal)
+    }
+
+    const [rooms, setRooms] = useState<string>('Неважно')
+    const [floor, setFloor] = useState<string>('Неважно')
+    const [rating, setRating] = useState<string>('Неважно')
+
+    const [specifications, setSpecifications] = useState<string[]>([])
+    const [necessary, setNecessary] = useState<string[]>([])
+    const [language, setLanguage] = useState<string[]>([])
+    const [home, setHome] = useState<string[]>([])
+
+    const [balcony, setBalcony] = useState<string | boolean>(false)
+    const [animals, setAnimals] = useState<string | boolean>(false)
+    const [bedrooms, setBedrooms] = useState<string | boolean>(false)
+
+    const searchHandler = () => {
+        dispatch(addSelectedFilters({
+            rooms,
+            floor,
+            rating,
+
+            balcony: typeof balcony === 'string' ? balcony : undefined,
+            animals: animals == 'Eсть' ? true : undefined,
+            bedrooms: typeof bedrooms === 'string' ? bedrooms : undefined,
+        }))
+        dispatch(addSelectedFilters(translateSpecificationsFilters(specifications)))
+        dispatch(addSelectedFilters(translateNecessaryFilters(necessary)))
+        dispatch(addSelectedFilters(translateLanguageFilters(language)))
+        dispatch(addSelectedFilters(translateHomeFilters(home)))
+        
+        setFilterModal(false)
+        resetHandler()
+        new Promise(resolve => resolve(navigate('/catalog')))
+    }
+
+    const resetHandler = () => {
+        setRooms('Неважно')
+        setFloor('Неважно')
+        setRating('Неважно')
+        setSpecifications([])
+        setNecessary([])
+        setLanguage([])
+        setHome([])
+        setBalcony(false)
+        setAnimals(false)
+        setBedrooms(false)
     }
 
     return (
@@ -23,8 +82,9 @@ const Filter: FC = () => {
                 <div className={styles.Text}>
                     Кол-во комнат
                 </div>
-                <CustomSelect
-                    name='rooms'
+                <Select
+                    selectedValue={rooms}
+                    setSelectedValue={setRooms}
                     arrow={arrow}
                     values={['Неважно', '1', '2', '3', '4', '5',]} />
             </div>
@@ -52,8 +112,16 @@ const Filter: FC = () => {
             <div className={styles.Block}>
                 <button
                     className={styles.BtnWhite}
-                    onClick={modalHandler}>Ещё</button>
-                <button className={styles.BtnCoffee}>Найти</button>
+                    onClick={modalHandler}
+                >
+                    Ещё
+                </button>
+                <button
+                    onClick={searchHandler}
+                    className={styles.BtnCoffee}
+                >
+                    Найти
+                </button>
             </div>
             <div className={styles.Block}>
                 <div></div>
@@ -61,7 +129,31 @@ const Filter: FC = () => {
             </div>
             <ModalFilter
                 active={filterModal}
-                setActive={setFilterModal} />
+                setActive={setFilterModal}
+                searchHandler={searchHandler}
+                resetHandler={resetHandler}
+
+                rating={rating}
+                floor={floor}
+                setRating={setRating}
+                setFloor={setFloor}
+
+                specifications={specifications}
+                necessary={necessary}
+                language={language}
+                home={home}
+                setSpecifications={setSpecifications}
+                setNecessary={setNecessary}
+                setLanguage={setLanguage}
+                setHome={setHome}
+
+                balcony={balcony}
+                animals={animals}
+                bedrooms={bedrooms}
+                setBalcony={setBalcony}
+                setAnimals={setAnimals}
+                setBedrooms={setBedrooms}
+            />
         </div>
     )
 }

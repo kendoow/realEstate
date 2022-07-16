@@ -1,17 +1,21 @@
-import { useEffect } from 'react';
-import Spiner from '../../../helpers/Spiner/Spiner';
+import { FC, useEffect } from 'react';
 
 import useTypedDispatch from '../../../hooks/useTypedDispatch';
 import useTypedSelector from '../../../hooks/useTypedSelector';
+
 import { fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
+import { authSelector } from '../../../redux/Slices/AuthSlice/AuthSelector';
+import { favouriteSelector } from '../../../redux/Slices/FavouriteSlice/FavouriteSelector';
+
 import MainProduct from '../../Main/MainProduct/MainProduct';
+// import Spiner from '../../../helpers/Spiner/Spiner';
 
 import styles from './PersonalFavourite.module.scss';
 
-const PersonalFavourite = () => {
+const PersonalFavourite: FC = () => {
     const dispatch = useTypedDispatch()
-    const { favourite, error } = useTypedSelector(state => state.favouriteReducer)
-    const { isAuth, user } = useTypedSelector(state => state.authReducer)
+    const { favourite, error } = useTypedSelector(favouriteSelector)
+    const { isAuth, user } = useTypedSelector(authSelector)
 
     useEffect(() => {
         isAuth && dispatch(fetchFavourite(user.id))

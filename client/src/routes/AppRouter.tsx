@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import useTypedDispatch from '../hooks/useTypedDispatch'
 import useTypedSelector from '../hooks/useTypedSelector'
 import { checkAuth } from '../redux/Slices/AuthSlice/AuthActionCreator'
+import { authSelector } from '../redux/Slices/AuthSlice/AuthSelector'
 
 import Apartaments from '../pages/Apartaments/Apartaments'
 import Catalog from '../pages/Catalog/Catalog'
@@ -13,7 +14,7 @@ import Personal from '../pages/Personal/Personal'
 import Favourite from '../pages/Favourite/Favourite'
 
 const AppRouter = () => {
-    const { isAuth } = useTypedSelector(state => state.authReducer)
+    const { isAuth } = useTypedSelector(authSelector)
     const dispatch = useTypedDispatch()
     const accessToken = localStorage.getItem('accessToken')
 

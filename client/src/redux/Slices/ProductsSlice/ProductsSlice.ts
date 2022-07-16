@@ -8,7 +8,7 @@ const initialState: ProductStateTypes = {
     loading: false,
     error: null,
     products: [],
-    recommendedProducts: [],
+    recentProducts: [],
     selectedProduct: {} as IProduct
 }
 
@@ -16,11 +16,11 @@ export const ProductsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        fetchRecommendedProducts(state, action: PayloadAction<RecommenededTypes>) {
+        fetchRecentProducts(state, action: PayloadAction<RecommenededTypes>) {
             const shuffleProducts: IProduct[] = JSON.parse(JSON.stringify(state.products)) // глубокая копия чтобы не
                                                                                            // изменять products
             const {id, page, limit} = action.payload
-            state.recommendedProducts = shuffleProducts.filter((i) => i._id !== id)
+            state.recentProducts = shuffleProducts.filter((i) => i._id !== id)
                                                        .slice(0, page * limit)
                                                        .sort(() => Math.random() - 0.5)
         }
@@ -68,5 +68,5 @@ export const ProductsSlice = createSlice({
 
 const { actions, reducer } = ProductsSlice;
 
-export const { fetchRecommendedProducts } = actions
+export const { fetchRecentProducts } = actions
 export default reducer;

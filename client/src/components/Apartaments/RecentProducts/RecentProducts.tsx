@@ -4,16 +4,17 @@ import { useParams } from "react-router-dom";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import { fetchProductsAll } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
-import { fetchRecommendedProducts } from "../../../redux/Slices/ProductsSlice/ProductsSlice";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
+import { fetchRecentProducts } from "../../../redux/Slices/ProductsSlice/ProductsSlice";
 
 import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types';
 
 import MainProduct from "../../Main/MainProduct/MainProduct";
 
-import styles from './RecommendProducts.module.scss';
+import styles from './RecentProducts.module.scss';
 
-const RecommendProducts: FC = () => {
-    const {products, recommendedProducts} = useTypedSelector(state => state.productsReducer)
+const RecentProducts: FC = () => {
+    const {products, recentProducts} = useTypedSelector(productSelector)
     const { id } = useParams() 
     const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 4})
     const dispath = useTypedDispatch()
@@ -23,7 +24,7 @@ const RecommendProducts: FC = () => {
     }, [])
     
     useEffect(() => {
-        products.length !== 0 && dispath(fetchRecommendedProducts({id, ...pagination}))
+        products.length !== 0 && dispath(fetchRecentProducts({id, ...pagination}))
     }, [products, pagination])
 
     const handlerPagination = () => {
@@ -35,7 +36,7 @@ const RecommendProducts: FC = () => {
             <h2 className={styles.Title}>Рекомендуемые номера</h2>
 
             {
-                recommendedProducts.map(i => (
+                recentProducts.map(i => (
                     <MainProduct
                      id={i._id}
                      key={i._id}
@@ -59,4 +60,4 @@ const RecommendProducts: FC = () => {
     )
 }
 
-export default RecommendProducts;
+export default RecentProducts;

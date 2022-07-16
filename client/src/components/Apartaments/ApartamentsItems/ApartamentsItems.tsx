@@ -1,15 +1,19 @@
 import { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Spiner from '../../../helpers/Spiner/Spiner'
+
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
 import useTypedSelector from '../../../hooks/useTypedSelector'
+import { productSelector } from '../../../redux/Slices/ProductsSlice/ProductSelector'
 import { fetchProduct } from '../../../redux/Slices/ProductsSlice/ProductsActionCreator'
+
+import Spiner from '../../../helpers/Spiner/Spiner'
 import ApartamentsItem from '../ApartamentsItem/ApartamentsItem'
+
 import styles from './ApartamentsItems.module.scss'
 
 
 const ApartamentsItems: FC = (): JSX.Element => {
-    const { loading, error, selectedProduct } = useTypedSelector(state => state.productsReducer)
+    const { loading, error, selectedProduct } = useTypedSelector(productSelector)
     const { id } = useParams()
     const dispatch = useTypedDispatch()
     

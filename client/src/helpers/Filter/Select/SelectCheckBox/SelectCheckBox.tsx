@@ -1,29 +1,20 @@
-import { FC, Fragment, MouseEvent, useEffect, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import cn from 'classnames';
 
-import useTypedDispatch from "../../../../hooks/useTypedDispatch";
 import useOnClickOutside from "../../../../hooks/useOnClickOutside";
-import { addSelectedFilters } from "../../../../redux/Slices/FilterSlice/FilterSlice";
-import { IFilter } from "../../../../redux/Slices/FilterSlice/FilterSlice.types";
 
-import { CustomSelectCheckBoxProps } from "./CustomSelectCheckBox.types";
+import { SelectCheckBoxProps } from "./SelectCheckBox.types";
 
-import styles from './CustomSelectCheckBox.module.scss';
+import styles from './SelectCheckBox.module.scss';
 
-const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({ className,
-    confirmFilter,
+const SelectCheckBox: FC<SelectCheckBoxProps> = ({ className,
+    selectedValues,
+    setSelectedValues,
     values,
     arrow,
     ...props }) => {
-    const dispatch = useTypedDispatch()
     const ref = useRef(null)
     const [active, setActive] = useState<boolean>(false)
-    const [selectedValues, setSelectedValues] = useState<string[]>([])
-
-    useEffect(() => {
-        confirmFilter && !!selectedValues.length &&
-        dispatch(addSelectedFilters(Object.fromEntries(selectedValues.map(v => [v, true]))))
-    }, [confirmFilter])
     
     const activeHandler = () => {
         setActive(!active)
@@ -88,4 +79,4 @@ const CustomSelectCheckBox: FC<CustomSelectCheckBoxProps> = ({ className,
     )
 }
 
-export default CustomSelectCheckBox;
+export default SelectCheckBox;

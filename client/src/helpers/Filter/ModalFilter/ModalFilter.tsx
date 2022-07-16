@@ -1,11 +1,10 @@
-import { FC, MouseEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { FC, MouseEvent, useEffect } from "react";
 import cn from 'classnames';
 
 import Rating from "../../Rating/Rating";
-import CustomButtonBlock from "../CustomButtonBlock/CustomButtonBlock";
-import CustomSelectCheckBox from "../CustomSelect/CustomSelectCheckBox/CustomSelectCheckBox";
-import CustomSelect from "../CustomSelect/CustomSelect";
+import SelectButton from "../Select/SelectButton/SelectButton";
+import SelectCheckBox from "../Select/SelectCheckBox/SelectCheckBox";
+import Select from "../Select/Select";
 
 import { ModalFilterProps } from "./ModalFilter.types";
 
@@ -13,21 +12,37 @@ import styles from './ModalFilter.module.scss';
 
 import arrow from '../../../assets/Helpers/select-arrow.svg'
 
-const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...props }) => {
-    const [confirmFilter, setConfirmFilter] = useState<boolean>(false) // Состояние - запись в глобальный стейт выбранныx фильтров
-    const navigate = useNavigate()
+const ModalFilter: FC<ModalFilterProps> = ({ className,
+    active,
+    setActive,
+    searchHandler,
+    resetHandler,
 
+    floor,
+    rating,
+    setFloor,
+    setRating,
+
+    specifications,
+    necessary,
+    language,
+    home,
+    setSpecifications,
+    setNecessary,
+    setLanguage,
+    setHome,
+
+    balcony,
+    animals,
+    bedrooms,
+    setBalcony,
+    setAnimals,
+    setBedrooms,
+    ...props }) => {
     const activeHandler = (e: MouseEvent<HTMLDivElement> |
         MouseEvent<HTMLAnchorElement> |
         MouseEvent<HTMLButtonElement>) => {
         if (e.currentTarget === e.target) setActive(!active)
-    }
-
-    const confirmFilterHandler = (e: MouseEvent<HTMLDivElement> |
-        MouseEvent<HTMLAnchorElement> |
-        MouseEvent<HTMLButtonElement>) => {
-        new Promise(resolve => resolve(setConfirmFilter(true))).then(() => activeHandler(e)).then(() => navigate('/catalog'))
-        // setTimeout(() => navigate('/catalog'), 0)
     }
 
     useEffect(() => {
@@ -46,16 +61,18 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                 <div className={styles.BlockInput}>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Этаж</div>
-                        <CustomSelect
-                            name='floor'
+                        <Select
+                            selectedValue={floor}
+                            setSelectedValue={setFloor}
                             className={styles.Select}
                             arrow={arrow}
                             values={['Неважно', '1', '2', '3', '4', '5']} />
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Обустройство дома</div>
-                        <CustomSelectCheckBox
-                            confirmFilter={confirmFilter}
+                        <SelectCheckBox
+                            selectedValues={home}
+                            setSelectedValues={setHome}
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={['Огороженная территория',
@@ -65,23 +82,36 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Балкон</div>
-                        <CustomButtonBlock name='balcony' values={['Есть', 'Нет', 'Лоджия']} />
+                        <SelectButton
+                            selectedValue={balcony}
+                            setSelectedValue={setBalcony}
+                            values={['Есть', 'Нет', 'Лоджия']}
+                        />
                     </div>
 
 
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Домашние животные</div>
-                        <CustomButtonBlock name='animals' values={['Есть', 'Нет']} />
+                        <SelectButton
+                            selectedValue={animals}
+                            setSelectedValue={setAnimals}
+                            values={['Есть', 'Нет']}
+                        />
                     </div>
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Спальни</div>
-                        <CustomButtonBlock name='bedrooms' values={['Неважно', '1', '2', '3', '4 +']} />
+                        <SelectButton
+                            selectedValue={bedrooms}
+                            setSelectedValue={setBedrooms}
+                            values={['Неважно', '1', '2', '3', '4 +']}
+                        />
                     </div>
 
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Язык хозяина</div>
-                        <CustomSelectCheckBox
-                            confirmFilter={confirmFilter}
+                        <SelectCheckBox
+                            selectedValues={language}
+                            setSelectedValues={setLanguage}
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={[
@@ -94,8 +124,9 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
 
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Характеристики</div>
-                        <CustomSelectCheckBox
-                            confirmFilter={confirmFilter}
+                        <SelectCheckBox
+                            selectedValues={specifications}
+                            setSelectedValues={setSpecifications}
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={['Бассейн',
@@ -112,8 +143,9 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
 
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Самое необходимое</div>
-                        <CustomSelectCheckBox
-                            confirmFilter={confirmFilter}
+                        <SelectCheckBox
+                            selectedValues={necessary}
+                            setSelectedValues={setNecessary}
                             className={styles.SelectCheckBox}
                             arrow={arrow}
                             values={['WI-FI',
@@ -129,19 +161,23 @@ const ModalFilter: FC<ModalFilterProps> = ({ className, active, setActive, ...pr
 
                     <div className={styles.BlockText}>
                         <div className={styles.Text}>Количество Звезд</div>
-                        <Rating isEditable={true} initialRating={3} />
+                        <Rating
+                            filterRating={rating} 
+                            setFilterRating={setRating} 
+                            isEditable={true}
+                        />
                     </div>
                 </div>
                 <div className={styles.BlockBtn}>
                     <button
                         className={styles.BtnExit}
-                    // onClick={activeHandler}
+                        onClick={resetHandler}
                     >
                         Сбросить фильтры
                     </button>
                     <button
                         className={styles.BtnShow}
-                        onClick={e => confirmFilterHandler(e)}
+                        onClick={searchHandler}
                     >
                         Найти
                     </button>

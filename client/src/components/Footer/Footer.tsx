@@ -3,6 +3,7 @@ import {Link as ScrollLink } from 'react-scroll';
 import { Link, useNavigate } from "react-router-dom";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
+import { authSelector } from "../../redux/Slices/AuthSlice/AuthSelector";
 
 import Modal from "../Forms/Modal/Modal";
 
@@ -16,9 +17,7 @@ import mail from '../../assets/Main/mail.svg';
 
 const Footer: FC = () => {
     const navigate = useNavigate()
-    const { isAuth } = useTypedSelector(state => state.authReducer)
-
-    const [activeLogin, setActiveLogin] = useState<boolean>(false)
+    const { isAuth } = useTypedSelector(authSelector)
 
     const [activeModal, setActiveModal] = useState<boolean>(false)
 

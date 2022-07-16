@@ -1,9 +1,6 @@
 import { FC } from 'react'
 
-import { Footer, Header } from '../../components'
-import ApartamentsItems from '../../components/Apartaments/ApartamentsItems/ApartamentsItems'
-import RecommendProducts from '../../components/Apartaments/RecentProducts/RecommendProducts'
-import CommentItems from '../../components/Apartaments/СommentItems/СommentItems'
+import { ApartamentsItems, CommentItems, Footer, Header, RecentProducts } from '../../components'
 
 import styles from './Apartaments.module.scss'
 
@@ -15,7 +12,7 @@ const Apartaments: FC = (): JSX.Element => {
             <div className={styles.Container}>
                 <ApartamentsItems />
                 <CommentItems />    
-                <RecommendProducts />
+                <RecentProducts />
             </div>
             <Footer />
         </>            

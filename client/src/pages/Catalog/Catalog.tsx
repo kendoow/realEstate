@@ -1,14 +1,12 @@
 import { FC } from 'react'
 
-import { Footer, Header } from '../../components';
-import CatalogItems from '../../components/Catalog/CatalogItems/CatalogItems';
-
+import { CatalogItems, Footer, Header } from '../../components';
 
 const Catalog: FC = (): JSX.Element => {
     return (
         <>
             <Header />
-            <CatalogItems/>
+            <CatalogItems />
             <Footer/>
         </>
     )

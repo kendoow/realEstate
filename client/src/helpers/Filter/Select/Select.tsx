@@ -1,24 +1,21 @@
 import { FC, useRef, useState } from "react";
 import cn from 'classnames';
 
-import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
-import { addSelectedFilters } from "../../../redux/Slices/FilterSlice/FilterSlice";
 
-import { CustomSelectProps } from "./CustomSelect.types";
+import { SelectProps } from "./Select.types";
 
-import styles from './CustomSelect.module.scss';
+import styles from './Select.module.scss';
 
-const CustomSelect: FC<CustomSelectProps> = ({ className,
-    name,
+const Select: FC<SelectProps> = ({ className,
+    selectedValue,
+    setSelectedValue,
     arrow,
     values,
     ...props }) => {
 
-    const dispatch = useTypedDispatch()
     const ref = useRef(null)
     const [active, setActive] = useState<boolean>(false)
-    const [selectedValue, setSelectedValue] = useState<string>(values[0])
 
     const activeHandler = () => {
         setActive(!active)
@@ -26,7 +23,6 @@ const CustomSelect: FC<CustomSelectProps> = ({ className,
 
     const selectedValueHandler = (v: string) => {
         setSelectedValue(v)
-        dispatch(addSelectedFilters({[name]: v}))
     }
 
     const closeHanlder = () => {
@@ -61,4 +57,4 @@ const CustomSelect: FC<CustomSelectProps> = ({ className,
     )
 }
 
-export default CustomSelect;
+export default Select;

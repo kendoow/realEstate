@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import { authSelector } from "../../redux/Slices/AuthSlice/AuthSelector";
 
 import Modal from "../Forms/Modal/Modal";
-
+import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
 
 import styles from './Header.module.scss';
 
 import logo from '../../assets/Main/logo.svg';
 import heart from '../../assets/Main/heart-header.svg'
 import userIcon from '../../assets/Main/userIcon.svg'
-import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
 
 const Header: FC = () => {
-    const { isAuth } = useTypedSelector(state => state.authReducer)
+    const { isAuth } = useTypedSelector(authSelector)
 
     const [activeModal, setActiveModal] = useState<boolean>(false)
    

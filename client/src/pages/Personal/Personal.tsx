@@ -1,8 +1,7 @@
-import React, { FC } from 'react'
-import { Header } from '../../components'
-import PersonalAbout from '../../components/Personal/PersonalAbout/PersonalAbout'
-import PersonalData from '../../components/Personal/PersonalData/PersonalData'
-import PersonalMenu from '../../components/Personal/PersonalMenu/PersonalMenu'
+import { FC } from 'react'
+
+import { Header, PersonalAbout, PersonalData, PersonalMenu } from '../../components'
+
 import styles from './Personal.module.scss'
 const Personal: FC = (): JSX.Element => {
     return (
@@ -11,7 +10,7 @@ const Personal: FC = (): JSX.Element => {
             <div className={styles.container}>
                 <PersonalMenu />
                 <PersonalAbout />
-                <PersonalData/>
+                <PersonalData />
             </div>
         </>
     )

@@ -2,7 +2,7 @@ export interface ProductStateTypes {
   loading: boolean;
   error: null | string;
   products: IProduct[];
-  recommendedProducts: IProduct[];
+  recentProducts: IProduct[];
   selectedProduct: IProduct;
 }
 
