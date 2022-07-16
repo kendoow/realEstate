@@ -16,18 +16,18 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    
+
     .Content {
         overflow: auto;
         cursor: auto;
         width: 600px;
-        
+
         height: 85vh;
         padding: 30px 50px;
-        
+
         border-radius: 15px;
         background-color: #fff;
-    
+
         .Title {
             color: #686868;
             font-weight: 600;
@@ -46,19 +46,22 @@
             .BlockText {
                 display: grid;
                 gap: 15px 0;
+
                 .Text {
                     color: $color-coffee;
                     font-weight: 600;
                     font-size: 18px;
                     line-height: 19px;
                 }
-                
+
                 .Select {
                     max-width: 100px;
                 }
+
                 .SelectCheckBox {
                     max-width: 250px;
                 }
+
                 select {
                     max-width: 250px;
                     padding: 10px;
@@ -67,19 +70,21 @@
                     background: rgba(217, 217, 217, 0.1);
 
                     transition: border-radius 0.3 ease-in-out,
-                                border 0.3 ease-in-out;
+                        border 0.3 ease-in-out;
 
                     font-size: 18px;
                     line-height: 18px;
-                    
+
                     -webkit-appearance: none;
                     background-image: url('../../../assets/Helpers/select-arrow.svg');
                     background-repeat: no-repeat;
                     background-position: 95%;
+
                     option {
                         font-size: 18px;
-                        line-height: 18px;    
+                        line-height: 18px;
                     }
+
                     &:focus {
                         border-radius: 15px;
                         border: 2px solid rgba(0, 0, 0, 0.3);
@@ -99,9 +104,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-              
+
                 justify-self: center;
-              
+
                 font-family: "Lato", sans-serif;
                 font-weight: 700;
                 font-size: 16px;
@@ -112,8 +117,8 @@
 
                 border: 2px solid #ED5353;
                 transition: border-radius 0.3s ease-in-out,
-                            color 0.3s ease-in-out,
-                            background-color 0.3s ease-in-out;
+                    color 0.3s ease-in-out,
+                    background-color 0.3s ease-in-out;
 
                 &:hover {
                     border-radius: 8px;
@@ -121,11 +126,12 @@
                     background-color: #ED5353;
                 }
             }
+
             .BtnShow {
                 @include buttonPrimary;
                 transition: border-radius 0.3s ease-in-out,
-                color 0.3s ease-in-out,
-                background-color 0.3s ease-in-out;
+                    color 0.3s ease-in-out,
+                    background-color 0.3s ease-in-out;
 
                 padding: 10px 30px;
                 font-size: 16px;
@@ -139,5 +145,5 @@
 .Active {
     overflow: auto;
     visibility: visible;
-    
+
 }

@@ -23,12 +23,11 @@ export const addFavourite = createAsyncThunk(
         try {
             const { userId, productId, products, favourite } = favouriteAddArguments
             const updatedFavourite = [...favourite, ...products.filter(v => v._id === productId)]
-            const response = await axios.put<FavouriteFecth>(`${API_URL}user/product/${userId}`,
-                                                            {favourites:  updatedFavourite})
-            console.log(response)
+            await axios.put<FavouriteFecth>(`${API_URL}user/product/${userId}`,
+                { favourites: updatedFavourite })
             return updatedFavourite
         } catch (e) {
-            return rejectWithValue(`Не удалось добавить в избранное - ${e}`)            
+            return rejectWithValue(`Не удалось добавить в избранное - ${e}`)
         }
     }
 )
@@ -40,10 +39,10 @@ export const deleteFavourite = createAsyncThunk(
             const { userId, productId, favourite } = favouriteDeleteArguments
             const updatedFavourite = favourite.filter(v => v._id !== productId)
             await axios.put<FavouriteFecth>(`${API_URL}user/product/${userId}`,
-                                                            {favourites:  updatedFavourite})
+                { favourites: updatedFavourite })
             return updatedFavourite
         } catch (e) {
-            return rejectWithValue(`Не удалось удалить из избранного - ${e}`)            
+            return rejectWithValue(`Не удалось удалить из избранного - ${e}`)
         }
     }
 )

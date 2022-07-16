@@ -5,7 +5,7 @@ import { AuthStateTypes, IUser } from "./AuthSlice.types";
 const initialState: AuthStateTypes = {
     loading: false,
     error: null,
-    isAuth: false,
+    isAuth: !!localStorage.getItem('accessToken'),
     user: {} as IUser
 }
 

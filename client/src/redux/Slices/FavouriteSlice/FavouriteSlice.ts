@@ -14,7 +14,11 @@ const initialState: FavouriteStateTypes = {
 export const FavouriteSlice = createSlice({
     name: 'favourite',
     initialState,
-    reducers: {},
+    reducers: {
+        removeFavourite: (state) => {
+            state.favourite = []
+        },
+    },
     extraReducers: {
         [fetchFavourite.pending.type]: (state) => {
             state.loading = true
@@ -62,4 +66,5 @@ export const FavouriteSlice = createSlice({
 
 const { actions, reducer } = FavouriteSlice
 
+export const { removeFavourite } = actions;
 export default reducer;

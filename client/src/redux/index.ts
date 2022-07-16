@@ -4,6 +4,7 @@ import productsReducer from './Slices/ProductsSlice/ProductsSlice';
 import commentsReducer from './Slices/CommentsSlice/CommentsSlice';
 import authReducer  from "./Slices/AuthSlice/AuthSlice";
 import favouriteReducer from './Slices/FavouriteSlice/FavouriteSlice';
+import filterReducer from './Slices/FilterSlice/FilterSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         commentsReducer,
         authReducer,
         favouriteReducer,
+        filterReducer,
     },  
     devTools: true,
 })

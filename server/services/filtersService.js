@@ -5,8 +5,9 @@ import ProductsService from "./productsService.js";
 class FiltersService {
     async getAll(productFilters) {
         try {
-            // Избавляемся от фильтров false {wifi: false} -> {}
-            const productFiltersTrue = Object.fromEntries(Object.entries(productFilters).filter(([_, v]) => v !== 'false'))
+            // Избавляемся от фильтров false {wifi: false, rooms: 'Неважно'} -> {}
+            const productFiltersTrue = Object.fromEntries(Object.entries(productFilters).filter(([_, v]) => v !== 'false' 
+                                                                                                         && v !== 'Неважно'))
 
             const filters = await FiltersModel.find()
             // Формумируем массив фильтров которые совпадают с productFiltersTrue

@@ -24,8 +24,9 @@ const Filter: FC = () => {
                     Кол-во комнат
                 </div>
                 <CustomSelect
+                    name='rooms'
                     arrow={arrow}
-                    values={Array(5).fill(0).map((v, i) => v = i + 1)} />
+                    values={['Неважно', '1', '2', '3', '4', '5',]} />
             </div>
 
             <div className={styles.Block}>

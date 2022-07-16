@@ -1,12 +1,25 @@
-import { RatingProps } from "./Rating.props"
+import { useEffect, useState } from "react"
+
+import useTypedDispatch from "../../hooks/useTypedDispatch"
+import { addSelectedFilters } from "../../redux/Slices/FilterSlice/FilterSlice"
+
+import { RatingProps } from "./Rating.types"
+
 import styles from './Rating.module.scss'
+
 import StarIconFilled from '../../assets/Main/filled-star.svg'
 import StarIconEmpty from '../../assets/Main/empty-star.svg'
-import { useEffect, useState } from "react"
+
 export const Rating = ({ initialRating = 0, isEditable = false }: RatingProps): JSX.Element => {
-
-
+    const dispatch = useTypedDispatch()
     const [numSelectedStars, setNumSelectedStars] = useState(initialRating);
+
+    useEffect(() => {
+        dispatch(addSelectedFilters({
+            rating: String(numSelectedStars)
+        }))
+    }, [numSelectedStars])
+
     const fillHandler = (i:number) => {
         isEditable ? setNumSelectedStars(i + 1) : setNumSelectedStars(initialRating);
     }

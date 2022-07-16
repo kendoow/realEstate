@@ -1,18 +1,17 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
 import useInput from '../../../hooks/useInput'
 import useTypedDispatch from '../../../hooks/useTypedDispatch'
-import { IUser, UserRegistrationType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
 import { registration } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
 
-import Checkbox from '../../../helpers/Checkbox/Checkbox'
-import Login from '../Login/Login'
+import { RegistrationProps } from './Registration.types'
+import { UserRegistrationType } from '../../../redux/Slices/AuthSlice/AuthSlice.types'
+
 
 import styles from './Registration.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
-import { RegistrationProps } from './Registration.types'
 
 const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Element => {
     const [hidePasswordFirts, setHidePasswordFirts] = useState<boolean>(true);

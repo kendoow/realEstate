@@ -35,16 +35,15 @@ const MainProduct: FC<MainProductProps> = ({ image,
     const dispatch = useTypedDispatch()
     const { products } = useTypedSelector(state => state.productsReducer)
     const { favourite } = useTypedSelector(state => state.favouriteReducer)
-    const { user, isAuth } = useTypedSelector(state => state.authReducer)
-    
+    const { user, isAuth, loading } = useTypedSelector(state => state.authReducer)
     
     useEffect(() => {
-        console.log(isAuth)
-        isAuth  && dispatch(fetchFavourite(user.id))
-    }, [isAuth])
+        !loading && isAuth && user.id && dispatch(fetchFavourite(user.id))
+    }, [isAuth, user])
 
     useEffect(() => {
         if (favourite.find(v => v._id === id)) isFilled(true)
+        else isFilled(false)
     }, [favourite])
 
     const favoutiteHandler = (e: MouseEvent<HTMLImageElement>) => {
@@ -75,11 +74,14 @@ const MainProduct: FC<MainProductProps> = ({ image,
             <Link 
              to={`/apartments/${id}`} 
              className={styles.Btn}>
-                <img 
-                 onClick={e => favoutiteHandler(e)} 
-                 className={styles.ImgHeart} 
-                 src={filled ? heartFilled : heartEmpty} 
-                 alt='heart' />
+                {
+                    isAuth && 
+                    <img 
+                    onClick={e => favoutiteHandler(e)} 
+                    className={styles.ImgHeart} 
+                    src={filled ? heartFilled : heartEmpty} 
+                    alt='heart' />
+                }
                 <SimpleSlider>
                     {
                         image.map((img) => (

@@ -17,8 +17,6 @@ import ToggleList from "../../helpers/Header/ToggleList/ToggleList";
 const Header: FC = () => {
     const { isAuth } = useTypedSelector(state => state.authReducer)
 
-    let accessToken = localStorage.getItem('accessToken')
-
     const [activeModal, setActiveModal] = useState<boolean>(false)
    
     const [page, setPage] = useState<string>('')
@@ -34,10 +32,6 @@ const Header: FC = () => {
         setActiveModal(true)
     }
 
-    useEffect(() => {
-        accessToken = localStorage.getItem('accessToken')
-    }, [isAuth])
-
     const [activeToggleList, setActiveToggleList] = useState(false)
 
     const activeToogleListHandler = (e: MouseEvent<HTMLDivElement>) => {
@@ -52,12 +46,12 @@ const Header: FC = () => {
 
     return (
         <div
-            style={accessToken ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }}
+            style={isAuth ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }}
             className={styles.Container}>
             <Link to='/'>
                 <img className={styles.Logo} src={logo} />
             </Link>
-            <div className={accessToken ? styles.BlockLinkAuth : styles.BlockLink}>
+            <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
                 <a href='tel:+79660406664'>+7-966-040-66-64</a>
                 <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
                 <Link to='/catalog'>Каталог</Link>
@@ -65,7 +59,7 @@ const Header: FC = () => {
                 <Link to='/FAQ'>FAQ</Link>
             </div>
 
-            {accessToken ?
+            {isAuth ?
                 <>
                     <div className={styles.RightSideBar}>
                         <Link to='/favorite'>

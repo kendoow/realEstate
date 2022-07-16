@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import useTypedDispatch from '../../../hooks/useTypedDispatch';
+import { removeFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice';
 import { logout } from '../../../redux/Slices/AuthSlice/AuthActionCreator';
 
 import styles from './PersonalMenu.module.scss'
@@ -14,6 +15,7 @@ const PersonalMenu: FC = (): JSX.Element => {
     const dispatch = useTypedDispatch()
 
     const logoutHandler = () => {
+        dispatch(removeFavourite())
         dispatch(logout())
     }
 
