@@ -21,9 +21,7 @@
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-content: space-between;
-    gap: 30px 20px;
-    margin-bottom: 30px;
-    
+    gap: 30px 20px;    
   }
   .Center{
     display:flex;
@@ -53,6 +51,33 @@
       border-radius: 8px;
       color: $color-coffee;
       background-color: $color-white;
+    }
+  }
+}
+
+@media (max-width: 1399.98px) {
+  .Container {
+    padding: 0 3%;
+    margin: 40px 0;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .Container {
+    .BlockGrid {
+      grid-template-columns: repeat(3, auto);
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .Container {
+    .Title {
+      font-size: 27px;
+      line-height: 33px;
+    }
+    .BlockGrid {
+      grid-template-columns: repeat(2, auto);
     }
   }
 }

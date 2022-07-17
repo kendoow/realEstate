@@ -5,7 +5,8 @@
   padding: 0 calc(50% - 650px);
 
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
   align-content: center;
 
   height: 70px;
@@ -23,7 +24,7 @@
   .BlockLink {
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-between;
+    gap: 0 20px;
     align-content: center;
 
     font-size: 16px;
@@ -41,7 +42,7 @@
   .BlockLinkAuth {
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-between;
+    gap: 0 20px;
     align-content: center;
 
     font-size: 16px;
@@ -121,9 +122,93 @@
     border-radius: 23px;
     margin-left: 20px;
     position: relative;
-    margin-right: 3%;
     img {
       padding: 5px;
+    }
+  }
+}
+
+@media (max-width: 1399.98px) {
+  .Container {
+    padding: 0 3%;
+    
+    .Logo {
+      margin: 0;
+    }
+  }
+}
+@media (max-width: 1199.98px) {
+  .Container {
+    .Logo {
+      max-width: 110px;
+    }
+    .BlockLinkAuth,
+    .BlockLink {
+      gap: 15px;
+    }
+    .BlockBtn {
+      .Login,
+      .Registration {
+          font-size: 14px;
+          line-height: 16px;
+      }  
+    }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .Container {
+
+    .Logo {
+      max-width: 100px;
+    }
+    .BlockLinkAuth,
+    .BlockLink {
+      gap: 10px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+  .RightSideBar {
+    .UserPanel {
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .Container {
+    grid-template-columns: repeat(2, auto);
+    .Logo {
+      display: none;
+    }
+    .BlockLinkAuth,
+    .BlockLink {
+      gap: 10px;
+      font-size: 13px;
+      line-height: 15px;
+    }
+    .BlockBtn {
+      display: none;
+      // .Login {
+      //   display: none;
+      // }
+      // .Registration {
+      //   padding: 8px 13px;
+      //   font-size: 10px;
+      //   line-height: 12px;
+      // }
+    }  
+  }
+  .RightSideBar {
+    .LinkPersonal {
+      img {
+        width: 37px;
+        height: 37px;
+      }
+      .UserPanel {
+        margin-left: 5px;
+      }  
     }
   }
 }

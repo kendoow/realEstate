@@ -29,10 +29,17 @@ const MainProducts: FC = (): JSX.Element => {
     return (
         <div className={styles.Container}>
             <h2 id="popular" className={styles.Title}>Популярные <br /> апартаменты</h2>
-            <div className={styles.Center}>
-                {loading && <Spiner />}
-                {error && <h1 className={styles.Error}> {error}</h1>}
-            </div>
+                {
+                    loading && <div className={styles.Center}>
+                                    <Spiner />
+                               </div>
+                }
+                {
+                    error && 
+                    <div className={styles.Center}>
+                        <h1 className={styles.Error}>{error}</h1>
+                    </div>
+                }
 
             <div className={styles.BlockGrid}>
                 {

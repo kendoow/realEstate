@@ -6,14 +6,18 @@ class FiltersService {
     async getAll(productFilters) {
         try {
             // Избавляемся от фильтров false {wifi: false, rooms: 'Неважно'} -> {}
-            const productFiltersTrue = Object.fromEntries(Object.entries(productFilters).filter(([_, v]) => v !== 'false' 
-                                                                                                         && v !== 'Неважно'))
+            const productFiltersTrue = Object.fromEntries(Object.entries(productFilters).filter(([_, v]) => v !== 'false'
+                && v !== 'Неважно'))
 
             const filters = await FiltersModel.find()
             // Формумируем массив фильтров которые совпадают с productFiltersTrue
             const isTrueFiltersArray = filters.map(filter => Object.entries(filter['_doc'])
                 .filter(([key, v]) => {
                     if (typeof v === 'string') {
+                        if (key === 'price'
+                            && productFiltersTrue[key]
+                            && +productFiltersTrue[key].split(' ')[0] <= +v
+                            && +productFiltersTrue[key].split(' ').pop() >= +v) return v
                         if (productFiltersTrue[key] === v) return v
                     } else {
                         if (!!productFiltersTrue[key] === v) return v

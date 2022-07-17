@@ -66,3 +66,63 @@
     }
   }
 }
+
+@media (max-width: 1399.98px) {
+  .Container {
+    padding: 0 3% 20px 3%;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .Container {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .Container {
+    .Block {
+      .Title {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      .Contacts {
+        p {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+    .BlockLogo {
+      gap: 10px;
+      img {
+        width: 100px;
+      }
+      .Gpc {
+        padding-top: 10px;
+        width: 70px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .Container {
+    .Block {
+      .Contacts {
+        p {
+          font-size: 16px;
+          line-height: 18px;
+        }
+      }
+    }
+    .BlockLogo {
+      align-content: flex-start;
+      grid-auto-flow: row;
+      .Gpc {
+        padding: 0;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@
 
         .Btn {
 
-            font-size: 16px !important;
+            font-size: 16px;
             height: 46px;
 
             align-items: center;
@@ -32,20 +32,17 @@
             line-height: 18px;
         }
 
-        .Select,
         .Input {
+            min-width: 300px;
+            font-size: 18px;
+            line-height: 18px;
+
             padding: 10px;
             background: rgba(217, 217, 217, 0.1);
             border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 2px;
 
             transition: $transition;
-        }
-
-        .Input {
-            min-width: 300px;
-            font-size: 18px;
-            line-height: 18px;
 
             &::placeholder {
                 color: #D9D9D9;
@@ -54,25 +51,6 @@
             &:focus {
                 border-radius: 10px;
                 border: 2px solid rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        .Select {
-            font-size: 18px;
-            line-height: 18px;
-            -webkit-appearance: none;
-            background-image: url('../../assets/Helpers/select-arrow.svg');
-            background-repeat: no-repeat;
-            background-position: 90%;
-
-            option {
-                font-size: 18px;
-                line-height: 18px;
-            }
-
-            &:focus {
-                border-radius: 10px;
-                border: 2px solid rgba(0, 0, 0, 0.3);
             }
         }
 
@@ -96,4 +74,73 @@
         }
     }
 
+}
+
+@media (max-width: 1399.98px) {
+    .Container {
+        padding: 25px 3%;
+        grid-template-columns: repeat(5, auto);
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .Container {
+        .Block {
+            .Input {
+                min-width: 100px;
+                font-size: 14px;
+            }
+            .Select {
+                font-size: 13px;
+            }
+            .Text {
+                font-size: 18px;
+            }
+            .Btn {
+                padding: 10px 35px;
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) {
+    .Container {
+        gap: 12px;
+        .Block {
+            gap: 7px 12px;
+            .Text {
+                font-size: 16px;
+                line-height: 18px;
+            }
+            .BtnCoffee,
+            .BtnWhite,
+            .Btn {
+                font-size: 14px;
+                padding: 6px 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Container {
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(2, auto);
+        .Block:nth-child(4) {
+            gap: 0;
+            grid-template-rows: 0px 45px;
+            justify-content: space-between;
+        }
+        .Block:nth-child(5) {
+            gap: 0;
+            grid-template-rows: 0px 50px;
+            justify-content: flex-start;
+        }
+        .Block {
+            .BtnCoffee,
+            .BtnWhite {
+                padding: 6px 30px;
+            }
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useEffect, useRef, useState } from "react";
+import { FC, MouseEvent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
@@ -39,6 +39,7 @@ const Header: FC = () => {
     }
 
     const refToogleList = useRef(null)
+
     const closeHandler = () => {
         setActiveToggleList(false)
     }
@@ -48,8 +49,11 @@ const Header: FC = () => {
         <div
             style={isAuth ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }}
             className={styles.Container}>
-            <Link to='/'>
-                <img className={styles.Logo} src={logo} />
+            <Link 
+                to='/'
+                className={styles.Logo}
+            >
+                <img src={logo} />
             </Link>
             <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
                 <a href='tel:+79660406664'>+7-966-040-66-64</a>
@@ -80,7 +84,10 @@ const Header: FC = () => {
                                     valuesLink={['/personal', '/favorite', '/']} 
                                 />
                             </div>
-                            <Link to='/personal' >
+                            <Link
+                                className={styles.LinkPersonal} 
+                                to='/personal' 
+                            >
                                 <img src={userIcon} alt="icon" />
                             </Link>
                         </div>
@@ -89,8 +96,18 @@ const Header: FC = () => {
                 :
                 <>
                     <div className={styles.BlockBtn}>
-                        <button onClick={() => loginHandler()} className={styles.Login}>Войти</button>
-                        <button onClick={() => registrationHandler()} className={styles.Registration}>Зарегистрироваться</button>
+                        <button 
+                            onClick={() => loginHandler()} 
+                            className={styles.Login}
+                        >
+                            Войти
+                        </button>
+                        <button 
+                            onClick={() => registrationHandler()} 
+                            className={styles.Registration}
+                        >
+                            Зарегистрироваться
+                        </button>
                     </div>
 
                     <Modal page={page} setPage={setPage} active={activeModal} setActive={setActiveModal}/>

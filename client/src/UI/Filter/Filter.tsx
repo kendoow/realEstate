@@ -14,7 +14,7 @@ import {
 
 import ModalFilter from "./ModalFilter/ModalFilter";
 import Select from "./Select/Select";
-import CustomSelectInput from "./Select/CustomSelectInput/CustomSelectInput";
+import SelectInput from "./Select/SelectInput/SelectInput";
 
 import styles from './Filter.module.scss';
 
@@ -39,6 +39,7 @@ const Filter: FC = () => {
     const [language, setLanguage] = useState<string[]>([])
     const [home, setHome] = useState<string[]>([])
 
+    const [price, setPrice] = useState<string | boolean>(false)
     const [balcony, setBalcony] = useState<string | boolean>(false)
     const [animals, setAnimals] = useState<string | boolean>(false)
     const [bedrooms, setBedrooms] = useState<string | boolean>(false)
@@ -49,6 +50,7 @@ const Filter: FC = () => {
             floor,
             rating,
 
+            price: typeof price === 'string' ? price : undefined,
             balcony: typeof balcony === 'string' ? balcony : undefined,
             animals: animals == 'Eсть' ? true : undefined,
             bedrooms: typeof bedrooms === 'string' ? bedrooms : undefined,
@@ -90,6 +92,7 @@ const Filter: FC = () => {
                     Кол-во комнат
                 </div>
                 <Select
+                    className={styles.Select}
                     selectedValue={rooms}
                     setSelectedValue={setRooms}
                     arrow={arrow}
@@ -114,7 +117,12 @@ const Filter: FC = () => {
                 <div className={styles.Text}>
                     Стоимость
                 </div>
-                <CustomSelectInput arrow={arrow} />
+                <SelectInput
+                    className={styles.Select}
+                    selectedValue={price}
+                    setSelectedValue={setPrice} 
+                    arrow={arrow}
+                />
             </div>
             <div className={styles.Block}>
                 <button
