@@ -46,11 +46,11 @@
       color: $color-gray-transparent;
       margin-bottom: 20px;
     }
-    .Description{
-        max-width: 600px;
-        font-size: 18px;
-        line-height: 20px;
-        color: $color-gray-transparent;
+    .Description {
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 20px;
+      color: $color-gray-transparent;
     }
   }
   .Btn {
@@ -61,9 +61,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       cursor: pointer;
-      img{
+      img {
         border-radius: 10px;
       }
     }
@@ -73,6 +73,64 @@
       right: 15px;
       z-index: 1;
     }
-    
+  }
+}
+
+@media (max-width: 1400px) {
+  .Container {
+    margin-left: 3%;
+  }
+}
+
+@media (max-width: 992px) {
+  .Container {
+    .BlockContent {
+      .Description {
+        max-width: 500px;
+      }
+    }
+  }
+}
+
+@media (max-width: 786px) {
+  .Container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .BlockContent {
+      h3 {
+        font-size: 24px;
+      }
+      .Price {
+        font-size: 26px;
+
+        .USD {
+          font-size: 16px;
+        }
+      }
+      .Rooms {
+        font-size: 16px;
+      }
+      .BlockText {
+        font-size: 16px;
+      }
+      .Description {
+        max-width: 350px;
+        font-size: 16px;
+      }
+    }
+    .Btn {
+      .Slider {
+        img {
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Container {
+    margin-bottom: 40px;
   }
 }

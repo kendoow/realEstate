@@ -53,38 +53,36 @@
     color: $color-white;
     padding: 4px 8px;
   }
-  .changePassword{
-      padding-top: 30px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0px 6px 10px rgba(82, 82, 82, 0.1);
-      padding: 20px;
-    h5{
-        font-size: 18px;
-        color: $color-gray-transparent;
-        margin-bottom: 15px;
+  .changePassword {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 6px 10px rgba(82, 82, 82, 0.1);
+    padding: 20px;
+    h5 {
+      font-size: 18px;
+      color: $color-gray-transparent;
+      margin-bottom: 15px;
     }
-    
-    .inputWrapper{
+
+    .inputWrapper {
       position: relative;
       width: 290px;
-      img{
+      img {
         position: absolute;
         top: 14px;
         right: 17px;
-
       }
     }
-    
-    
-    input{
+
+    input {
       font-size: 18px;
       padding: 8px 10px;
       border: 1px solid rgba(88, 88, 88, 0.2);
       border-radius: 5px;
       margin-bottom: 10px;
       width: 290px;
-  }
+    }
     .btn {
       @include buttonPrimary;
       margin-top: 18px;
@@ -92,36 +90,75 @@
       justify-content: center;
       align-items: center;
       width: 190px;
-     
     }
   }
-  
+}
+.MobileCenter {
+  display: none;
+  .ExitMobile {
+    display: none;
+  }
 }
 
-
-@media (max-width:660px) {
+@media (max-width: 768px) {
   .container {
-    margin-left: 3%;
-    padding-bottom: 40px;
-    padding-top: 40px;
-    width: 100%;
     margin: 0 auto;
-    .info {
-     
-      input[type="text"],
-      input[type="date"] {
-        
-        width: 250px;
-       
-      }
-    
+    .inputWrapper {
+      position: relative;
+      width: 200px;
     }
-    .btn {
-     
-      margin-top: 18px;
-      
-      @include buttonPrimary;
-      margin-bottom: 0px;
+    input[type="tel"] {
+      width: 250px !important;
+    }
+  }
+  input {
+    width: 250px !important;
+  }
+  .inputWrapper {
+    width: 250px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    margin-top: 50px !important;
+
+    margin: 0 auto;
+    .inputWrapper {
+      position: relative;
+      width: 200px;
+    }
+    input[type="tel"] {
+      width: 300px !important;
+    }
+  }
+  input {
+    width: 300px !important;
+  }
+  .inputWrapper {
+    width: 300px !important;
+  }
+  .MobileCenter {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ExitMobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      font-size: 18px;
+      color: $color-gray;
+      background-color: $color-gray-light;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      width: 120px;
+      margin-right: 20px;
+
+      .BtnMobile {
+        margin-left: 5px;
+      }
     }
   }
 }

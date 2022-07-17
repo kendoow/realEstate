@@ -37,7 +37,7 @@ const CatalogItems: FC = (): JSX.Element => {
 
     return (
         <>
-         <Filter />
+         {/* <Filter /> */}
 
          <div className={styles.Container}>
          <div className={styles.Center}>

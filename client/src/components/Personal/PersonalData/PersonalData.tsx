@@ -5,8 +5,21 @@ import styles from './PersonalData.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
+import { Link } from 'react-router-dom'
+import useTypedDispatch from '../../../hooks/useTypedDispatch'
+import { removeFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice'
+import { logout } from '../../../redux/Slices/AuthSlice/AuthActionCreator'
+import exit from '../../../assets/Personal/exit.svg';
+
 
 const PersonalData: FC = (): JSX.Element => {
+
+  const dispatch = useTypedDispatch()
+
+    const logoutHandler = () => {
+        dispatch(removeFavourite())
+        dispatch(logout())
+    }
 
   const [hidePasswordFirst, setHidePasswordFirst] = useState(true); // скрыть показать пароль
   const [hidePasswordSecond, setHidePasswordSecond] = useState(true); // скрыть показать пароль
@@ -49,6 +62,15 @@ const PersonalData: FC = (): JSX.Element => {
           <button className={styles.btn}>Сохранить</button>
         </div>
       </div>
+      <div className={styles.MobileCenter}>
+      <Link
+                 to='/' 
+                 className={styles.ExitMobile}
+                 onClick={logoutHandler}>
+                    <img src={exit} alt="" />
+                    <button className={styles.BtnMobile}>Выйти</button>
+        </Link>
+        </div>
     </>
   )
 }
