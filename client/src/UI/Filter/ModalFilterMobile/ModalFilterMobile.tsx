@@ -1,25 +1,31 @@
-import { FC, MouseEvent, useEffect } from "react";
+import { FC } from "react";
 import cn from 'classnames';
 
-import Rating from "../../Rating/Rating";
-import SelectButton from "../Select/SelectButton/SelectButton";
-import SelectCheckBox from "../Select/SelectCheckBox/SelectCheckBox";
 import Select from "../Select/Select";
+import SelectInput from "../Select/SelectInput/SelectInput";
+import SelectCheckBox from "../Select/SelectCheckBox/SelectCheckBox";
+import SelectButton from "../Select/SelectButton/SelectButton";
+import Rating from "../../Rating/Rating";
 
-import { ModalFilterProps } from "./ModalFilter.types";
+import { ModalFilterMobileProps } from "./ModalFilterMobile.types";
 
-import styles from './ModalFilter.module.scss';
+import styles from './ModalFilterMobile.module.scss';
 
-import arrow from '../../../assets/Helpers/select-arrow.svg'
+import close from '../../../assets/Main/close.svg';
+import arrow from '../../../assets/Helpers/select-arrow.svg';
 
-const ModalFilter: FC<ModalFilterProps> = ({ className,
+const ModalFilterMobile: FC<ModalFilterMobileProps> = ({
+    className,
     active,
     setActive,
-    searchHandler,
     resetHandler,
+    searchHandler,
 
+    rooms,
     floor,
     rating,
+
+    setRooms,
     setFloor,
     setRating,
 
@@ -32,35 +38,63 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
     setLanguage,
     setHome,
 
+    price,
     balcony,
     animals,
     bedrooms,
+
+    setPrice,
     setBalcony,
     setAnimals,
     setBedrooms,
-    ...props }) => {
-    const activeHandler = (e: MouseEvent<HTMLDivElement> |
-        MouseEvent<HTMLAnchorElement> |
-        MouseEvent<HTMLButtonElement>) => {
-        if (e.currentTarget === e.target) setActive(!active)
+    ...props
+}) => {
+    const closeHandler = () => {
+        setActive(false)
     }
-
-    useEffect(() => {
-        document.body.style.overflow = active ? 'hidden' : 'auto'
-    }, [active])
 
     return (
         <div
-            className={cn(styles.Container, className, {
-                [styles.Active]: active
+            className={cn(className, styles.Container, {
+                [styles.Active]: active,
             })}
-            onClick={activeHandler}
-            {...props}>
+            {...props}
+        >
             <div className={styles.Content}>
-                <h2 className={styles.Title}>Фильтры</h2>
-                <div className={styles.BlockInput}>
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Этаж</div>
+                <div className={styles.BlockTitle}>
+                    <h2 className={styles.Title}>Фильтры</h2>
+                    <img
+                        onClick={closeHandler}
+                        src={close}
+                        alt="Close Icon"
+                    />
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Количество комнат</div>
+                        <Select
+                            className={styles.Select}
+                            selectedValue={rooms}
+                            setSelectedValue={setRooms}
+                            arrow={arrow}
+                            values={['Неважно', '1', '2', '3', '4', '5',]}
+                        />
+                    </div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Стоимость</div>
+                        <SelectInput
+                            className={styles.Select}
+                            selectedValue={price}
+                            setSelectedValue={setPrice}
+                            arrow={arrow}
+                        />
+                    </div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Этаж</div>
                         <Select
                             selectedValue={floor}
                             setSelectedValue={setFloor}
@@ -69,8 +103,10 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                             values={['Неважно', '1', '2', '3', '4', '5']}
                         />
                     </div>
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Обустройство дома</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Обустройство дома</div>
                         <SelectCheckBox
                             selectedValues={home}
                             setSelectedValues={setHome}
@@ -83,35 +119,43 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                                 'Виодеонаблюдение']}
                         />
                     </div>
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Балкон</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Балкон</div>
                         <SelectButton
+                            className={styles.SelectBtn}
                             selectedValue={balcony}
                             setSelectedValue={setBalcony}
                             values={['Есть', 'Нет', 'Лоджия']}
                         />
                     </div>
-
-
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Домашние животные</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Домашние животные</div>
                         <SelectButton
+                            className={styles.SelectBtn}
                             selectedValue={animals}
                             setSelectedValue={setAnimals}
                             values={['Есть', 'Нет']}
                         />
                     </div>
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Спальни</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Спальни</div>
                         <SelectButton
+                            className={styles.SelectBtn}
                             selectedValue={bedrooms}
                             setSelectedValue={setBedrooms}
                             values={['Неважно', '1', '2', '3', '4 +']}
                         />
                     </div>
-
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Язык хозяина</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Язык хозяина</div>
                         <SelectCheckBox
                             selectedValues={language}
                             setSelectedValues={setLanguage}
@@ -122,12 +166,13 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                                 'Немецкий',
                                 'Французский',
                                 'Японский',
-                                'Английский']} 
+                                'Английский']}
                         />
                     </div>
-
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Характеристики</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Характеристики</div>
                         <SelectCheckBox
                             selectedValues={specifications}
                             setSelectedValues={setSpecifications}
@@ -143,12 +188,13 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                                 'Зарядка для электромобиля',
                                 'Спортзал',
                                 'Завтрак',
-                                'Можно курить']} 
+                                'Можно курить']}
                         />
                     </div>
-
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Самое необходимое</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Самое необходимое</div>
                         <SelectCheckBox
                             selectedValues={necessary}
                             setSelectedValues={setNecessary}
@@ -162,12 +208,13 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                                 'Кухня',
                                 'Сущильная машина',
                                 'Рабочая зона',
-                            ]} 
+                            ]}
                         />
                     </div>
-
-                    <div className={styles.BlockText}>
-                        <div className={styles.Text}>Количество Звезд</div>
+                </div>
+                <div className={styles.BlockFilter}>
+                    <div className={styles.Block}>
+                        <div className={styles.Name}>Количество звед</div>
                         <Rating
                             filterRating={rating}
                             setFilterRating={setRating}
@@ -175,23 +222,14 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                         />
                     </div>
                 </div>
+
                 <div className={styles.BlockBtn}>
-                    <button
-                        className={styles.BtnExit}
-                        onClick={resetHandler}
-                    >
-                        Сбросить фильтры
-                    </button>
-                    <button
-                        className={styles.BtnShow}
-                        onClick={searchHandler}
-                    >
-                        Найти
-                    </button>
+                    <button className={styles.BtnExit}>Сбросить</button>
+                    <button className={styles.BtnShow}>Найти</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default ModalFilter;
+export default ModalFilterMobile;

@@ -9,6 +9,7 @@ import { fetchFilterProducts } from '../../../redux/Slices/FilterSlice/FilterAct
 import CatalogItem from '../CatalogItem/CatalogItem'
 import Spiner from '../../../UI/Spiner/Spiner'
 import Filter from '../../../UI/Filter/Filter'
+import FilterMobile from '../../../UI/Filter/FilterMobile/FilterMobile'
 
 // import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 
@@ -18,7 +19,7 @@ const CatalogItems: FC = (): JSX.Element => {
     // const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
     const { loading, error, selectedFilters, filterProducts } = useTypedSelector(filterSelector)
     const dispatch = useTypedDispatch()
-
+  
     useEffect(() => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
@@ -37,8 +38,8 @@ const CatalogItems: FC = (): JSX.Element => {
 
     return (
         <>
-         {/* <Filter /> */}
-
+        <FilterMobile />
+        <Filter />
          <div className={styles.Container}>
             <h2 className={styles.Title}>Аппартаменты в Москве по вашему запросу</h2>
          <div className={styles.Center}>

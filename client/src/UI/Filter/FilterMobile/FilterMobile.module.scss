@@ -1,0 +1,52 @@
+@import '../../../scss/variables.scss';
+
+.Container {
+    position: relative;
+    display: none;
+    grid-template-columns: minmax(230px, 400px) auto;
+    margin: 15px 0;
+    padding: 0 3%;
+
+    .Input {
+        max-width: 100%;
+        background: rgba(217, 217, 217, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+
+        padding: 8px 33px;
+        font-size: 14px;
+        line-height: 19px;
+        color: $color-gray-transparent;
+        transition: $transition;
+
+        &:focus {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    .Btn {
+        font-weight: 600;
+        text-align: center;
+        color: $color-coffee;
+        border: 1px solid $color-coffee;
+        border-radius: 5px;
+        padding: 9px 19px;
+        transition: $transition;
+
+        &:hover {
+            color: $bg-white;
+            background-color: $color-coffee;
+        }
+    }
+ 
+    .Image {
+        position: absolute;
+        left: 23px;
+        top: 11px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        display: grid;
+    }
+}

@@ -1,0 +1,113 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.Container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+
+    background-color: #fff;
+
+    display: none;
+
+    .Content {
+        display: grid;
+        padding: 10px 25px;
+
+        .BlockTitle {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            
+            .Title {
+                justify-self: center;
+                color: $color-black;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 33px;
+            }
+            img {
+                padding-top: 6px;
+                transition: transform 0.3s ease-in-out;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+        .BlockFilter {
+            margin: 15px 0;
+            .Block {
+                display: grid;
+                gap: 7px 0;
+                .Name {
+                    color: $color-coffee;
+                    font-size: 14px;
+                    line-height: 17px;
+                    font-weight: 600;
+                }
+                .Select,
+                .SelectCheckBox {
+                    max-width: 230px;
+                }
+                .SelectBtn {
+                    grid-auto-flow: row;
+                    grid-template-columns: repeat(4, auto);
+                    gap: 10px;
+                }
+            }
+    
+        }
+        .BlockBtn {
+            display: grid;
+            gap: 0 20px;
+            grid-template-columns: repeat(2, auto);
+            margin-bottom: 30px;
+
+            .BtnExit {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                justify-self: center;
+
+                font-family: "Lato", sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 18px;
+                padding: 10px 30px;
+                border-radius: 15px;
+                color: #ED5353;
+
+                border: 2px solid #ED5353;
+                transition: border-radius 0.3s ease-in-out,
+                    color 0.3s ease-in-out,
+                    background-color 0.3s ease-in-out;
+
+                &:hover {
+                    border-radius: 8px;
+                    color: #fff;
+                    background-color: #ED5353;
+                }
+            }
+
+            .BtnShow {
+                @include buttonPrimary;
+                transition: border-radius 0.3s ease-in-out,
+                    color 0.3s ease-in-out,
+                    background-color 0.3s ease-in-out;
+
+                padding: 10px 30px;
+                font-size: 16px;
+                line-height: 18px;
+                border-radius: 15px;
+            }
+        }
+    }
+}
+
+.Active {
+    display: block;
+}
