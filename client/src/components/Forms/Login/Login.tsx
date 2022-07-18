@@ -44,15 +44,14 @@ const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
             <div className={ styles.Container}>
                 
                 <div className={styles.TextBlock}>
-                    <h2>Вход</h2>
-                    <h4>Забыли пароль?
+                    <h2 className={styles.Title}>Вход</h2>
+                    <div className={styles.Text}>Забыли пароль?
                         <button 
                          className={styles.Redirect} 
                          onClick={RedirectHanlder}>
                             Восстановить
                         </button>
-                    </h4>
-
+                    </div>
                 </div>
 
                 {emailLogin.isDirty && emailLogin.isEmpty
@@ -89,7 +88,7 @@ const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
                 <button 
                  onClick={handlerButtonLogin} 
                  disabled = {!passwordLogin.inputVaild || !emailLogin.inputVaild} 
-                 className={styles.btn}>
+                 className={styles.Btn}>
                     Войти
                 </button>
             </div>

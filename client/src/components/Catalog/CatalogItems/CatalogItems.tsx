@@ -19,7 +19,7 @@ const CatalogItems: FC = (): JSX.Element => {
     // const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
     const { loading, error, selectedFilters, filterProducts } = useTypedSelector(filterSelector)
     const dispatch = useTypedDispatch()
-  
+
     useEffect(() => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
@@ -38,40 +38,46 @@ const CatalogItems: FC = (): JSX.Element => {
 
     return (
         <>
-        <FilterMobile />
-        <Filter />
-         <div className={styles.Container}>
-            <h2 className={styles.Title}>Аппартаменты в Москве по вашему запросу</h2>
-         <div className={styles.Center}>
-                {loading && <Spiner />}
-                {error && <h1 className={styles.Error}> {error}</h1>}
-            </div>
-            <div className={styles.BlockGrid}>
-           
+            <FilterMobile />
+            <Filter />
+            <div className={styles.Container}>
+                <h2 className={styles.Title}>Аппартаменты в Москве по вашему запросу</h2>
                 {
-                    filterProducts.map(i => (
-                        <CatalogItem
-                            title={i.apartamentsName}
-                            id={i._id}
-                            key={i._id}
-                            image={i.image}
-                            price={i.price}
-                            priceDay={i.priceDay}
-                            rooms={i.rooms}
-                            metro={i.metro}
-                            description={i.description}
-                            address={i.address}
-
-                        />
-                    ))
+                    loading && <div className={styles.Center}>
+                        <Spiner />
+                    </div>
                 }
-            </div>
-            <button 
-                className={styles.Btn}
+                {
+                    error && <div className={styles.Center}>
+                        <h1 className={styles.Error}>{error}</h1>
+                    </div>
+                }
+                <div className={styles.BlockGrid}>
+                    {
+                        filterProducts.map(i => (
+                            <CatalogItem
+                                title={i.apartamentsName}
+                                id={i._id}
+                                key={i._id}
+                                image={i.image}
+                                price={i.price}
+                                priceDay={i.priceDay}
+                                rooms={i.rooms}
+                                metro={i.metro}
+                                description={i.description}
+                                address={i.address}
+
+                            />
+                        ))
+                    }
+                </div>
+                <button
+                    className={styles.Btn}
                 // onClick={() => handlePagination()}
-            >
-                Показать еще
-            </button>
+                >
+                    Показать еще
+                </button>
+
             </div>
         </>
     )

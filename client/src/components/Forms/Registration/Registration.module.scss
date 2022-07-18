@@ -7,14 +7,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  h2 {
+
+  .Title {
     text-align: center;
     font-size: 40px;
     color: $color-gray;
     margin-bottom: 15px;
     font-weight: 600;
   }
-  h4 {
+  .Text {
     font-size: 16px;
     line-height: 22px;
     color: $color-gray;
@@ -29,7 +30,7 @@
       opacity: 0.8;
     }
   }
-  .btn {
+  .Btn {
     @include buttonPrimary;
     padding: 20px 40px;
     font-size: 24px;
@@ -54,16 +55,19 @@
   }
   .Checkbox {
     margin-top: 20px;
-    display: flex;
     max-width: 400px;
+    
+    display: grid;
+    align-items: center;
+    gap: 0 10px;
+    grid-template-columns: repeat(2, auto);
+
     font-size: 15px;
     opacity: 0.7;
-    align-items: center;
   }
   input[type="checkbox"] {
     width: 25px;
     height: 25px;
-    margin-right: 10px;
   }
   .Input {
     @include input;
@@ -83,7 +87,7 @@
 
 @media (max-width: 768px) {
   .Container {
-    h2 {
+    .Title {
       font-size: 30px;
     }
     .Checkbox {
@@ -94,6 +98,33 @@
     .Input {
       height: 50px !important;
       width: 300px !important;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .Container {
+    overflow: auto;
+    background-color: $bg-white;
+    width: 100vw;
+    height: 100vh;
+    .Title {
+      font-size: 30px;
+      line-height: 32px;      
+    }
+    .Input {
+      max-width: 280px;
+    }
+    .Checkbox {
+      max-width: 280px;
+      font-size: 13px;
+    }
+    .Btn {
+      width: fit-content;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+      padding: 10px 20px;
     }
   }
 }

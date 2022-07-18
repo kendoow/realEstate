@@ -3,7 +3,8 @@
 .Container {
     position: relative;
     display: none;
-    grid-template-columns: minmax(230px, 400px) auto;
+    grid-template-columns: 230px auto;
+    justify-content: space-between;
     margin: 15px 0;
     padding: 0 3%;
 

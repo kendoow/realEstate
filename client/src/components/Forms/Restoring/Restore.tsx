@@ -13,9 +13,18 @@ const Restore: FC<RestoreProps> = ({setActive, setPage}): JSX.Element => {
     return (
         <>
             <div className={styles.Container}>
-                <h2>Восстановление</h2>
-                <button onClick={RedirectHanlder} className={styles.Redirect}>Войти в аккаунт</button>
-                <input className={styles.Input} type="text" placeholder='Ваша почта или телефон'/>
+                <h2 className={styles.Title}>Восстановление</h2>
+                <button 
+                    onClick={RedirectHanlder} 
+                    className={styles.Redirect}
+                >
+                    Войти в аккаунт
+                </button>
+                <input 
+                    className={styles.Input} 
+                    type="text" 
+                    placeholder='Ваша почта или телефон'
+                />
                 <button className={styles.Btn}>Восстановить</button>
             </div>
            

@@ -7,22 +7,23 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   .CloseBtn {
     display: none;
   }
-  h2 {
+  .Title {
     text-align: center;
     font-size: 40px;
     color: $color-gray;
     margin-bottom: 15px;
     font-weight: 600;
   }
-  h4 {
+  .Text {
     font-size: 16px;
     line-height: 22px;
     color: $color-gray;
   }
-  .btn {
+  .Btn {
     @include buttonPrimary;
     padding: 20px 40px;
     font-size: 24px;
@@ -76,5 +77,26 @@
   }
   .Input {
     width: 300px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .Container {
+    width: 100vw;
+    height: 100vh;
+    background-color: $bg-white;
+
+    .Title {
+      font-size: 30px;
+      line-height: 32px;
+    }
+    .Input {
+      max-width: 280px;
+    }
+    .Btn {
+      font-size: 18px;
+      line-height: 22px;
+      padding: 10px 20px;
+    }
   }
 }

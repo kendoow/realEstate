@@ -49,22 +49,27 @@ const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Elemen
     return (
         <>
             <div className={styles.Container}>
-                <h2>Регистрация</h2>
-                <h4>Есть аккаунт?
+                <h2 className={styles.Title}>Регистрация</h2>
+                <div className={styles.Text}>Есть аккаунт?
                     <button
                         className={styles.Redirect}
                         onClick={RedirectHanlder}>
                         Войти
                     </button>
-                </h4>
+                </div>
 
                 {nameReg.isDirty && nameReg.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
                 {nameReg.isDirty && nameReg.minLengthError
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
-                <input value={nameReg.value}
+                <input 
+                    value={nameReg.value}
                     onChange={nameReg.onChange}
-                    onBlur={nameReg.onBlur} className={styles.Input} placeholder='Ваше имя' type='text' />
+                    onBlur={nameReg.onBlur} 
+                    className={styles.Input} 
+                    placeholder='Ваше имя' 
+                    type='text' 
+                />
 
                 {emailReg.isDirty && emailReg.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
@@ -72,9 +77,14 @@ const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Elemen
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
                 {emailReg.isDirty && emailReg.isEmail
                     && <div className={styles.Error}>Недопустимый email</div>}
-                <input value={emailReg.value}
+                <input 
+                    value={emailReg.value}
                     onChange={emailReg.onChange}
-                    onBlur={emailReg.onBlur} className={styles.Input} placeholder='Почта' type='text' />
+                    onBlur={emailReg.onBlur} 
+                    className={styles.Input} 
+                    placeholder='Почта' 
+                    type='text' 
+                />
 
                 {passwordReg.isDirty && passwordReg.isEmpty
                     && <div className={styles.Error}>Поле не может быть пустым</div>}
@@ -82,10 +92,19 @@ const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Elemen
                     && <div className={styles.Error}>Минимальная длина поля - 5 символов</div>}
 
                 <div className={styles.Password}>
-                    <input value={passwordReg.value}
+                    <input 
+                        value={passwordReg.value}
                         onChange={passwordReg.onChange}
-                        onBlur={passwordReg.onBlur} className={styles.Input} placeholder='Пароль' type={hidePasswordFirts ? 'password' : 'text'} />
-                    <img onClick={() => setHidePasswordFirts(!hidePasswordFirts)} src={hidePasswordFirts ? hidden : show} alt="hiiden" />
+                        onBlur={passwordReg.onBlur} 
+                        className={styles.Input} 
+                        placeholder='Пароль' 
+                        type={hidePasswordFirts ? 'password' : 'text'} 
+                    />
+                    <img 
+                        onClick={() => setHidePasswordFirts(!hidePasswordFirts)} 
+                        src={hidePasswordFirts ? hidden : show} 
+                        alt="hiiden" 
+                    />
                 </div>
 
                 {passwordRepeatReg.isDirty && passwordRepeatReg.isEmpty
@@ -95,18 +114,35 @@ const Registration: FC<RegistrationProps> = ({ setActive, setPage }): JSX.Elemen
                 {passwordReg.value !== passwordRepeatReg.value && <div className={styles.Error}>Пароли не совпадают</div>}
 
                 <div className={styles.Password}>
-                    <input value={passwordRepeatReg.value}
+                    <input 
+                        value={passwordRepeatReg.value}
                         onChange={passwordRepeatReg.onChange}
-                        onBlur={passwordRepeatReg.onBlur} className={styles.Input} placeholder='Повторите пароль' type={hidePasswordSecond ? 'password' : 'text'} />
-                    <img onClick={() => setHidePasswordSecond(!hidePasswordSecond)} src={hidePasswordSecond ? hidden : show} alt="hiiden" />
+                        onBlur={passwordRepeatReg.onBlur} 
+                        className={styles.Input} placeholder='Повторите пароль' 
+                        type={hidePasswordSecond ? 'password' : 'text'} 
+                    />
+                    <img 
+                        onClick={() => setHidePasswordSecond(!hidePasswordSecond)} 
+                        src={hidePasswordSecond ? hidden : show} 
+                        alt="hiiden" 
+                    />
 
                 </div>
                 <div className={styles.Checkbox}>
-                    <input onChange={changeCheckbox} type="checkbox" />
+                    <input 
+                        onChange={changeCheckbox} 
+                        type="checkbox" 
+                    /> 
                     Я принимаю условия пользовательского соглашения
                 </div>
 
-                <button onClick={handlerButtonReg} disabled={isValid} className={styles.btn}>Создать аккаунт</button>
+                <button 
+                    onClick={handlerButtonReg} 
+                    disabled={isValid} 
+                    className={styles.Btn}
+                >
+                    Создать аккаунт
+                </button>
             </div>
 
         </>

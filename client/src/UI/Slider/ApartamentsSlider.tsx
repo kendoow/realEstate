@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { SliderProps, ArrowProps } from "./Slider.types";
 
 import './ApartamentsSlider.scss'
+import { FC } from "react";
 
 
 function SampleNextArrow({ className, style, onClick }: ArrowProps) {
@@ -48,13 +49,16 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
     );
 }
 
-const ApartsSlider = ({ children }: SliderProps): JSX.Element => {
+const ApartsSlider: FC<SliderProps> = ({ children }) => {
     const { selectedProduct } = useTypedSelector(productSelector)
     const settings = {
         customPaging: function (i: number) {
             return (
-                <img className="SliderItem"  src={`${API_URL}${selectedProduct.image[i]}`} alt="btn" />
-
+                <img 
+                    className="SliderItem"  
+                    src={`${API_URL}${selectedProduct.image[i]}`} 
+                    alt="btn" 
+                />
             );
         },
         dots: true,
@@ -70,9 +74,7 @@ const ApartsSlider = ({ children }: SliderProps): JSX.Element => {
 
     return (
         <Slider {...settings}>
-
             {children}
-
         </Slider>
     );
 }

@@ -1,10 +1,14 @@
 import { FC, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
 import Restore from "../Restoring/Restore";
-import styles from "./Modal.module.scss";
+
 import { ModalProps } from "./Modal.types";
+
+import styles from "./Modal.module.scss";
+
+import close from '../../../assets/Main/close.svg';
 
 const Modal: FC<ModalProps> = ({ active, setActive, setPage, page }): JSX.Element => {
 
@@ -14,13 +18,19 @@ const Modal: FC<ModalProps> = ({ active, setActive, setPage, page }): JSX.Elemen
 
   return (
     <div
-      className={active ? styles.Active : styles.Modal}
+      className={active ? styles.Active : styles.Container}
       onClick={() => setActive(false)}
     >
-      <div className={styles.ModalContent} onClick={(e) => e.stopPropagation()}>
-        <div onClick={() => setActive(false)} className={styles.CloseBtn}>
-
-        </div>
+      <div className={styles.Content} onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={() => setActive(false)}
+          className={styles.CloseBtn}
+        >
+          <img 
+            src={close} 
+            alt="Close Icon" 
+          />
+        </button>
         {page === 'restore' && <Restore setPage={setPage} setActive={setActive} />}
         {page === 'registration' && <Registration setPage={setPage} setActive={setActive} />}
         {page === 'login' && <Login setPage={setPage} setActive={setActive} />}

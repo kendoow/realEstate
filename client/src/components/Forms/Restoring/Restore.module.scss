@@ -4,11 +4,11 @@
 .Container{
     width: 400px;
     height: 550px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    h2{
+    display: grid;
+    justify-items: center;
+    align-content: center;
+
+    .Title {
         text-align: center;
         font-size: 40px;
         color: $color-gray;
@@ -39,4 +39,26 @@
 }
 .None{
     display: none;
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        background-color: $bg-white;
+        width: 100vw;
+        height: 100vh;
+        .Title {
+            font-size: 30px;
+            line-height: 32px;      
+        }
+        .Input {
+            max-width: 280px;
+        }
+        .Btn {
+            width: fit-content;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            padding: 10px 20px;
+        }      
+    }
 }
