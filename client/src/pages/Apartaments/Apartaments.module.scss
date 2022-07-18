@@ -1,11 +1,30 @@
 .Container {
-    padding: 0 calc(50% - 650px);
+  padding: 0 calc(50% - 650px);
 
-    display: grid;
-    grid-template-areas: 'body body'
-                         'recommended comments';
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px 30px;
-    
-    padding-bottom: 50px;
+  display: grid;
+  grid-template-areas:
+    "body body"
+    "recommended comments";
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px 30px;
+
+  padding-bottom: 50px;
 }
+
+// media requests
+@media (max-width: 992px) {
+  .Container {
+    padding: 0 calc(50% - 750px);
+  }
+}
+
+@media (max-width: 576px) {
+    .Container {
+      padding: 0 calc(50% - 850px);
+      grid-template-columns: 1fr;
+      grid-template-areas:
+    "body"
+    "recommended "
+    "comments"
+    }
+  }

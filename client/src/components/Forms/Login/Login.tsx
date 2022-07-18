@@ -13,6 +13,7 @@ import styles from './Login.module.scss'
 
 import hidden from '../../../assets/Personal/hidden.svg'
 import show from '../../../assets/Personal/show.svg'
+import { Link } from 'react-router-dom'
 
 const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
 
@@ -41,6 +42,7 @@ const Login: FC<LoginProps> = ({setActive, setPage}): JSX.Element => {
     return (
         <>
             <div className={ styles.Container}>
+                
                 <div className={styles.TextBlock}>
                     <h2>Вход</h2>
                     <h4>Забыли пароль?

@@ -1,32 +1,75 @@
-@import '../../../scss/mixins.scss';
-@import '../../../scss/variables.scss';
+@import "../../../scss/mixins.scss";
+@import "../../../scss/variables.scss";
 
 .Container {
-    grid-area: comments;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-area: comments;
+  .GridContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px 20px;
     align-content: flex-start;
-
-    .Center {
-        justify-self: center;
-        grid-column: 1 / 3;
-        .Error {
-            @include error;
-        }
+  }
+  .Center {
+    justify-self: center;
+    grid-column: 1 / 3;
+    .Error {
+      @include error;
     }
+  }
 
-    .Title {
-        grid-column: 1 / 3;
-        color: $color-coffee;
-        font-weight: 600;
-        font-size: 22px;
-        line-height: 26px;
+  .Title {
+    grid-column: 1 / 3;
+    color: $color-coffee;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+  }
+  .BtnMore {
+    justify-self: center;
+    grid-column: 1 / 3;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    @include buttonWhite;
+  }
+}
+
+// meida requests
+
+@media (max-width: 1200px) {
+  .Container {
+    margin-right: 3%;
+  }
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  .Container {
+    .GridContainer {
+      grid-template-columns: 1fr;
+      gap: 20px 10px;
+      align-content: flex-start;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Container {
+    margin-left: 3%;
+    margin-right: 3%;
+    .GridContainer {
+      grid-template-columns: 1fr;
+      gap: 20px 10px;
+      align-content: flex-start;
     }
     .BtnMore {
-        justify-self: center;
-        grid-column: 1 / 3;
-
-        @include buttonWhite;
+      margin-bottom: 40px;
+      margin-top: 20px;
     }
+  }
 }

@@ -64,6 +64,14 @@
       color: $color-gray-transparent;
       margin-bottom: 15px;
     }
+    input {
+      font-size: 18px;
+      padding: 8px 10px;
+      border: 1px solid rgba(88, 88, 88, 0.2);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 290px;
+    }
 
     .inputWrapper {
       position: relative;
@@ -75,14 +83,6 @@
       }
     }
 
-    input {
-      font-size: 18px;
-      padding: 8px 10px;
-      border: 1px solid rgba(88, 88, 88, 0.2);
-      border-radius: 5px;
-      margin-bottom: 10px;
-      width: 290px;
-    }
     .btn {
       @include buttonPrimary;
       margin-top: 18px;
@@ -103,19 +103,14 @@
 @media (max-width: 768px) {
   .container {
     margin: 0 auto;
-    .inputWrapper {
-      position: relative;
-      width: 200px;
+    .changePassword {
+      input {
+        width: 250px !important;
+      }
+      .inputWrapper {
+        width: 250px !important;
+      }
     }
-    input[type="tel"] {
-      width: 250px !important;
-    }
-  }
-  input {
-    width: 250px !important;
-  }
-  .inputWrapper {
-    width: 250px !important;
   }
 }
 
@@ -124,20 +119,20 @@
     margin-top: 50px !important;
 
     margin: 0 auto;
-    .inputWrapper {
-      position: relative;
-      width: 200px;
+    .changePassword {
+      .inputWrapper {
+        position: relative;
+        width: 250px;
+      }
+      input[type="tel"] {
+        width: 280px !important;
+      }
     }
-    input[type="tel"] {
-      width: 300px !important;
+    input {
+      width: 280px !important;
     }
   }
-  input {
-    width: 300px !important;
-  }
-  .inputWrapper {
-    width: 300px !important;
-  }
+  
   .MobileCenter {
     margin-top: 30px;
     display: flex;

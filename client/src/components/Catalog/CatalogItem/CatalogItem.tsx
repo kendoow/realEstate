@@ -89,7 +89,7 @@ const CatalogItem: FC<CatalogItemProps> = ({ image,
                             image.map((img) => (
                                 <div key={img} className={styles.Slider}>
 
-                                    <img height={350} width={350} src={`${API_URL}${img}`} alt="btn" />
+                                    <img src={`${API_URL}${img}`} alt="btn" />
                                 </div>
                             ))
                         }

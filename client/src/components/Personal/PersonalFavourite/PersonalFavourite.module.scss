@@ -26,17 +26,24 @@
 
 @media (max-width:1400px) {
     .Container {
-       
+        margin-left: 3%;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px 40px;
     }
 }
 
-@media (max-width:992px) {
+@media (max-width:768px) {
+    .Container {
+        
+        justify-self: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width:576px) {
     .Container {
         
         grid-template-columns: 1fr;
-        justify-self: center;
-        gap: 20px;
+
     }
 }

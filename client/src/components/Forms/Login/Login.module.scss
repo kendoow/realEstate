@@ -7,6 +7,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .CloseBtn {
+    display: none;
+  }
   h2 {
     text-align: center;
     font-size: 40px;
@@ -26,40 +29,52 @@
     margin-top: 50px;
     width: 200px;
   }
-  .Redirect{
+  .Redirect {
     margin-left: 4px;
     color: $color-coffee;
     border-bottom: 1px solid $color-coffee;
     transition: $transition;
-    &:hover{
+    &:hover {
       transition: $transition;
       opacity: 0.8;
     }
   }
-  .Password{
+  .Password {
     position: relative;
-    img{
-        position: absolute;
-        top: 42px;
-        right: 20px;
+    img {
+      position: absolute;
+      top: 42px;
+      right: 20px;
     }
   }
-  button:disabled{
-    &:hover{
+  button:disabled {
+    &:hover {
       background-color: rgb(119, 119, 119);
       color: #000;
-      cursor:auto;
+      cursor: auto;
     }
   }
-  .Input{
+  .Input {
     @include input;
   }
 }
-.None{
+.None {
   display: none;
 }
-.Error{
+.Error {
   color: red;
   text-align: center;
   margin-top: 10px;
+}
+
+// media requests
+
+@media (max-width: 768px) {
+  .Container {
+    width: 350px;
+    height: 550px;
+  }
+  .Input {
+    width: 300px !important;
+  }
 }

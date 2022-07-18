@@ -42,7 +42,7 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
 
     useEffect(() => {
         if (favourite.find(v => v._id === id)) { isFilled(true) }
-        
+
     }, [favourite])
 
     const favoutiteHandler = (e: MouseEvent<HTMLImageElement>) => {
@@ -83,7 +83,7 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
                                 image.map((img) => (
                                     <div key={img} className={styles.Slider}>
 
-                                        <img height={450} width={650} src={`${API_URL}${img}`} alt="btn" />
+                                        <img src={`${API_URL}${img}`} alt="btn" />
                                     </div>
                                 ))
                             }

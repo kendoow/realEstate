@@ -37,6 +37,7 @@ const СommentItems: FC = (): JSX.Element => {
     return (
         <div className={styles.Container}>
             <h2 className={styles.Title}>Отзывы</h2>
+            <div className={styles.GridContainer}>
             {
                 comments.map(i => (
                     <CommentItem
@@ -47,6 +48,7 @@ const СommentItems: FC = (): JSX.Element => {
                         image={i.image} />
                 ))
             }
+            </div>
             <div className={styles.Center}>
                 {loading && <Spiner />}
                 {error && !loading && <div className={styles.Error}>{error}</div>}

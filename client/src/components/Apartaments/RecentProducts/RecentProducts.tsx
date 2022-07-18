@@ -14,46 +14,46 @@ import MainProduct from "../../Main/MainProduct/MainProduct";
 import styles from './RecentProducts.module.scss';
 
 const RecentProducts: FC = () => {
-    const {products, recentProducts} = useTypedSelector(productSelector)
-    const { id } = useParams() 
-    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 4})
+    const { products, recentProducts } = useTypedSelector(productSelector)
+    const { id } = useParams()
+    const [pagination, setPagination] = useState<PaginationTypes>({ page: 1, limit: 4 })
     const dispath = useTypedDispatch()
 
     useEffect(() => {
-        products.length === 0 && dispath(fetchProductsAll()) 
+        products.length === 0 && dispath(fetchProductsAll())
     }, [])
-    
+
     useEffect(() => {
-        products.length !== 0 && dispath(fetchRecentProducts({id, ...pagination}))
+        products.length !== 0 && dispath(fetchRecentProducts({ id, ...pagination }))
     }, [products, pagination])
 
     const handlerPagination = () => {
-        setPagination({...pagination, page: pagination.page + 1})
+        setPagination({ ...pagination, page: pagination.page + 1 })
     }
 
     return (
         <div className={styles.Container}>
             <h2 className={styles.Title}>Рекомендуемые номера</h2>
-
-            {
-                recentProducts.map(i => (
-                    <MainProduct
-                     id={i._id}
-                     key={i._id}
-                     image={i.image}
-                     price={i.price}
-                     priceDay={i.priceDay}
-                     rooms={i.rooms}
-                     metro={i.metro}
-                     description={i.description}
-                     address={i.address}
-                    />
-                ))
-            }
-
-            <button 
-             className={styles.BtnMore}
-             onClick={() => handlerPagination()}>
+            <div className={styles.GridContainer}>
+                {
+                    recentProducts.map(i => (
+                        <MainProduct
+                            id={i._id}
+                            key={i._id}
+                            image={i.image}
+                            price={i.price}
+                            priceDay={i.priceDay}
+                            rooms={i.rooms}
+                            metro={i.metro}
+                            description={i.description}
+                            address={i.address}
+                        />
+                    ))
+                }
+            </div>
+            <button
+                className={styles.BtnMore}
+                onClick={() => handlerPagination()}>
                 Показать еще
             </button>
         </div>

@@ -7,13 +7,18 @@
   display: grid;
   gap: 30px;
 
-  .Center{
-    display:flex;
+  .Center {
+    display: flex;
     justify-content: center;
     align-items: center;
   }
-  .Error{
-    @include error
+  .Title {
+    text-align: left;
+    font-size: 32px;
+    margin-top: 25px;
+  }
+  .Error {
+    @include error;
   }
   .Btn {
     justify-self: center;
@@ -36,5 +41,13 @@
       color: $color-coffee;
       background-color: $color-white;
     }
+  }
+}
+
+// media requests
+
+@media (max-width:1200px) {
+  .Title{
+    margin-left: 3%;
   }
 }

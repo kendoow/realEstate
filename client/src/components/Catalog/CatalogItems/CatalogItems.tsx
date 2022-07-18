@@ -40,6 +40,7 @@ const CatalogItems: FC = (): JSX.Element => {
          {/* <Filter /> */}
 
          <div className={styles.Container}>
+            <h2 className={styles.Title}>Аппартаменты в Москве по вашему запросу</h2>
          <div className={styles.Center}>
                 {loading && <Spiner />}
                 {error && <h1 className={styles.Error}> {error}</h1>}

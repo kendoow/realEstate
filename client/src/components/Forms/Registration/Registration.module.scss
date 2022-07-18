@@ -63,7 +63,7 @@
   input[type="checkbox"] {
     width: 25px;
     height: 25px;
-    margin-right:10px;
+    margin-right: 10px;
   }
   .Input {
     @include input;
@@ -77,4 +77,23 @@
   color: red;
   text-align: center;
   margin-top: 5px;
+}
+
+// media requests
+
+@media (max-width: 768px) {
+  .Container {
+    h2 {
+      font-size: 30px;
+    }
+    .Checkbox {
+      max-width: 300px;
+
+      text-align: center;
+    }
+    .Input {
+      height: 50px !important;
+      width: 300px !important;
+    }
+  }
 }

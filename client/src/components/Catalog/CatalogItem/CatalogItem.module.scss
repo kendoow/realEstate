@@ -61,9 +61,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
+      height: 350px;
+      width: 350px;
       cursor: pointer;
       img {
+        height: 350px;
+        width: 350px;
         border-radius: 10px;
       }
     }
@@ -75,6 +78,8 @@
     }
   }
 }
+
+// media requests
 
 @media (max-width: 1400px) {
   .Container {
@@ -89,48 +94,87 @@
         max-width: 500px;
       }
     }
-  }
-}
+    .Btn {
+      max-width: 300px;
 
-@media (max-width: 786px) {
-  .Container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .BlockContent {
-      h3 {
-        font-size: 24px;
+      .Slider {
+        height: 300px;
+        width: 300px;
+
+        img {
+          height: 300px;
+          width: 300px;
+        }
       }
-      .Price {
-        font-size: 26px;
+    }
+  }
 
-        .USD {
+  @media (max-width: 768px) {
+    .Container {
+   
+      .BlockContent {
+        h3 {
+          font-size: 24px;
+        }
+        .Price {
+          font-size: 26px;
+
+          .USD {
+            font-size: 16px;
+          }
+        }
+        .Rooms {
+          font-size: 16px;
+        }
+        .BlockText {
+          font-size: 16px;
+        }
+        .Description {
+          max-width: 350px;
           font-size: 16px;
         }
       }
-      .Rooms {
-        font-size: 16px;
-      }
-      .BlockText {
-        font-size: 16px;
-      }
-      .Description {
-        max-width: 350px;
-        font-size: 16px;
-      }
-    }
-    .Btn {
-      .Slider {
-        img {
-          border-radius: 10px;
+      .Btn {
+        max-width: 250px;
+  
+        .Slider {
+          height: 250px;
+          width: 250px;
+  
+          img {
+            height: 250px;
+            width: 250px;
+          }
         }
       }
     }
   }
-}
 
-@media (max-width: 576px) {
-  .Container {
-    margin-bottom: 40px;
+  @media (max-width: 576px) {
+    .Container {
+      margin-left: 1%;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .BlockContent {
+        margin-top: 40px;
+      }
+      .Btn {
+        max-width: 300px;
+  
+        .Slider {
+          height: 300px;
+          width: 300px;
+  
+          img {
+            height: 300px;
+            width: 300px;
+          }
+        }
+      }
+    }
+    
   }
 }

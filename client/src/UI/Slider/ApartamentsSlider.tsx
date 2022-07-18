@@ -18,7 +18,7 @@ function SampleNextArrow({ className, style, onClick }: ArrowProps) {
             className={className}
             style={{
                 ...style,
-                marginTop: "-80px",
+                marginTop: "-10%",
                 position: "absolute",
                 marginRight: "40px",
                 width: "22px",
@@ -36,7 +36,7 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
             className={className}
             style={{
                 ...style,
-                marginTop: "-80px",
+                marginTop: "-10%",
                 position: "absolute",
                 marginLeft: "40px",
                 width: "22px",
@@ -53,7 +53,7 @@ const ApartsSlider = ({ children }: SliderProps): JSX.Element => {
     const settings = {
         customPaging: function (i: number) {
             return (
-                <img className="SliderItem" height={150} width={150} src={`${API_URL}${selectedProduct.image[i]}`} alt="btn" />
+                <img className="SliderItem"  src={`${API_URL}${selectedProduct.image[i]}`} alt="btn" />
 
             );
         },
