@@ -28,7 +28,6 @@
     }
 
     .BlockBtn {
-        width: 100%;
         position: absolute;
         left: 0;
         top: 130%;
@@ -47,7 +46,7 @@
             gap: 0 15px;
 
             input {
-                width: 15px;
+                max-width: 15px;
             }
             .BtnItem {
                 color: #686868;
@@ -61,3 +60,4 @@
         z-index: 10;
     }
 }
+

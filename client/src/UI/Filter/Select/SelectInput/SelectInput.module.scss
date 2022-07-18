@@ -66,3 +66,13 @@
         display: grid;
     }
 }
+
+@media (max-width: 575.98px) {
+    .Container {
+        max-width: 230px;
+        .BlockInput {
+            left: -1%;
+            top: 120%;
+        }
+    }
+}

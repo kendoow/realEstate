@@ -21,6 +21,9 @@
         &:hover {
             border: 1px solid $color-coffee;
         }
+        &:first-child {
+            grid-column: 1 / 3;
+        }
     }
 
     .Active {
