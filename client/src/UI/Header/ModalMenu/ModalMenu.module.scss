@@ -1,0 +1,113 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.Container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    display: none;
+    background-color: $bg-white;
+
+    .Content {
+        display: grid;
+        align-content: flex-start;
+        // justify-items: center;
+        gap: 10px 0;
+
+
+        .BtnClose {
+            padding: 30px 30px 30px 0;
+            justify-self: flex-end;
+        }
+
+        .Btn {
+            padding: 0 30px;
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 32px;
+            color: $color-black;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        .BlockAuth {
+            justify-self: auto;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+
+            padding: 30px 0;
+            border-top: 1px solid $color-gray;
+
+            .Btn {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: flex-start;
+                gap: 0 7px;
+                
+                font-weight: 600;
+                font-size: 28px;
+                line-height: 32px;
+                color: $color-black;
+                transition: background-color 0.3s ease-in-out;
+                
+                &:hover {
+                    background: #ececec;
+                    border-radius: 5px;
+                  }
+            }
+        }
+
+        .BlockBtn {
+            justify-self: center;
+            margin-top: 30px;
+            display: grid;
+            grid-auto-flow: column;
+            gap: 0 15px;
+            
+            .BtnLogin,
+            .BtnRegistration {
+                font-size: 15px;
+                line-height: 18px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .BtnLogin {
+                color: $color-black;
+                padding: 4px 10px;
+                border: 1px solid transparent;
+
+                &:hover {
+                    border-radius: 10px;
+                    color: $color-coffee;
+                    border: 1px solid $color-coffee;
+                }
+            }
+
+            .BtnRegistration {
+                padding: 8px 20px;
+                border-radius: 10px;
+
+                color: $color-coffee;
+                border: 1px solid $color-coffee;
+
+                &:hover {
+                    border: 1px solid $color-white;
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
+.Active {
+    display: block;
+}

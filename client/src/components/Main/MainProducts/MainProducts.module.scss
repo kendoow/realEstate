@@ -81,3 +81,13 @@
     }
   }
 }
+
+@media (max-width: 575.98px) {
+  .Container {
+
+    .BlockGrid {
+      grid-template-columns: auto;
+      justify-content: center;
+    }
+  }
+}

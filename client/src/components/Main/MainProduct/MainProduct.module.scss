@@ -108,3 +108,17 @@
     }
   }  
 }
+
+@media (max-width: 575.98px) {
+  .Container {
+    max-width: 300px;
+    .Btn {
+      max-width: 300px;
+      .Slider {
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }  
+}

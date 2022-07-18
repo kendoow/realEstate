@@ -23,18 +23,28 @@ const PersonalMenu: FC = (): JSX.Element => {
         <>
             <div className={styles.Container}>
                 <Link to='/personal' className={styles.NavItem}>
-                    <img src={profile} alt="" />
+                    <img 
+                        src={profile} 
+                        alt="Profile Icon" 
+                    />
                     <button className={styles.Btn}>Профиль</button>
                 </Link>
                 <Link to='/favorite' className={styles.NavItem}>
-                    <img src={favorite} alt="" />
+                    <img 
+                        src={favorite} 
+                        alt="Favourite Icon" 
+                    />
                     <button className={styles.Btn}>Избранное</button>
                 </Link>
                 <Link 
-                 to='/' 
-                 className={styles.NavItem}
-                 onClick={logoutHandler}>
-                    <img src={exit} alt="" />
+                    to='/' 
+                    className={styles.NavItem}
+                    onClick={logoutHandler}
+                >
+                    <img 
+                        src={exit} 
+                        alt="Exit Icon" 
+                    />
                     <button className={styles.Btn}>Выйти</button>
                 </Link>
             </div>

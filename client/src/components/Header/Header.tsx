@@ -1,4 +1,5 @@
 import { FC, MouseEvent, useRef, useState } from "react";
+import cn from 'classnames';
 import { Link } from "react-router-dom";
 
 import useTypedSelector from "../../hooks/useTypedSelector";
@@ -11,16 +12,21 @@ import ToggleList from "../../UI/Header/ToggleList/ToggleList";
 import styles from './Header.module.scss';
 
 import logo from '../../assets/Main/logo.svg';
-import heart from '../../assets/Main/heart-header.svg'
-import userIcon from '../../assets/Main/userIcon.svg'
+import heart from '../../assets/Main/heart-header.svg';
+import userIcon from '../../assets/Main/userIcon.svg';
+import menu from '../../assets/Main/menu.svg';
+import ModalMenu from "../../UI/Header/ModalMenu/ModalMenu";
 
 const Header: FC = () => {
     const { isAuth } = useTypedSelector(authSelector)
+    const [activeMenu, setActiveMenu] = useState<boolean>(false)
 
     const [activeModal, setActiveModal] = useState<boolean>(false)
-   
     const [page, setPage] = useState<string>('')
 
+    const menuHandler = () => {
+        setActiveMenu(!activeMenu)
+    }
 
     const loginHandler = () => {
         setPage('login')
@@ -47,27 +53,51 @@ const Header: FC = () => {
 
     return (
         <div
-            style={isAuth ? { "backgroundColor": '#D9D9D9' } : { "backgroundColor": '#686868' }}
-            className={styles.Container}>
+            className={cn(styles.Container, {
+                [styles.Auth]: isAuth
+            })}
+        >
             <Link 
                 to='/'
                 className={styles.Logo}
             >
-                <img src={logo} />
+                <img 
+                    src={logo} 
+                    alt='Logo Icon'
+                />
             </Link>
+            <button 
+                className={styles.Menu}
+                onClick={menuHandler}
+            >
+                <img 
+                    src={menu} 
+                    alt="Menu Icon" 
+                />
+                <ModalMenu
+                    loginHandler={loginHandler}
+                    registrationHandler={registrationHandler}
+                    active={activeMenu}
+                    setActive={setActiveMenu} 
+                />
+            </button>
+
             <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
-                <a href='tel:+79660406664'>+7-966-040-66-64</a>
-                <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
                 <Link to='/catalog'>Каталог</Link>
                 <div>На карте</div>
                 <Link to='/FAQ'>FAQ</Link>
+                <a href='tel:+79660406664'>+7-966-040-66-64</a>
+                <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
             </div>
 
             {isAuth ?
                 <>
                     <div className={styles.RightSideBar}>
                         <Link to='/favorite'>
-                            <img src={heart} alt="heart" />
+                            <img 
+                                src={heart} 
+                                alt="heart" 
+                            />
                         </Link>
                         <div className={styles.UserPanel}>
                             <div
@@ -88,7 +118,10 @@ const Header: FC = () => {
                                 className={styles.LinkPersonal} 
                                 to='/personal' 
                             >
-                                <img src={userIcon} alt="icon" />
+                                <img 
+                                    src={userIcon} 
+                                    alt="icon" 
+                                />
                             </Link>
                         </div>
                     </div>
@@ -110,7 +143,12 @@ const Header: FC = () => {
                         </button>
                     </div>
 
-                    <Modal page={page} setPage={setPage} active={activeModal} setActive={setActiveModal}/>
+                    <Modal 
+                        page={page} 
+                        setPage={setPage} 
+                        active={activeModal} 
+                        setActive={setActiveModal}
+                    />
                     
                 </>
 

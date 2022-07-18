@@ -12,7 +12,11 @@
   height: 70px;
 
   font-family: "Lato";
+  background-color: #686868;
 
+  .Menu {
+    display: none;
+  }
   .Logo {
     transition: $transition;
     margin-left: 3%;
@@ -53,6 +57,35 @@
       transition: $transition;
       &:hover {
         transform: scale(1.05);
+      }
+    }
+  }
+
+  .RightSideBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    .BlockBarLine {
+      position: relative;
+      display: grid;
+      align-content: space-between;
+      padding: 15px 12px;
+      .BarLine {
+        position: relative;
+        width: 15px;
+        height: 0.5px;
+        background-color: #686868;
+      }
+    }
+    .UserPanel {
+      display: flex;
+      border: 1px solid rgba(95, 95, 95, 0.4);
+      border-radius: 23px;
+      margin-left: 20px;
+      position: relative;
+      img {
+        padding: 5px;
       }
     }
   }
@@ -99,33 +132,8 @@
   }
 }
 
-.RightSideBar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  cursor: pointer;
-  .BlockBarLine {
-    position: relative;
-    display: grid;
-    align-content: space-between;
-    padding: 15px 12px;
-    .BarLine {
-      position: relative;
-      width: 15px;
-      height: 0.5px;
-      background-color: #686868;
-    }
-  }
-  .UserPanel {
-    display: flex;
-    border: 1px solid rgba(95, 95, 95, 0.4);
-    border-radius: 23px;
-    margin-left: 20px;
-    position: relative;
-    img {
-      padding: 5px;
-    }
-  }
+.Auth {
+  background-color: $color-gray-light;
 }
 
 @media (max-width: 1399.98px) {
@@ -179,16 +187,23 @@
 @media (max-width: 767.98px) {
   .Container {
     grid-template-columns: repeat(2, auto);
+    background-color: $color-white;
+    border-bottom: 1px solid $bg-white;
+    .Menu {
+      display: block;
+    }
     .Logo {
-      display: none;
+      // display: none;
     }
     .BlockLinkAuth,
     .BlockLink {
-      gap: 10px;
-      font-size: 13px;
-      line-height: 15px;
+      display: none;
+      // gap: 10px;
+      // font-size: 13px;
+      // line-height: 15px;
     }
-    .BlockBtn {
+    .BlockBtn,
+    .RightSideBar {
       display: none;
       // .Login {
       //   display: none;
@@ -200,15 +215,15 @@
       // }
     }  
   }
-  .RightSideBar {
-    .LinkPersonal {
-      img {
-        width: 37px;
-        height: 37px;
-      }
-      .UserPanel {
-        margin-left: 5px;
-      }  
-    }
-  }
+  // .RightSideBar {
+  //   .LinkPersonal {
+  //     img {
+  //       width: 37px;
+  //       height: 37px;
+  //     }
+  //     .UserPanel {
+  //       margin-left: 5px;
+  //     }  
+  //   }
+  // }
 }

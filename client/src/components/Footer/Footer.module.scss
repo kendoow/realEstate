@@ -126,3 +126,17 @@
     }
   }
 }
+
+@media (max-width: 575.98px) {
+  .Container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 15px 0;
+    .BlockLogo {
+      justify-self:auto;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

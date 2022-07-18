@@ -78,3 +78,28 @@
     }
   }
 }
+
+@media (max-width: 575.98px) {
+  .Container {
+    .Title {
+      text-transform:none;
+      margin-bottom: 10px;
+      max-width: 80%;
+      font-size: 25px;
+      line-height: 30px;
+    }
+    .Desrc {
+      max-width: 70%;
+      font-size: 16px;
+      line-height: 18px;
+      margin-bottom: 30px;
+    }
+    .Btn {
+      max-width: 190px;
+      padding: 12px 20px;
+
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
