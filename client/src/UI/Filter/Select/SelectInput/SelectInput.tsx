@@ -15,8 +15,15 @@ const SelectInput: FC<SelectInputProps> = ({ className,
     const [active, setActive] = useState<boolean>(false)
     const ref = useRef(null)
 
-    const [priceFrom, setPriceFrom] = useState<number>()
-    const [priceTo, setPriceTo] = useState<number>()
+    const [priceFrom, setPriceFrom] = useState<string>('')
+    const [priceTo, setPriceTo] = useState<string>('')
+
+    useEffect(() => {
+        if (!selectedValue) {
+            setPriceFrom('')
+            setPriceTo('')
+        }
+    }, [selectedValue])
 
     useEffect(() => {
         priceFrom && priceTo && setSelectedValue(`${priceFrom} - ${priceTo}`)
@@ -32,11 +39,11 @@ const SelectInput: FC<SelectInputProps> = ({ className,
     useOnClickOutside(ref, () => closeHandler())
 
     const priceFromHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setPriceFrom(+e.target.value)
+        setPriceFrom(e.target.value)
     }
 
     const priceToHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setPriceTo(+e.target.value)
+        setPriceTo(e.target.value)
     }
 
 

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { FavouriteStateTypes } from './FavouriteSlice.types';
 
-import { fetchFavourite, addFavourite, deleteFavourite } from './FavouriteSliceActionCreator';
+import { fetchFavourite, addFavourite, deleteFavourite } from './FavouriteActionCreator';
 
 const initialState: FavouriteStateTypes = {
     loading: false,

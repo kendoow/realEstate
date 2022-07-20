@@ -8,8 +8,8 @@ class UserController {
             if(!errors.isEmpty()){ // check if errors isn't empty -> use middleware for errors
                 return next(ApiError.BadRequest('Ошибка при валидации', errors.array()))
             }
-            const {email,password} = req.body;
-            const userData = await userService.registration(email,password)
+            const {email, password, name} = req.body;
+            const userData = await userService.registration(email, password, name)
             res.cookie('refreshToken', userData.refreshToken, {maxAge:30*24*60*60*1000, httpOnly:true}) // 30d for refresh in cookie
             return res.json(userData)
         } catch (e) {
@@ -46,7 +46,19 @@ class UserController {
             next(e);
         }
     }
+    
+    async refresh(req, res, next){ 
+        try {
+            const {refreshToken} = req.cookies;
+            const userData = await userService.refresh(refreshToken)
+            res.cookie('refreshToken', userData.refreshToken, {maxAge:30*24*60*60*1000, httpOnly:true}) // 30d for refresh in cookie
+            return res.json(userData)
+        } catch (e) {
+            next(e);
+        }
+    }
 
+    
     async getUsers(req, res, next){ 
         try {
             const users = await userService.getAllUsers();
@@ -55,13 +67,13 @@ class UserController {
             next(e);
         }
     }
+
     
-    async refresh(req, res, next){ 
+    async userUpdate(req, res, next){ 
         try {
             const {refreshToken} = req.cookies;
-            const userData = await userService.refresh(refreshToken)
-            res.cookie('refreshToken', userData.refreshToken, {maxAge:30*24*60*60*1000, httpOnly:true}) // 30d for refresh in cookie
-            return res.json(userData)
+            const userUpdated = await userService.userUpdate(refreshToken, req.body);
+            return res.json(userUpdated)
         } catch (e) {
             next(e);
         }

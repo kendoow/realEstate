@@ -3,8 +3,6 @@
 
 .Container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   grid-area: comments;
   .GridContainer {
@@ -14,7 +12,7 @@
     align-content: flex-start;
   }
   .Center {
-    justify-self: center;
+    align-self: center;
     grid-column: 1 / 3;
     .Error {
       @include error;
@@ -29,7 +27,7 @@
     line-height: 26px;
   }
   .BtnMore {
-    justify-self: center;
+    align-self: center;
     grid-column: 1 / 3;
     margin-bottom: 20px;
     margin-top: 20px;

@@ -22,10 +22,10 @@ export const Rating = ({ initialRating = 0, isEditable = false, filterRating, se
                                               : setFilterRating('Неважно')
     }, [numSelectedStars])
 
-    const fillHandler = (i:number) => {
+    const fillHandler = (i: number) => {
         isEditable ? setNumSelectedStars(i + 1) : setNumSelectedStars(initialRating);
     }
-    const unFillHandler = (i:number) => {
+    const unFillHandler = (i: number) => {
         isEditable ? setNumSelectedStars(i + 1 + numSelectedStars) : setNumSelectedStars(initialRating);
     }
 

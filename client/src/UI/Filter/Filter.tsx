@@ -80,6 +80,7 @@ const Filter: FC = () => {
         setNecessary([])
         setLanguage([])
         setHome([])
+        setPrice(false)
         setBalcony(false)
         setAnimals(false)
         setBedrooms(false)

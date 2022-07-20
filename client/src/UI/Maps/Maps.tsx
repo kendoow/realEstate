@@ -27,7 +27,6 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
         };
     };
 
-    console.log(products)
     return (
         <div
             className={cn(styles.Container, className)}

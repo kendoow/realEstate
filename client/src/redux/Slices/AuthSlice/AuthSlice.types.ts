@@ -9,12 +9,15 @@ export interface UserRegistrationType extends UserLoginType {
 export interface IUser {
   email: string,
   id: string,
+  name: string,
+  lastname?: string,
+  birthday?: string,
 }
 
 export interface AuthResponse {
   accessToken: string;
   refreshToken: string;
-  newUser: IUser;
+  user: IUser;
 }
 
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import useTypedSelector from "../../../hooks/useTypedSelector";
-import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator";
+import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteActionCreator";
 import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
 import { favouriteSelector } from "../../../redux/Slices/FavouriteSlice/FavouriteSelector";
 import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
@@ -41,7 +41,7 @@ const MainProduct: FC<MainProductProps> = ({ image,
     const { user, isAuth, loading } = useTypedSelector(authSelector)
     
     useEffect(() => {
-        !loading && isAuth && user.id && dispatch(fetchFavourite(user.id))
+        !loading && isAuth && user && dispatch(fetchFavourite(user.id))
     }, [isAuth, user])
 
     useEffect(() => {

@@ -11,7 +11,7 @@ import { ApiError } from "../exceptions/apiError.js";
 
 
 class UserService{
-    async registration(email,password){
+    async registration(email, password, name) {
         const candidate = await userModel.findOne({email})
         if(candidate){
             throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует `)
@@ -19,7 +19,7 @@ class UserService{
         
 
         const hashedPassword = await bcrypt.hash(password, 3)        
-        const user = await userModel.create({email, password: hashedPassword})
+        const user = await userModel.create({name, email, password: hashedPassword})
        
         const userDto = new UserDto(user) // id, email
 
@@ -29,11 +29,11 @@ class UserService{
         await productUserService.create(userDto.id)
         return {
             ...tokens,
-            user:userDto
+            user: userDto
         }
     }
 
-    async login(email,password){
+    async login(email,password) {
         const user = await userModel.findOne({email})
         if(!user){
             throw ApiError.BadRequest('Пользователь не был найден')
@@ -48,7 +48,7 @@ class UserService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {
             ...tokens,
-            newUser:userDto
+            user: userDto
         }
     }
 
@@ -73,7 +73,25 @@ class UserService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {
             ...tokens,
-            newUser:userDto
+            user: userDto
+        }
+    }
+
+    async userUpdate(refreshToken, user) {
+        if(!refreshToken){
+            throw ApiError.UnauthorizedError();
+        }
+        const userData = tokenService.validateRefreshToken(refreshToken);
+        const tokenFromDb = await tokenService.findToken(refreshToken)
+        if(!userData || !tokenFromDb){
+            throw ApiError.UnauthorizedError()
+        }
+
+        const userUpdated = await userModel.findByIdAndUpdate(userData.id, user, { new: true })
+        const userDto = new UserDto(userUpdated)
+
+        return {
+            ...userDto,
         }
     }
 

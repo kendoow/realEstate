@@ -1,9 +1,10 @@
-import { API_URL } from './../../../http/http';
 import  axios  from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
+
+import { API_URL } from './../../../http/http';
 import $api from '../../../http/http';
-import { AuthResponse, UserLoginType, UserRegistrationType } from './AuthSlice.types';
+import { AuthResponse, IUser, UserLoginType, UserRegistrationType } from './AuthSlice.types';
 
 
 
@@ -13,7 +14,7 @@ export const registration = createAsyncThunk(
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/registration', user)
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data.newUser
+            return response.data.user
         } catch (e) {
             return rejectWithValue(`Не удалось зарегистрироваться`)
         }
@@ -26,9 +27,9 @@ export const login = createAsyncThunk(
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/login', user)
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data.newUser
+            return response.data.user
         } catch (e) {
-            return rejectWithValue(`Не удалось зарегистрироваться`)
+            return rejectWithValue(`Не удалось войти`)
         }
     }
 )
@@ -52,9 +53,21 @@ export const checkAuth = createAsyncThunk(
         try {
             const response = await axios.get<AuthResponse>(`${API_URL}jwt/refresh`, {withCredentials: true})
             localStorage.setItem('accessToken', response.data.accessToken)
-            return response.data.newUser
+            return response.data.user
         } catch (e) {
-            return rejectWithValue(`Ошибка!`)           
+            return rejectWithValue(`Ошибка при обновлении токена`)           
+        }
+    }
+)
+
+export const authUserUpdate = createAsyncThunk(
+    'auth/userUpdate',
+    async (user: IUser, { rejectWithValue }) => {
+        try {
+            const response = await axios.put<IUser>(`${API_URL}jwt/users`, user, { withCredentials: true })
+            return response.data
+        } catch (e) {
+            return rejectWithValue(`Ошибка при обновлении данных профиля`)
         }
     }
 )

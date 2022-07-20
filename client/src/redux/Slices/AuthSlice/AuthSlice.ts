@@ -1,5 +1,8 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { checkAuth, login, logout, registration } from './AuthActionCreator';
+
+import { authUserUpdate, checkAuth, login, logout, registration } from './AuthActionCreator';
+
 import { AuthStateTypes, IUser } from "./AuthSlice.types";
 
 const initialState: AuthStateTypes = {
@@ -78,6 +81,17 @@ export const AuthSlice = createSlice({
         },
         [checkAuth.rejected.type]: (state, action) => {
             state.loading = false
+            state.error = action.payload
+        },
+
+        [authUserUpdate.pending.type]: (state) => {
+            state.error = null
+        },
+        [authUserUpdate.fulfilled.type]: (state, action: PayloadAction<IUser>) => {
+            state.error = null
+            state.user = action.payload
+        },
+        [authUserUpdate.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
     }

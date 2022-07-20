@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import useTypedDispatch from '../../../hooks/useTypedDispatch';
 import useTypedSelector from '../../../hooks/useTypedSelector';
 
-import { fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
+import { fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteActionCreator';
 import { authSelector } from '../../../redux/Slices/AuthSlice/AuthSelector';
 import { favouriteSelector } from '../../../redux/Slices/FavouriteSlice/FavouriteSelector';
 
@@ -18,7 +18,7 @@ const PersonalFavourite: FC = () => {
     const { user } = useTypedSelector(authSelector)
 
     useEffect(() => {
-        user.id && dispatch(fetchFavourite(user.id))
+        user && dispatch(fetchFavourite(user.id))
     }, [user])
 
     return (

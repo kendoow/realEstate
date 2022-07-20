@@ -16,10 +16,10 @@ const PersonalData: FC = (): JSX.Element => {
 
   const dispatch = useTypedDispatch()
 
-    const logoutHandler = () => {
-        dispatch(removeFavourite())
-        dispatch(logout())
-    }
+  const logoutHandler = () => {
+    dispatch(removeFavourite())
+    dispatch(logout())
+  }
 
   const [hidePasswordFirst, setHidePasswordFirst] = useState(true); // скрыть показать пароль
   const [hidePasswordSecond, setHidePasswordSecond] = useState(true); // скрыть показать пароль
@@ -57,20 +57,42 @@ const PersonalData: FC = (): JSX.Element => {
 
         <div className={styles.changePassword}>
           <h5>Сменить пароль</h5>
-          <div className={styles.inputWrapper}><input type={hidePasswordFirst ? "password" : "text"} /><img onClick={() => setHidePasswordFirst(!hidePasswordFirst)} src={hidePasswordFirst ? hidden : show} alt="hiiden" /></div>
-          <div className={styles.inputWrapper}><input type={hidePasswordSecond ? "password" : "text"} /><img onClick={() => setHidePasswordSecond(!hidePasswordSecond)} src={hidePasswordSecond ? hidden : show} alt="hiiden" /></div>
+          <div className={styles.inputWrapper}>
+            <input 
+              type={hidePasswordFirst ? "password" : "text"} 
+            />
+            <img 
+              onClick={() => setHidePasswordFirst(!hidePasswordFirst)} 
+              src={hidePasswordFirst ? hidden : show} 
+              alt="hiiden" 
+            />
+          </div>
+          <div className={styles.inputWrapper}>
+            <input 
+              type={hidePasswordSecond ? "password" : "text"} 
+            />
+            <img 
+              onClick={() => setHidePasswordSecond(!hidePasswordSecond)} 
+              src={hidePasswordSecond ? hidden : show} 
+              alt="hiiden" 
+            />
+          </div>
           <button className={styles.btn}>Сохранить</button>
         </div>
       </div>
       <div className={styles.MobileCenter}>
-      <Link
-                 to='/' 
-                 className={styles.ExitMobile}
-                 onClick={logoutHandler}>
-                    <img src={exit} alt="" />
-                    <button className={styles.BtnMobile}>Выйти</button>
+        <Link
+          to='/'
+          className={styles.ExitMobile}
+          onClick={logoutHandler}
+        >
+          <img 
+            src={exit} 
+            alt="" 
+          />
+          <button className={styles.BtnMobile}>Выйти</button>
         </Link>
-        </div>
+      </div>
     </>
   )
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
 import { FavouriteAddArguments, FavouriteDeleteArguments } from "../../../redux/Slices/FavouriteSlice/FavouriteSlice.types";
-import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator";
+import { addFavourite, deleteFavourite, fetchFavourite } from "../../../redux/Slices/FavouriteSlice/FavouriteActionCreator";
 import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
 import { favouriteSelector } from "../../../redux/Slices/FavouriteSlice/FavouriteSelector";
 import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";

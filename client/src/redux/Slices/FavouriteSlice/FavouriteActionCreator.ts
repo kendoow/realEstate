@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { FavouriteFecth, FavouriteAddArguments, FavouriteDeleteArguments } from './FavouriteSlice.types';
-import { API_URL } from './../../../http/http';
+import { API_URL } from '../../../http/http';
 
 
 export const fetchFavourite = createAsyncThunk(

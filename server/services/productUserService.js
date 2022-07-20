@@ -34,10 +34,9 @@ class ProductUserService {
             const User = await UserModel.findById(userId)
             const { refreshToken } = await TokenModel.findOne({userId})
             const userData = TokenService.validateRefreshToken(refreshToken)
-            if (!User || !refreshToken || userData.id !== userId) {
+            if (User && refreshToken && userData.id === String(userId)) {
                 throw new Error('Product User Service - getAll такой пользователь не зарегистрирован')
             }
-
 
             const productCreated = await ProductsUserModel.create({userId})
             return productCreated
@@ -59,13 +58,14 @@ class ProductUserService {
             const User = await UserModel.findById(userId)
             const { refreshToken } = await TokenModel.findOne({userId})
             const userData = TokenService.validateRefreshToken(refreshToken)
-            if (!User || !refreshToken || userData.id !== userId) {
+            if (User && refreshToken && userData.id === String(userId)) {
                 throw new Error('Product User Service - getAll такой пользователь не зарегистрирован')
             }
 
-            const productUpdated = await ProductsUserModel.findOneAndUpdate({userId, ...products})
+            const productUpdated = await ProductsUserModel.findOneAndUpdate({userId}, products)
             return productUpdated
         } catch (e) {
+            console.log(e)
             throw e;
         }
     }
@@ -79,7 +79,7 @@ class ProductUserService {
             const User = await UserModel.findById(userId)
             const { refreshToken } = await TokenModel.findOne({userId})
             const userData = TokenService.validateRefreshToken(refreshToken)
-            if (!User || !refreshToken || userData.id !== userId) {
+            if (User && refreshToken && userData.id === String(userId)) {
                 throw new Error('Product User Service - getAll такой пользователь не зарегистрирован')
             }
 

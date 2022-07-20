@@ -3,7 +3,7 @@ import { API_URL } from '../../../http/http'
 
 import useTypedDispatch from '../../../hooks/useTypedDispatch';
 import useTypedSelector from '../../../hooks/useTypedSelector';
-import { addFavourite, deleteFavourite, fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteSliceActionCreator';
+import { addFavourite, deleteFavourite, fetchFavourite } from '../../../redux/Slices/FavouriteSlice/FavouriteActionCreator';
 import { FavouriteAddArguments, FavouriteDeleteArguments } from '../../../redux/Slices/FavouriteSlice/FavouriteSlice.types';
 
 import ApartsSlider from '../../../UI/Slider/ApartamentsSlider';
