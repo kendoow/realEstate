@@ -44,7 +44,7 @@ const Filter: FC = () => {
     const [animals, setAnimals] = useState<string | boolean>(false)
     const [bedrooms, setBedrooms] = useState<string | boolean>(false)
 
-    const searchHandler = () => {
+    const searchHandler = (redirect: '/catalog' | '/map' = '/catalog') => {
         const filterCommon = {
             rooms,
             floor,
@@ -52,7 +52,7 @@ const Filter: FC = () => {
 
             price: typeof price === 'string' ? price : undefined,
             balcony: typeof balcony === 'string' ? balcony : undefined,
-            animals: animals == 'Eсть' ? true : undefined,
+            animals: animals === 'Eсть' ? true : undefined,
             bedrooms: typeof bedrooms === 'string' ? bedrooms : undefined,
         }
         const filterSpecifications = translateSpecificationsFilters(specifications)
@@ -69,7 +69,7 @@ const Filter: FC = () => {
 
         setFilterModal(false)
         resetHandler()
-        new Promise(resolve => resolve(navigate('/catalog')))
+        new Promise(resolve => resolve(navigate(redirect)))
     }
 
     const resetHandler = () => {
@@ -120,7 +120,7 @@ const Filter: FC = () => {
                 <SelectInput
                     className={styles.Select}
                     selectedValue={price}
-                    setSelectedValue={setPrice} 
+                    setSelectedValue={setPrice}
                     arrow={arrow}
                 />
             </div>
@@ -132,7 +132,7 @@ const Filter: FC = () => {
                     Ещё
                 </button>
                 <button
-                    onClick={searchHandler}
+                    onClick={() => searchHandler()}
                     className={styles.BtnCoffee}
                 >
                     Найти
@@ -140,7 +140,7 @@ const Filter: FC = () => {
             </div>
             <div className={styles.Block}>
                 <div></div>
-                <button className={styles.Btn}>Показать на карте</button>
+                <button onClick={() => searchHandler('/map')} className={styles.Btn}>Показать на карте</button>
             </div>
             <ModalFilter
                 active={filterModal}

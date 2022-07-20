@@ -1,0 +1,13 @@
+.Container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+
+  .Body {
+    grid-area: body;
+    padding: 0 calc(50% - 650px);
+    margin-bottom: 40px;
+  }
+}

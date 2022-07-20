@@ -7,7 +7,7 @@ export interface ProductStateTypes {
 }
 
 export interface IProduct {
-  image: string [];
+  image: string[];
   price: string;
   priceDay: string;
   priceMonth: string;
@@ -18,16 +18,17 @@ export interface IProduct {
   apartamentsName: string;
   description: string;
   rooms: string;
+  coordinates: string;
   _id: string;
 }
 
 export interface PaginationTypes {
-  page: number,
-  limit: number,
+  page: number;
+  limit: number;
 }
 
 export interface RecommenededTypes {
-    page: number,
-    limit: number,
-    id: string | undefined,
+  page: number;
+  limit: number;
+  id: string | undefined;
 }

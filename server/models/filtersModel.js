@@ -10,6 +10,7 @@ const FilterModel = new mongoose.Schema({
 
     price: {type: String, required: true},
     // region: {type: mongoose.Schema.Types.Mixed, default: false},
+    coordinates: {type: String, required: true},
 
     fencedArea: {type: Boolean, default: false},
     сoveredParking: {type: Boolean, default: false},

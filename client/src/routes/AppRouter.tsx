@@ -12,32 +12,34 @@ import FAQ from '../pages/FAQ/FAQ'
 import Main from '../pages/Main/Main'
 import Personal from '../pages/Personal/Personal'
 import Favourite from '../pages/Favourite/Favourite'
+import Map from '../pages/Map/Map'
 
 const AppRouter = () => {
-    const { isAuth } = useTypedSelector(authSelector)
-    const dispatch = useTypedDispatch()
-    const accessToken = localStorage.getItem('accessToken')
+  const { isAuth } = useTypedSelector(authSelector)
+  const dispatch = useTypedDispatch()
+  const accessToken = localStorage.getItem('accessToken')
 
-    useEffect(() => {
-      if (accessToken) {
-        dispatch(checkAuth())
-      }         
-    }, [])
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(checkAuth())
+    }
+  }, [])
 
-    return (
-      <>
-        <Routes>
-            <Route path = '/' element = {<Main/>}/>
-            <Route path = "/apartments/:id" element = {<Apartaments/>} />
-            <Route path = "/catalog" element = {<Catalog/>}/>
-            <Route path = "/FAQ" element = {<FAQ/>}/>
-            {
-              isAuth && <>
-                            <Route path='/personal' element = {<Personal />} />
-                            <Route path='/favorite' element = {<Favourite />} />
-                        </>
-            }
-        </Routes>
+  return (
+    <>
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/apartments/:id' element={<Apartaments />} />
+        <Route path='/catalog' element={<Catalog />} />
+        <Route path='/FAQ' element={<FAQ />} />
+        <Route path='/map' element={<Map />} />
+        {
+          isAuth && <>
+            <Route path='/personal' element={<Personal />} />
+            <Route path='/favorite' element={<Favourite />} />
+          </>
+        }
+      </Routes>
     </>
   )
 }

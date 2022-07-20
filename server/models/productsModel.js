@@ -8,6 +8,7 @@ const ProductsModel = new mongoose.Schema({
   address: { type: String, required: true },
   rooms: { type: String, required: true },
   description: { type: String, required: true },
+  coordinates:{type:String, required:true},
 
   apartamentsName: { type: String, required: true },
   priceMonth: { type: String, required: true },

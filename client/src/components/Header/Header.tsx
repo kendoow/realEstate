@@ -57,34 +57,34 @@ const Header: FC = () => {
                 [styles.Auth]: isAuth
             })}
         >
-            <Link 
+            <Link
                 to='/'
                 className={styles.Logo}
             >
-                <img 
-                    src={logo} 
+                <img
+                    src={logo}
                     alt='Logo Icon'
                 />
             </Link>
-            <div 
+            <div
                 className={styles.Menu}
                 onClick={menuHandler}
             >
-                <img 
-                    src={menu} 
-                    alt="Menu Icon" 
+                <img
+                    src={menu}
+                    alt="Menu Icon"
                 />
                 <ModalMenu
                     loginHandler={loginHandler}
                     registrationHandler={registrationHandler}
                     active={activeMenu}
-                    setActive={setActiveMenu} 
+                    setActive={setActiveMenu}
                 />
             </div>
 
             <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
                 <Link to='/catalog'>Каталог</Link>
-                <div>На карте</div>
+                <Link to='/map'>На карте</Link>
                 <Link to='/FAQ'>FAQ</Link>
                 <a href='tel:+79660406664'>+7-966-040-66-64</a>
                 <a href="mailto:alterzidan@yandex.ru">alterzidan@yandex.ru</a>
@@ -94,9 +94,9 @@ const Header: FC = () => {
                 <>
                     <div className={styles.RightSideBar}>
                         <Link to='/favorite'>
-                            <img 
-                                src={heart} 
-                                alt="heart" 
+                            <img
+                                src={heart}
+                                alt="heart"
                             />
                         </Link>
                         <div className={styles.UserPanel}>
@@ -111,16 +111,16 @@ const Header: FC = () => {
                                     active={activeToggleList}
                                     setActive={setActiveToggleList}
                                     values={['Профиль', 'Избранное', 'Выйти']}
-                                    valuesLink={['/personal', '/favorite', '/']} 
+                                    valuesLink={['/personal', '/favorite', '/']}
                                 />
                             </div>
                             <Link
-                                className={styles.LinkPersonal} 
-                                to='/personal' 
+                                className={styles.LinkPersonal}
+                                to='/personal'
                             >
-                                <img 
-                                    src={userIcon} 
-                                    alt="icon" 
+                                <img
+                                    src={userIcon}
+                                    alt="icon"
                                 />
                             </Link>
                         </div>
@@ -129,27 +129,27 @@ const Header: FC = () => {
                 :
                 <>
                     <div className={styles.BlockBtn}>
-                        <button 
-                            onClick={() => loginHandler()} 
+                        <button
+                            onClick={() => loginHandler()}
                             className={styles.Login}
                         >
                             Войти
                         </button>
-                        <button 
-                            onClick={() => registrationHandler()} 
+                        <button
+                            onClick={() => registrationHandler()}
                             className={styles.Registration}
                         >
                             Зарегистрироваться
                         </button>
                     </div>
 
-                    <Modal 
-                        page={page} 
-                        setPage={setPage} 
-                        active={activeModal} 
+                    <Modal
+                        page={page}
+                        setPage={setPage}
+                        active={activeModal}
                         setActive={setActiveModal}
                     />
-                    
+
                 </>
 
             }

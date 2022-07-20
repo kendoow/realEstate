@@ -6,7 +6,7 @@ export interface ModalFilterProps extends DetailedHTMLProps<HTMLAttributes<HTMLD
     active: boolean,
     setActive: Dispatch<SetStateAction<boolean>>,
     resetHandler: () => void;
-    searchHandler: () => void,
+    searchHandler: (redirect?: '/map' | '/catalog') => void,
 
     rating: string,
     floor: string,

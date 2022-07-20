@@ -184,7 +184,7 @@ const ModalFilter: FC<ModalFilterProps> = ({ className,
                     </button>
                     <button
                         className={styles.BtnShow}
-                        onClick={searchHandler}
+                        onClick={() => searchHandler()}
                     >
                         Найти
                     </button>
