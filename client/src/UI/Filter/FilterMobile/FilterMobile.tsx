@@ -32,7 +32,7 @@ const FilterMobile: FC<FilterMobileProps> = ({
 
     const [rooms, setRooms] = useState<string>('Неважно')
     const [floor, setFloor] = useState<string>('Неважно')
-    const [rating, setRating] = useState<string>('Неважно')
+    const [rating, setRating] = useState<string>('3')
 
     const [specifications, setSpecifications] = useState<string[]>([])
     const [necessary, setNecessary] = useState<string[]>([])
@@ -52,7 +52,7 @@ const FilterMobile: FC<FilterMobileProps> = ({
 
             price: typeof price === 'string' ? price : undefined,
             balcony: typeof balcony === 'string' ? balcony : undefined,
-            animals: animals == 'Eсть' ? true : undefined,
+            animals: animals === 'Eсть' ? true : undefined,
             bedrooms: typeof bedrooms === 'string' ? bedrooms : undefined,
         }
         const filterSpecifications = translateSpecificationsFilters(specifications)

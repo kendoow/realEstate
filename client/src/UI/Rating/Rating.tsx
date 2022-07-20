@@ -19,7 +19,7 @@ export const Rating = ({ initialRating = 0, isEditable = false, filterRating, se
 
     useEffect(() => {
         if (setFilterRating) numSelectedStars ? setFilterRating(String(numSelectedStars))
-                                              : setFilterRating('Неважно')
+            : setFilterRating('Неважно')
     }, [numSelectedStars])
 
     const fillHandler = (i: number) => {
@@ -33,20 +33,20 @@ export const Rating = ({ initialRating = 0, isEditable = false, filterRating, se
         <div className={styles.Rating}>
 
             {Array(numSelectedStars).fill(5).map((e, i) => (
-                <img key={i} 
-                className ={isEditable ? styles.Poiner : ''}
-                onClick={() => fillHandler(i)} 
-                src={StarIconFilled} 
-                alt='star' />
+                <img key={i}
+                    className={isEditable ? styles.Poiner : ''}
+                    onClick={() => fillHandler(i)}
+                    src={StarIconFilled}
+                    alt='star' />
 
             ))}
 
             {Array(5 - numSelectedStars).fill(5).map((e, i) => (
-                <img key={i} 
-                className ={isEditable ? styles.Poiner : ''}
-                onClick={() => unFillHandler(i)} 
-                src={StarIconEmpty} 
-                alt='star' />
+                <img key={i}
+                    className={isEditable ? styles.Poiner : ''}
+                    onClick={() => unFillHandler(i)}
+                    src={StarIconEmpty}
+                    alt='star' />
 
             ))}
 

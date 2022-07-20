@@ -9,6 +9,7 @@ import useTypedDispatch from "../../hooks/useTypedDispatch";
 import { fetchProductsAll } from "../../redux/Slices/ProductsSlice/ProductsActionCreator";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
+import MainProduct from "../../components/Main/MainProduct/MainProduct";
 
 const Maps: FC<MapsProps> = ({ className, ...props }) => {
 
@@ -20,12 +21,7 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
     }, [])
 
 
-    const getPointData = (index: number) => {
-        return {
-            balloonContentBody: "placemark <strong>balloon " + index + "</strong>",
-            clusterCaption: "placemark <strong>" + index + "</strong>"
-        };
-    };
+
 
     return (
         <div
@@ -40,7 +36,8 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
             >
                 <Clusterer
                     options={{
-                        preset: "islands#invertedVioletClusterIcons",
+                        preset: 'islands#blueClusterIcons',
+
                         groupByCoordinates: false,
                         clusterDisableClickZoom: true,
                         clusterHideIconOnBalloonOpen: false,
@@ -54,8 +51,8 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
                             <Placemark
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
-                                properties={getPointData(i)}
-                                options={{ preset: "islands#violetIcon" }}
+                                options={{ preset: 'islands#blueCircleIcon'  }}
+
                             />)}
 
 

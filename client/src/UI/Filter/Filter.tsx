@@ -32,7 +32,7 @@ const Filter: FC = () => {
 
     const [rooms, setRooms] = useState<string>('Неважно')
     const [floor, setFloor] = useState<string>('Неважно')
-    const [rating, setRating] = useState<string>('Неважно')
+    const [rating, setRating] = useState<string>('3')
 
     const [specifications, setSpecifications] = useState<string[]>([])
     const [necessary, setNecessary] = useState<string[]>([])

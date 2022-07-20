@@ -34,7 +34,7 @@ const Maps: FC = ({ ...props }) => {
             >
                 <Clusterer
                     options={{
-                        preset: "islands#invertedVioletClusterIcons",
+                        preset: 'islands#blueCircleIcon',
                         groupByCoordinates: false,
                         clusterDisableClickZoom: true,
                         clusterHideIconOnBalloonOpen: false,
@@ -49,7 +49,7 @@ const Maps: FC = ({ ...props }) => {
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
                                 // properties={getPointData(i)}
-                                options={{ preset: "islands#violetIcon" }}
+                                options={{ preset: 'islands#blueCircleIcon' }}
                             />)}
 
 
