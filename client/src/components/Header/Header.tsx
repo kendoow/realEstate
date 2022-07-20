@@ -66,7 +66,7 @@ const Header: FC = () => {
                     alt='Logo Icon'
                 />
             </Link>
-            <button 
+            <div 
                 className={styles.Menu}
                 onClick={menuHandler}
             >
@@ -80,7 +80,7 @@ const Header: FC = () => {
                     active={activeMenu}
                     setActive={setActiveMenu} 
                 />
-            </button>
+            </div>
 
             <div className={isAuth ? styles.BlockLinkAuth : styles.BlockLink}>
                 <Link to='/catalog'>Каталог</Link>

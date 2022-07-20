@@ -1,8 +1,6 @@
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { YMaps } from 'react-yandex-maps';
 import { BrowserRouter } from 'react-router-dom';
-
 import { Provider } from 'react-redux';
 
 import { store } from './redux';
@@ -15,13 +13,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
+  <BrowserRouter>
+    <Provider store={store}>
+      <YMaps>
         <AppRouter />
-      </Provider>
-    </BrowserRouter>
-  </StrictMode>
+      </YMaps>
+    </Provider>
+  </BrowserRouter>
 );
 
 

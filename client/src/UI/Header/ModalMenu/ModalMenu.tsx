@@ -68,9 +68,7 @@ const ModalMenu: FC<ModalMenuProps> = ({ className,
                 >
                     Каталог
                 </Link>
-                <button
-                    className={styles.Btn}
-                >
+                <button className={styles.Btn}>
                     На карте
                 </button>
                 <Link

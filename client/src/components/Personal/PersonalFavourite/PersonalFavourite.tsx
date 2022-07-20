@@ -15,11 +15,11 @@ import styles from './PersonalFavourite.module.scss';
 const PersonalFavourite: FC = () => {
     const dispatch = useTypedDispatch()
     const { favourite, error } = useTypedSelector(favouriteSelector)
-    const { isAuth, user } = useTypedSelector(authSelector)
+    const { user } = useTypedSelector(authSelector)
 
     useEffect(() => {
-        isAuth && dispatch(fetchFavourite(user.id))
-    }, [isAuth])
+        user.id && dispatch(fetchFavourite(user.id))
+    }, [user])
 
     return (
         <>
