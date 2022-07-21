@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 
 import { API_URL } from './../../../http/http';
 import $api from '../../../http/http';
-import { AuthResponse, IUser, UserLoginType, UserRegistrationType } from './AuthSlice.types';
+import { AuthResponse, IPasswordUpdate, IUser, UserLoginType, UserRegistrationType } from './AuthSlice.types';
 
 
 
@@ -23,7 +23,7 @@ export const registration = createAsyncThunk(
 
 export const login = createAsyncThunk(
     'auth/login',
-    async(user:UserLoginType, {rejectWithValue}) => {
+    async(user: UserLoginType, {rejectWithValue}) => {
         try {
             const response : AxiosResponse<AuthResponse> = await $api.post<AuthResponse>('/jwt/login', user)
             localStorage.setItem('accessToken', response.data.accessToken)
@@ -68,6 +68,17 @@ export const authUserUpdate = createAsyncThunk(
             return response.data
         } catch (e) {
             return rejectWithValue(`Ошибка при обновлении данных профиля`)
+        }
+    }
+)
+
+export const authUserUpdatePassword = createAsyncThunk(
+    'auth/userUpdate/password',
+    async (password: IPasswordUpdate, { rejectWithValue }) => {
+        try {
+            await axios.put<string>(`${API_URL}jwt/users/password`, password, { withCredentials: true })
+        } catch (e) {
+            return rejectWithValue(`Ошибка при обновление пароля`)
         }
     }
 )

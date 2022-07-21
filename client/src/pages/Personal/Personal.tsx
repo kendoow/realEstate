@@ -3,7 +3,8 @@ import { FC } from 'react'
 import { Header, PersonalAbout, PersonalData, PersonalMenu } from '../../components'
 
 import styles from './Personal.module.scss'
-const Personal: FC = (): JSX.Element => {
+
+const Personal: FC = () => {
     return (
         <>
             <Header />

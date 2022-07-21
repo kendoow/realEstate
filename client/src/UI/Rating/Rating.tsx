@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
 
-import useTypedDispatch from "../../hooks/useTypedDispatch"
-import { addSelectedFilters } from "../../redux/Slices/FilterSlice/FilterSlice"
-
 import { RatingProps } from "./Rating.types"
 
 import styles from './Rating.module.scss'

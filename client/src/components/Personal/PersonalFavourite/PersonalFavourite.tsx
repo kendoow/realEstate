@@ -28,16 +28,7 @@ const PersonalFavourite: FC = () => {
         {/* <h2 className={styles.Title}>Ваше избранное</h2> */}
             {error && <h2 className={styles.Error}>{error}</h2> }
             {
-                favourite && favourite.map(v => <MainProduct 
-                                                 id={v._id}
-                                                 key={v._id}
-                                                 image={v.image}
-                                                 price={v.price}
-                                                 priceDay={v.priceDay}
-                                                 rooms={v.rooms}
-                                                 metro={v.metro}
-                                                 description={v.description}
-                                                 address={v.address} />)
+                favourite && favourite.map(product => <MainProduct key={product._id} id={product._id} {...product} />)
             }
             {/* {loading && <div className={styles.Spiner}> <Spiner /></div>} */}
 

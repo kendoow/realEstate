@@ -78,6 +78,17 @@ class UserController {
             next(e);
         }
     }
+
+    async userUpdatePassword(req, res, next) {
+        try {
+            const {refreshToken} = req.cookies;
+            const { passwordCurrent, passwordNew } = req.body
+            await userService.userUpdatePassword(refreshToken, passwordCurrent, passwordNew)
+            return res.json(`Успешно`)
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default new UserController();

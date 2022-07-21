@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { fetchProduct, fetchProductsAll, fetchProductsPagination } from "./ProductsActionCreator";
 
-import { IProduct, ProductStateTypes, PaginationTypes, RecommenededTypes } from './ProductsSlice.types';
+import { IProduct, ProductStateTypes, RecommenededTypes } from './ProductsSlice.types';
 
 const initialState: ProductStateTypes = {
     loading: false,

@@ -2,14 +2,14 @@ import { FC, useEffect } from "react";
 import cn from 'classnames';
 import { Clusterer, FullscreenControl, Map, Placemark, ZoomControl } from "react-yandex-maps";
 
-import { MapsProps } from "./Maps.types";
-
-import styles from './Maps.module.scss';
 import useTypedDispatch from "../../hooks/useTypedDispatch";
 import { fetchProductsAll } from "../../redux/Slices/ProductsSlice/ProductsActionCreator";
 import useTypedSelector from "../../hooks/useTypedSelector";
 import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
-import MainProduct from "../../components/Main/MainProduct/MainProduct";
+
+import { MapsProps } from "./Maps.types";
+
+import styles from './Maps.module.scss';
 
 const Maps: FC<MapsProps> = ({ className, ...props }) => {
 
@@ -19,9 +19,6 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
     useEffect(() => {
         dispatch(fetchProductsAll())
     }, [])
-
-
-
 
     return (
         <div
@@ -54,7 +51,6 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
                                 options={{ preset: 'islands#blueCircleIcon'  }}
 
                             />)}
-
 
                 </Clusterer>
                 <FullscreenControl />

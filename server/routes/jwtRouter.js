@@ -20,5 +20,6 @@ jwtRouter.get('/refresh', userConroller.refresh)
 
 // jwtRouter.get('/users', authMiddleware, userConroller.getUsers)
 jwtRouter.put('/users', userConroller.userUpdate)
+jwtRouter.put('/users/password', userConroller.userUpdatePassword)
 
 export default jwtRouter;

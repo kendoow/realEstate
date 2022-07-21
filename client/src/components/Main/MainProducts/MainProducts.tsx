@@ -43,20 +43,7 @@ const MainProducts: FC = (): JSX.Element => {
 
             <div className={styles.BlockGrid}>
                 {
-                    products.map(i => (
-                        <MainProduct
-                            id={i._id}
-                            key={i._id}
-                            image={i.image}
-                            price={i.price}
-                            priceDay={i.priceDay}
-                            rooms={i.rooms}
-                            metro={i.metro}
-                            description={i.description}
-                            address={i.address}
-
-                        />
-                    ))
+                    products.map(product => <MainProduct key={product._id} id={product._id} {...product} />)
                 }
             </div>
             <button 

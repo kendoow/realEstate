@@ -10,9 +10,16 @@ export interface IUser {
   email: string,
   id: string,
   name: string,
+  phone?: string,
   lastname?: string,
   birthday?: string,
 }
+
+export interface IPasswordUpdate {
+  passwordCurrent: string,
+  passwordNew: string,
+}
+
 
 export interface AuthResponse {
   accessToken: string;

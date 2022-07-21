@@ -5,24 +5,20 @@ import { Clusterer, FullscreenControl, Map, Placemark, ZoomControl } from "react
 
 
 import useTypedDispatch from "../../hooks/useTypedDispatch";
-import { fetchProductsAll } from "../../redux/Slices/ProductsSlice/ProductsActionCreator";
 import useTypedSelector from "../../hooks/useTypedSelector";
-
-import { filterSelector } from "../../redux/Slices/FilterSlice/FilterSelector";
 import { fetchFilterProducts } from "../../redux/Slices/FilterSlice/FilterActionCreator";
+import { filterSelector } from "../../redux/Slices/FilterSlice/FilterSelector";
+import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
 
-const Maps: FC = ({ ...props }) => {
+const Maps: FC = () => {
 
     const dispatch = useTypedDispatch()
     const { filterProducts, selectedFilters } = useTypedSelector(filterSelector)
+    const { selectedProduct } = useTypedSelector(productSelector)
 
     useEffect(() => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
-
-
-
-
 
     return (
         <>
@@ -30,7 +26,12 @@ const Maps: FC = ({ ...props }) => {
             <Map
                 width='100%'
                 height='75vh'
-                defaultState={{ center: [55.726955, 37.582328], zoom: 9 }}
+                defaultState={{ 
+                    center: selectedProduct.coordinates
+                            ? [+selectedProduct.coordinates.split(' ')[0], +selectedProduct.coordinates.split(' ')[1]] 
+                            : [55.726955, 37.582328],
+                    zoom: 10,
+                }}
             >
                 <Clusterer
                     options={{
@@ -44,13 +45,20 @@ const Maps: FC = ({ ...props }) => {
                 >
 
                     {!!filterProducts.length &&
-                        filterProducts.map((product, i) =>
-                            <Placemark
+                        filterProducts.map(product => {
+                            if (selectedProduct && product._id === selectedProduct._id) {
+                                return <Placemark
+                                    key={product._id}
+                                    geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
+                                    options={{ preset: 'islands#greenCircleDotIcon' }}
+                                />
+                            }
+                            return <Placemark
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
-                                // properties={getPointData(i)}
                                 options={{ preset: 'islands#blueCircleIcon' }}
-                            />)}
+                            />
+                        })}
 
 
                 </Clusterer>

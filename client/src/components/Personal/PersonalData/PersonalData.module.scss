@@ -1,11 +1,12 @@
 @import "../../../scss/variables.scss";
 @import "../../../scss/mixins.scss";
-.container {
+
+.Container {
   flex: 1 1 auto;
   margin-left: 3%;
   margin-right: 3%;
 
-  .confirm {
+  .Confirm {
     padding: 15px;
     box-shadow: 0px 6px 10px rgba(82, 82, 82, 0.1);
     border-radius: 10px;
@@ -14,14 +15,14 @@
     display: flex;
     flex-direction: column;
   }
-  .item {
+  .Item {
     display: flex;
     flex-direction: column;
-    .title {
+    .Title {
       display: flex;
       align-items: center;
 
-      p {
+      .Text {
         color: $color-gray-transparent;
         padding-right: 10px;
         font-size: 18px;
@@ -41,19 +42,19 @@
       color: $color-coffee;
     }
   }
-  .unconfirmed {
+  .Unconfirmed {
     background: $color-red;
     border-radius: 5px;
     color: $color-white;
     padding: 4px 8px;
   }
-  .confirmed {
+  .Confirmed {
     background: $dark-green;
     border-radius: 5px;
     color: $color-white;
     padding: 4px 8px;
   }
-  .changePassword {
+  .ChangePassword {
     padding-top: 30px;
     display: flex;
     flex-direction: column;
@@ -73,7 +74,7 @@
       width: 290px;
     }
 
-    .inputWrapper {
+    .InputWrapper {
       position: relative;
       width: 290px;
       img {
@@ -82,8 +83,12 @@
         right: 17px;
       }
     }
-
-    .btn {
+    .Error {
+      color: red;
+      font-size: 16px;
+      line-height: 18px;
+    }
+    .Btn {
       @include buttonPrimary;
       margin-top: 18px;
       display: flex;
@@ -101,13 +106,13 @@
 }
 
 @media (max-width: 768px) {
-  .container {
+  .Container {
     margin: 0 auto;
-    .changePassword {
+    .ChangePassword {
       input {
         width: 250px !important;
       }
-      .inputWrapper {
+      .InputWrapper {
         width: 250px !important;
       }
     }
@@ -115,12 +120,12 @@
 }
 
 @media (max-width: 576px) {
-  .container {
+  .Container {
     margin-top: 50px !important;
 
     margin: 0 auto;
-    .changePassword {
-      .inputWrapper {
+    .ChangePassword {
+      .InputWrapper {
         position: relative;
         width: 250px;
       }

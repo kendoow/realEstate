@@ -30,20 +30,7 @@ const ApartamentsItems: FC = (): JSX.Element => {
                 </div>
                 {
                     Object.keys(selectedProduct).length !== 0 &&
-                    <ApartamentsItem
-                    id ={selectedProduct._id}
-                        image={selectedProduct.image}
-                        price={selectedProduct.price}
-                        priceDay={selectedProduct.priceDay}
-                        priceMonth={selectedProduct.priceMonth} 
-                        rewiewsCount={selectedProduct.rewiewsCount}
-                        rating={selectedProduct.rating}
-                        metro={selectedProduct.metro}
-                        address={selectedProduct.address}
-                        apartamentsName={selectedProduct.apartamentsName}
-                        description={selectedProduct.description}
-                        key={selectedProduct._id}
-                    />
+                    <ApartamentsItem id ={selectedProduct._id} {...selectedProduct}/>
                 }
                 
             </div>

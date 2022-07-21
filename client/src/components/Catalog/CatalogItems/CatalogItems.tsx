@@ -54,20 +54,8 @@ const CatalogItems: FC = (): JSX.Element => {
                 }
                 <div className={styles.BlockGrid}>
                     {
-                        filterProducts.map(i => (
-                            <CatalogItem
-                                title={i.apartamentsName}
-                                id={i._id}
-                                key={i._id}
-                                image={i.image}
-                                price={i.price}
-                                priceDay={i.priceDay}
-                                rooms={i.rooms}
-                                metro={i.metro}
-                                description={i.description}
-                                address={i.address}
-
-                            />
+                        filterProducts.map(product => (
+                            <CatalogItem key={product._id} id={product._id} {...product} />
                         ))
                     }
                 </div>

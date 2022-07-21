@@ -95,6 +95,28 @@ class UserService{
         }
     }
 
+    async userUpdatePassword(refreshToken, passwordCurrent, passwordNew) {
+        if(!refreshToken){
+            throw ApiError.UnauthorizedError();
+        }
+
+        const userData = tokenService.validateRefreshToken(refreshToken);
+        const tokenFromDb = await tokenService.findToken(refreshToken)
+        if(!userData || !tokenFromDb){
+            throw ApiError.UnauthorizedError()
+        }
+
+        const user = await userModel.findById(userData.id)
+        const isPassedEquals = await bcrypt.compare(passwordCurrent, user.password);
+
+        if(!isPassedEquals) {
+            throw ApiError.BadRequest('Неверный пароль')
+        }
+        const hashedPassword = await bcrypt.hash(passwordNew, 3)        
+
+        await userModel.findByIdAndUpdate(userData.id, { password: hashedPassword }, { new: true })
+    }
+
     async getAllUsers(){
         const users = await userModel.find(); // return all posts from bd
         return users;

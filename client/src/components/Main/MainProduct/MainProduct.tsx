@@ -24,7 +24,6 @@ import heartFilled from '../../../assets/Main/heart-filled.svg';
 
 const MainProduct: FC<MainProductProps> = ({ image,
     price,
-    priceDay,
     rooms,
     metro,
     address,
@@ -97,7 +96,7 @@ const MainProduct: FC<MainProductProps> = ({ image,
             </Link>
             <div className={styles.BlockContent}>
                 <div className={styles.Price}>
-                    {price} <span className={styles.USD}>{priceDay} /сутки </span>
+                    {price}
                 </div>
                 <div className={styles.Rooms}>{rooms}</div>
                 <div className={styles.BlockText}>

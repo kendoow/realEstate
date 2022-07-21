@@ -36,18 +36,8 @@ const RecentProducts: FC = () => {
             <h2 className={styles.Title}>Рекомендуемые номера</h2>
             <div className={styles.GridContainer}>
                 {
-                    recentProducts.map(i => (
-                        <MainProduct
-                            id={i._id}
-                            key={i._id}
-                            image={i.image}
-                            price={i.price}
-                            priceDay={i.priceDay}
-                            rooms={i.rooms}
-                            metro={i.metro}
-                            description={i.description}
-                            address={i.address}
-                        />
+                    recentProducts.map(product => (
+                        <MainProduct key={product._id} id={product._id} {...product} />
                     ))
                 }
             </div>

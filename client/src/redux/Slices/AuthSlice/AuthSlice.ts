@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { authUserUpdate, checkAuth, login, logout, registration } from './AuthActionCreator';
+import { authUserUpdate, checkAuth, login, logout, registration, authUserUpdatePassword } from './AuthActionCreator';
 
 import { AuthStateTypes, IUser } from "./AuthSlice.types";
 
@@ -92,6 +92,16 @@ export const AuthSlice = createSlice({
             state.user = action.payload
         },
         [authUserUpdate.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        },
+
+        [authUserUpdatePassword.pending.type]: (state) => {
+            state.error = null
+        },
+        [authUserUpdatePassword.fulfilled.type]: (state) => {
+            state.error = null
+        },
+        [authUserUpdatePassword.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
     }
