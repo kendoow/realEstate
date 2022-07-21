@@ -143,16 +143,17 @@ const Header: FC = () => {
                         </button>
                     </div>
 
-                    <Modal
-                        page={page}
-                        setPage={setPage}
-                        active={activeModal}
-                        setActive={setActiveModal}
-                    />
+
 
                 </>
 
             }
+            <Modal
+                page={page}
+                setPage={setPage}
+                active={activeModal}
+                setActive={setActiveModal}
+            />
         </div>
     )
 }

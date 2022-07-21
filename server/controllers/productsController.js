@@ -31,10 +31,12 @@ class ProductsController {
 
   async create(req, res) {
     try {
+      
       const createdProduct = await ProductsService.create(
         req.files.image,
         req.body
       );
+     
       res.json(createdProduct);
     } catch (e) {
       res

@@ -154,7 +154,7 @@ const PersonalData: FC = (): JSX.Element => {
               alt="Hidden Icon"
             />
           </div>
-          {error === 'Ошибка при обновление пароля' && <div className={styles.Error}>{error}</div> }
+          {error === 'Ошибка при обновлении пароля' && <div className={styles.Error}>{error}</div> }
           <button
             onClick={saveHandler} 
             className={styles.Btn}

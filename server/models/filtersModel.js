@@ -8,9 +8,9 @@ const FilterModel = new mongoose.Schema({
     rating: {type: mongoose.Schema.Types.Mixed, defaukt: false},
     bedrooms: {type: mongoose.Schema.Types.Mixed, default: false},
 
-    price: {type: String, required: true},
+    price: {type: String, required: false},
     // region: {type: mongoose.Schema.Types.Mixed, default: false},
-    coordinates: {type: String, required: true},
+    coordinates: {type: String, required: false},
 
     fencedArea: {type: Boolean, default: false},
     сoveredParking: {type: Boolean, default: false},

@@ -16,7 +16,7 @@ const MainProducts: FC = (): JSX.Element => {
     const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 12})
     const { error, loading, products } = useTypedSelector(productSelector)
     const dispatch = useTypedDispatch()
-
+   
     // потом понял что немного кривая можно подгружать не все 12 и тд, а как делал с комментами
     useEffect(() => {
         dispatch(fetchProductsPagination(pagination))
@@ -43,7 +43,7 @@ const MainProducts: FC = (): JSX.Element => {
 
             <div className={styles.BlockGrid}>
                 {
-                    products.map(product => <MainProduct key={product._id} id={product._id} {...product} />)
+                    products.slice(0,pagination.limit * pagination.page).map(product => <MainProduct key={product._id} id={product._id} {...product} />)
                 }
             </div>
             <button 

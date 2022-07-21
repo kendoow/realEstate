@@ -96,7 +96,7 @@ const MainProduct: FC<MainProductProps> = ({ image,
             </Link>
             <div className={styles.BlockContent}>
                 <div className={styles.Price}>
-                    {price}
+                    {price} ₽
                 </div>
                 <div className={styles.Rooms}>{rooms}</div>
                 <div className={styles.BlockText}>

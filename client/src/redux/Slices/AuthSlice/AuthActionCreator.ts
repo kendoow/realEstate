@@ -78,7 +78,7 @@ export const authUserUpdatePassword = createAsyncThunk(
         try {
             await axios.put<string>(`${API_URL}jwt/users/password`, password, { withCredentials: true })
         } catch (e) {
-            return rejectWithValue(`Ошибка при обновление пароля`)
+            return rejectWithValue(`Ошибка при обновлении пароля`)
         }
     }
 )

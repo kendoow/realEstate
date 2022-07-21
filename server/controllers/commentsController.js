@@ -11,7 +11,9 @@ class CommentsController {
           req.query.limit
         );
       } else {
+        
         comments = await CommentsService.getOne(req.params.id);
+
       }
       res.json(comments);
     } catch (e) {

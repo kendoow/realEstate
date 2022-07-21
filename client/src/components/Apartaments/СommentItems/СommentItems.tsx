@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import useTypedSelector from "../../../hooks/useTypedSelector";
 import useTypedDispatch from "../../../hooks/useTypedDispatch";
-import { fetchComments, fetchCommentsFirst } from "../../../redux/Slices/CommentsSlice/CommentsActionCreator";
+import { fetchCommentsAll } from "../../../redux/Slices/CommentsSlice/CommentsActionCreator";
 import { commentSelector } from "../../../redux/Slices/CommentsSlice/CommentSelector";
 
 import { PaginationTypes } from "../../../redux/Slices/ProductsSlice/ProductsSlice.types";
@@ -21,8 +21,10 @@ const СommentItems: FC = (): JSX.Element => {
     const dispatch = useTypedDispatch()
 
     useEffect(() => {
-        id && dispatch(fetchCommentsFirst(id))
+        id && dispatch(fetchCommentsAll(id))
+
     }, [id])
+
 
     // в моменте работает за двоих (2 раза блять)
     // useEffect(() => { 
@@ -31,23 +33,22 @@ const СommentItems: FC = (): JSX.Element => {
 
     const handlerPagination = () => {
         setPagination({ ...pagination, page: pagination.page + 1 })
-        dispatch(fetchComments({ id, ...pagination })) // не нужно если пофикстить useEffect
     }
 
     return (
         <div className={styles.Container}>
             <h2 className={styles.Title}>Отзывы</h2>
             <div className={styles.GridContainer}>
-            {
-                comments.map(i => (
-                    <CommentItem
-                        key={i._id}
-                        name={i.name}
-                        date={i.date}
-                        text={i.text}
-                        image={i.image} />
-                ))
-            }
+                {
+                    comments.slice(0, pagination.limit * pagination.page).map(i => (
+                        <CommentItem
+                            key={i._id}
+                            name={i.name}
+                            date={i.date}
+                            text={i.text}
+                            image={i.image} />
+                    ))
+                }
             </div>
             <div className={styles.Center}>
                 {loading && <Spiner />}

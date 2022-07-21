@@ -58,7 +58,7 @@ const PersonalAbout: FC = () => {
                         src={userIcon}
                         alt="User Icon"
                     />
-                    <div className={styles.Name}>Иван Иванов</div>
+                    <div className={styles.Name}>{name} {lastname}</div>
                 </div>
                 <div className={styles.Info}>
                     <div className={styles.Text}>Имя</div>

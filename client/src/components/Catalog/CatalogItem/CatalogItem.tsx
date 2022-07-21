@@ -97,7 +97,7 @@ const CatalogItem: FC<CatalogItemProps> = ({ image,
                 <div className={styles.BlockContent}>
                     <h3>{title}</h3>
                     <div className={styles.Price}>
-                        от {price}
+                        от {price} ₽
                     </div>
                     <div className={styles.Rooms}>{rooms}</div>
                     <div className={styles.BlockText}>

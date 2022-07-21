@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 
 import useInput from '../../../hooks/useInput'
@@ -32,11 +32,17 @@ const Login: FC<LoginProps> = ({ setActive, setPage }) => {
             password: passwordLogin.value,
         }
         dispatch(login(userLogin))
-        if (isAuth) {
-            setPage('')
-            setActive(false)
-        }
+        
     }
+
+    
+    useEffect(() => {
+        if (isAuth) {
+            setActive(false)
+            setPage('')
+        }
+
+    }, [isAuth])
 
     const RedirectHanlder = () => {
         setPage('restore')

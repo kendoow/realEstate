@@ -6,12 +6,23 @@ import { API_URL } from './../../../http/http';
 import { PaginationCommentsTypes, IComment } from './CommentsSlice.types';
 
 
-export const fetchComments = createAsyncThunk(
+export const fetchCommentsPagination = createAsyncThunk(
     'comments/fetch',
     async (pagination: PaginationCommentsTypes, {rejectWithValue}) => {
         try {
             const {id, page, limit} = pagination
             const response = await axios.get<IComment[]>(`${API_URL}comment/${id}`, {params: {page, limit}})
+            return response.data
+        } catch (e) {
+            return rejectWithValue(`Не удалось загрузить отзывы - ${e}`)
+        }
+    }
+)
+export const fetchCommentsAll = createAsyncThunk(
+    'comments/fetch',
+    async (id: string, {rejectWithValue}) => {
+        try {
+            const response = await axios.get<IComment[]>(`${API_URL}comment/${id}`)
             return response.data
         } catch (e) {
             return rejectWithValue(`Не удалось загрузить отзывы - ${e}`)

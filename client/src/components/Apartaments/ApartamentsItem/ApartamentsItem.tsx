@@ -107,9 +107,9 @@ const ApartamentsItem: FC<ApartamentsItemProps> = ({ image,
                 <div className={styles.Text}>
                     <h3 className={styles.Title}>{apartamentsName}</h3>
                     <div className={styles.Price}>
-                        <h4>от <span>{price}</span></h4>
+                        <h4>от <span>{price} ₽</span></h4>
                     </div>
-                    <h6 className={styles.PriceMonth}>{priceMonth} /месяц</h6>
+                    <h6 className={styles.PriceMonth}>{priceMonth} ₽/месяц</h6>
                     <div className={styles.InfoBlock}>
                         <img src={imgAdress} alt="icon" />
                         <p>{address}</p>

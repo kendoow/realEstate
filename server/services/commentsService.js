@@ -8,6 +8,10 @@ class CommentsService {
             throw new Error('Comments Service Get One - нет productId')
         }
         const { comments } = await CommentsModel.findOne({productId})
+        if(!comments.length){
+            throw new Error('Comments Service Get One - comments array is empty')
+
+        }
         return comments
     }
 

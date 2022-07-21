@@ -14,9 +14,10 @@ import FilterMobile from '../../../UI/Filter/FilterMobile/FilterMobile'
 // import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 
 import styles from './CatalogItems.module.scss'
+import { PaginationTypes } from '../../../redux/Slices/ProductsSlice/ProductsSlice.types'
 
 const CatalogItems: FC = (): JSX.Element => {
-    // const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
+    const [pagination, setPagination] = useState<PaginationTypes>({page: 1, limit: 3})
     const { loading, error, selectedFilters, filterProducts } = useTypedSelector(filterSelector)
     const dispatch = useTypedDispatch()
 
@@ -32,9 +33,9 @@ const CatalogItems: FC = (): JSX.Element => {
     //     dispatch(fetchProductsPagination(pagination))
     // }, [pagination.page, pagination.limit])
 
-    // const handlePagination = () => {
-    //     setPagination({...pagination, page: pagination.page + 1})
-    // }
+    const handlePagination = () => {
+        setPagination({...pagination, page: pagination.page + 1})
+    }
 
     return (
         <>
@@ -54,14 +55,14 @@ const CatalogItems: FC = (): JSX.Element => {
                 }
                 <div className={styles.BlockGrid}>
                     {
-                        filterProducts.map(product => (
+                        filterProducts.slice(0, pagination.limit * pagination.page).map(product => (
                             <CatalogItem key={product._id} id={product._id} {...product} />
                         ))
                     }
                 </div>
                 <button
                     className={styles.Btn}
-                // onClick={() => handlePagination()}
+                onClick={() => handlePagination()}
                 >
                     Показать еще
                 </button>

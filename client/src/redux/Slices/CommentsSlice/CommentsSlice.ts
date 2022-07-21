@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { fetchComments, fetchCommentsFirst } from './CommentsActionCreator';
+import { fetchCommentsFirst, fetchCommentsPagination, fetchCommentsAll } from './CommentsActionCreator';
 
 import { CommentsStateTypes, IComment } from "./CommentsSlice.types";
 
@@ -16,15 +16,29 @@ export const CommentsSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchComments.pending.type]: (state) => {
+        [fetchCommentsAll.pending.type]: (state) => {
             state.loading = true
         },
-        [fetchComments.fulfilled.type]: (state, action) => {
+        [fetchCommentsAll.fulfilled.type]: (state, action) => {
+            state.loading = false
+            state.error = null
+            state.comments = action.payload
+        },
+        [fetchCommentsAll.rejected.type]: (state, action) => {
+            state.loading = false
+            state.comments = []
+            state.error = action.payload
+        },
+
+        [fetchCommentsPagination.pending.type]: (state) => {
+            state.loading = true
+        },
+        [fetchCommentsPagination.fulfilled.type]: (state, action) => {
             state.loading = false
             state.error = null
             state.comments = [...state.comments, ...action.payload]
         },
-        [fetchComments.rejected.type]: (state, action) => {
+        [fetchCommentsPagination.rejected.type]: (state, action) => {
             state.loading = false
             state.comments = []
             state.error = action.payload

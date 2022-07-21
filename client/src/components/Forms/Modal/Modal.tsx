@@ -26,9 +26,9 @@ const Modal: FC<ModalProps> = ({ active, setActive, setPage, page }): JSX.Elemen
           onClick={() => setActive(false)}
           className={styles.CloseBtn}
         >
-          <img 
-            src={close} 
-            alt="Close Icon" 
+          <img
+            src={close}
+            alt="Close Icon"
           />
         </button>
         {page === 'restore' && <Restore setPage={setPage} setActive={setActive} />}
