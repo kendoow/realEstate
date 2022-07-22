@@ -1,4 +1,5 @@
 import { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Clusterer, FullscreenControl, Map, Placemark, ZoomControl } from "react-yandex-maps";
 
@@ -15,10 +16,16 @@ const Maps: FC = () => {
     const dispatch = useTypedDispatch()
     const { filterProducts, selectedFilters } = useTypedSelector(filterSelector)
     const { selectedProduct } = useTypedSelector(productSelector)
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
+
+    const redirectHandler = (id:string) => {
+        navigate(`/apartments/${id}`)       
+    }
+
 
     return (
         <>
@@ -48,12 +55,14 @@ const Maps: FC = () => {
                         filterProducts.map(product => {
                             if (selectedProduct && product._id === selectedProduct._id) {
                                 return <Placemark
+                                
                                     key={product._id}
                                     geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
                                     options={{ preset: 'islands#greenCircleDotIcon' }}
                                 />
                             }
                             return <Placemark
+                            onClick = {() => redirectHandler(product._id)}
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
                                 options={{ preset: 'islands#blueCircleIcon' }}

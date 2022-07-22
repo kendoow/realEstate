@@ -10,16 +10,22 @@ import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelecto
 import { MapsProps } from "./Maps.types";
 
 import styles from './Maps.module.scss';
+import { useNavigate } from "react-router-dom";
 
 const Maps: FC<MapsProps> = ({ className, ...props }) => {
 
     const dispatch = useTypedDispatch()
-    const { products } = useTypedSelector(productSelector)
-
+    const { products, selectedProduct } = useTypedSelector(productSelector)
+    const navigate = useNavigate()
     useEffect(() => {
         dispatch(fetchProductsAll())
     }, [])
 
+    const redirectHandler = (id:string) => {
+        navigate(`/apartments/${id}`)       
+    }
+
+    console.log(selectedProduct)
     return (
         <div
             className={cn(styles.Container, className)}
@@ -45,11 +51,14 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
 
                     {products.length &&
                         products.map((product, i) =>
+                              
                             <Placemark
+                            
+                                onClick = {() => redirectHandler(product._id)}
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
                                 options={{ preset: 'islands#blueCircleIcon'  }}
-
+                                
                             />)}
 
                 </Clusterer>
