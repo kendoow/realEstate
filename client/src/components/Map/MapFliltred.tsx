@@ -22,8 +22,8 @@ const Maps: FC = () => {
         dispatch(fetchFilterProducts(selectedFilters))
     }, [selectedFilters])
 
-    const redirectHandler = (id:string) => {
-        navigate(`/apartments/${id}`)       
+    const redirectHandler = (id: string) => {
+        navigate(`/apartments/${id}`)
     }
 
 
@@ -33,10 +33,10 @@ const Maps: FC = () => {
             <Map
                 width='100%'
                 height='75vh'
-                defaultState={{ 
+                defaultState={{
                     center: selectedProduct.coordinates
-                            ? [+selectedProduct.coordinates.split(' ')[0], +selectedProduct.coordinates.split(' ')[1]] 
-                            : [55.726955, 37.582328],
+                        ? [+selectedProduct.coordinates.split(' ')[0], +selectedProduct.coordinates.split(' ')[1]]
+                        : [55.726955, 37.582328],
                     zoom: 10,
                 }}
             >
@@ -55,14 +55,14 @@ const Maps: FC = () => {
                         filterProducts.map(product => {
                             if (selectedProduct && product._id === selectedProduct._id) {
                                 return <Placemark
-                                
+                                onClick={() => redirectHandler(product._id)}
                                     key={product._id}
                                     geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
-                                    options={{ preset: 'islands#greenCircleDotIcon' }}
+                                    options={{ preset: 'islands#greenCircleDotIcon' }} y
                                 />
                             }
                             return <Placemark
-                            onClick = {() => redirectHandler(product._id)}
+                                onClick={() => redirectHandler(product._id)}
                                 key={product._id}
                                 geometry={[+product.coordinates.split(' ')[0], +product.coordinates.split(' ')[1]]}
                                 options={{ preset: 'islands#blueCircleIcon' }}
