@@ -5,11 +5,11 @@ import { Clusterer, FullscreenControl, Map, Placemark, ZoomControl } from "react
 
 
 
-import useTypedDispatch from "../../hooks/useTypedDispatch";
-import useTypedSelector from "../../hooks/useTypedSelector";
-import { fetchFilterProducts } from "../../redux/Slices/FilterSlice/FilterActionCreator";
-import { filterSelector } from "../../redux/Slices/FilterSlice/FilterSelector";
-import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
+import useTypedDispatch from "../../../hooks/useTypedDispatch";
+import useTypedSelector from "../../../hooks/useTypedSelector";
+import { fetchFilterProducts } from "../../../redux/Slices/FilterSlice/FilterActionCreator";
+import { filterSelector } from "../../../redux/Slices/FilterSlice/FilterSelector";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
 
 const Maps: FC = () => {
 

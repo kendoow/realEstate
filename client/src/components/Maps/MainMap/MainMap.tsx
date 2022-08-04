@@ -2,20 +2,20 @@ import { FC, useEffect } from "react";
 import cn from 'classnames';
 import { Clusterer, FullscreenControl, Map, Placemark, ZoomControl } from "react-yandex-maps";
 
-import useTypedDispatch from "../../hooks/useTypedDispatch";
-import { fetchProductsAll } from "../../redux/Slices/ProductsSlice/ProductsActionCreator";
-import useTypedSelector from "../../hooks/useTypedSelector";
-import { productSelector } from "../../redux/Slices/ProductsSlice/ProductSelector";
+import useTypedDispatch from "../../../hooks/useTypedDispatch";
+import { fetchProductsAll } from "../../../redux/Slices/ProductsSlice/ProductsActionCreator";
+import useTypedSelector from "../../../hooks/useTypedSelector";
+import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSelector";
 
-import { MapsProps } from "./Maps.types";
+import { MainMapProps } from "./MainMap.types";
 
-import styles from './Maps.module.scss';
+import styles from './MainMap.module.scss';
 import { useNavigate } from "react-router-dom";
 
-const Maps: FC<MapsProps> = ({ className, ...props }) => {
+const MainMap: FC<MainMapProps> = ({ className, ...props }) => {
 
     const dispatch = useTypedDispatch()
-    const { products, selectedProduct } = useTypedSelector(productSelector)
+    const { products } = useTypedSelector(productSelector)
     const navigate = useNavigate()
     useEffect(() => {
         dispatch(fetchProductsAll())
@@ -25,7 +25,7 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
         navigate(`/apartments/${id}`)       
     }
 
-    console.log(selectedProduct)
+   
     return (
         <div
             className={cn(styles.Container, className)}
@@ -77,4 +77,4 @@ const Maps: FC<MapsProps> = ({ className, ...props }) => {
     )
 }
 
-export default Maps;
+export default MainMap;

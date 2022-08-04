@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Footer, Header } from '../../components'
-import MapFliltred from '../../components/Map/MapFliltred'
+import MapFliltred from '../../components/Maps/MapFiltred/MapFliltred'
 import Filter from '../../UI/Filter/Filter'
 import FilterMobile from '../../UI/Filter/FilterMobile/FilterMobile'
 

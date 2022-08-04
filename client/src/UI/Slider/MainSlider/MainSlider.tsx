@@ -1,8 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { SliderProps, ArrowProps } from "./Slider.types";
-import { API_URL } from "../../http/http";
+import { SliderProps, ArrowProps } from "./MainSlider.types";
+
 
 
 function SampleNextArrow({ className, style, onClick }: ArrowProps) {
@@ -40,7 +40,7 @@ function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
     />
   );
 }
-const SimpleSlider = ({ children }: SliderProps): JSX.Element => {
+const MainSlider = ({ children }: SliderProps): JSX.Element => {
 
   const settings = {
     dots: true,
@@ -62,4 +62,4 @@ const SimpleSlider = ({ children }: SliderProps): JSX.Element => {
     </Slider>
   );
 }
-export default SimpleSlider;
+export default MainSlider;

@@ -12,7 +12,7 @@ import { favouriteSelector } from '../../../redux/Slices/FavouriteSlice/Favourit
 import { authSelector } from '../../../redux/Slices/AuthSlice/AuthSelector';
 import { commentSelector } from '../../../redux/Slices/CommentsSlice/CommentSelector';
 
-import ApartsSlider from '../../../UI/Slider/ApartamentsSlider';
+import ApartsSlider from '../../../UI/Slider/ApartamentsSilder/ApartamentsSlider';
 import Rating from '../../../UI/Rating/Rating';
 
 import { ApartamentsItemProps } from './ApartamentsItem.types'

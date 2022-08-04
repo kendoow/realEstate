@@ -9,7 +9,7 @@ import { productSelector } from "../../../redux/Slices/ProductsSlice/ProductSele
 import { favouriteSelector } from "../../../redux/Slices/FavouriteSlice/FavouriteSelector";
 import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
 
-import SimpleSlider from "../../../UI/Slider/Slider";
+import SimpleSlider from "../../../UI/Slider/MainSlider/MainSlider";
 
 import { FavouriteAddArguments, FavouriteDeleteArguments } from "../../../redux/Slices/FavouriteSlice/FavouriteSlice.types";
 import { MainProductProps } from "./MainProduct.types";

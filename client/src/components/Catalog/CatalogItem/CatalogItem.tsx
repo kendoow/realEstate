@@ -13,7 +13,7 @@ import { authSelector } from "../../../redux/Slices/AuthSlice/AuthSelector";
 import { CatalogItemProps } from './CatalogItem.types'
 import { API_URL } from "../../../http/http";
 
-import SimpleSlider from "../../../UI/Slider/Slider";
+import SimpleSlider from "../../../UI/Slider/MainSlider/MainSlider";
 
 import styles from './CatalogItem.module.scss'
 
