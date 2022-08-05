@@ -68,7 +68,6 @@ const MainProduct: FC<MainProductProps> = ({ image,
         }
         isFilled(!filled)
     }
-
     return (
         <div
             className={cn(styles.Container, className)}
@@ -86,7 +85,9 @@ const MainProduct: FC<MainProductProps> = ({ image,
                 }
                 <SimpleSlider>
                     {
-                        image.map((img) => (
+                       
+                        image.slice(0,4).map((img) => (
+                            
                             <div key={img} className={styles.Slider}>
                                 <img src={`${API_URL}${img}`} alt="btn" />
                             </div>

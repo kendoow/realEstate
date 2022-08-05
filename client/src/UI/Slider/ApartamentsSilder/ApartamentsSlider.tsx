@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import { SliderProps, ArrowProps } from "../MainSlider/MainSlider.types";
 
 import './ApartamentsSlider.scss'
-import { FC, useRef, useState } from "react";
+import { FC, useState } from "react";
 
 
 function SampleNextArrow({ className, style, onClick }: ArrowProps) {
@@ -56,26 +56,18 @@ const ApartsSlider: FC<SliderProps> = ({ children }) => {
    
     const { selectedProduct } = useTypedSelector(productSelector)
     const settings = {
-        // customPaging: function (i: number) {
-        //     return (
-        //         <img
-        //             className="SliderItem"
-        //             src={`${API_URL}${selectedProduct.image[i]}`}
-        //             alt="btn"
-        //         />
-        //     );
-        // },
-        // dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        dotsClass: "SliderSelected",
         arrows: true,
+        
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-
+    const extraSettings = {
+        className:'SliderWrapper'
+    }
     return (
         <>
             <Slider asNavFor={sliderBottom}
@@ -83,15 +75,17 @@ const ApartsSlider: FC<SliderProps> = ({ children }) => {
                 {children}
             </Slider>
             <Slider
-            
+
                 asNavFor={sliderTop}
                 ref={(slider:any) => setSliderBottom(slider)}
-                slidesToShow={2}
+                slidesToShow={4}
                 swipeToSlide={true}
-                focusOnSelect={true}
+                focusOnSelect={true}    
+                {...extraSettings}
             >
                 {selectedProduct.image.map((_, i) =>
                     <img
+                    key={i}
                         className="SliderItem"
                         src={`${API_URL}${selectedProduct.image[i]}`}
                         alt="btn"

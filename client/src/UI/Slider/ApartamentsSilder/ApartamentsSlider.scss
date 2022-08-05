@@ -1,9 +1,11 @@
 .SliderItem {
   border-radius: 10px;
   cursor: pointer;
-  height: 150px;
-  width: 150px;
+  height: 140px;
+  width: 140px;
  margin-top: 5px;
+ padding-left: 5px;
+ 
 }
 .SliderSelected li.slick-active {
   transition: all 0.2s;
@@ -16,6 +18,8 @@
   display: flex !important;
   margin-top: 20px;
   justify-content: space-between;
+}
+.SliderWrapper{
   
 }
 
